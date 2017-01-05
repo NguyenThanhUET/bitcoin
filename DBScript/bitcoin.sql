@@ -210,7 +210,7 @@ CREATE TABLE `transaction_gh` (
 
 LOCK TABLES `transaction_gh` WRITE;
 /*!40000 ALTER TABLE `transaction_gh` DISABLE KEYS */;
-INSERT INTO `transaction_gh` VALUES (144,0,'2017-01-05 14:36:09','1','D:/images/\\144\\170105020201010808.jpg',NULL,1),(144,0.15,'2017-01-05 14:50:09','1','D:/images/\\144\\170105020201010909.jpg',1,2),(144,0.15,'2017-01-05 14:50:11','1','D:/images/\\144\\170105020201011111.jpg',1,3),(144,0.15,'2017-01-05 14:51:15','1','D:/images/\\144\\170105020201011515.jpg',1,4),(144,0.15,'2017-01-05 16:29:46','1','D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5),(144,0.15,'2017-01-05 17:39:50','2','\\144\\170105050501014949.jpg',1,6),(144,0.15,'2017-01-05 17:43:34','1','\\144\\170105050501013434.jpg',1,7),(144,0.15,'2017-01-05 17:44:23','3','\\144\\170105050501012323.jpg',1,8),(145,0.15,'2017-01-05 18:32:35','2','\\145\\170105060601013535.jpg',1,9);
+INSERT INTO `transaction_gh` VALUES (144,0.00003,'2017-01-05 14:36:09','1','D:/images/\\144\\170105020201010808.jpg',NULL,1),(144,0.15,'2017-01-05 14:50:09','1','D:/images/\\144\\170105020201010909.jpg',1,2),(144,0.15,'2017-01-05 14:50:11','1','D:/images/\\144\\170105020201011111.jpg',1,3),(144,0.15,'2017-01-05 14:51:15','1','D:/images/\\144\\170105020201011515.jpg',1,4),(144,0.15,'2017-01-05 16:29:46','1','D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5),(144,0.15,'2017-01-05 17:39:50','2','\\144\\170105050501014949.jpg',1,6),(144,0.15,'2017-01-05 17:43:34','1','\\144\\170105050501013434.jpg',1,7),(144,0.15,'2017-01-05 17:44:23','3','\\144\\170105050501012323.jpg',1,8),(145,0.15,'2017-01-05 18:32:35','2','\\145\\170105060601013535.jpg',1,9);
 /*!40000 ALTER TABLE `transaction_gh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,6 +229,7 @@ CREATE TABLE `transaction_ph` (
   `senddate` datetime DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `issuccess` int(11) DEFAULT NULL,
+  `gh_id` int(11) DEFAULT NULL COMMENT 'Khi GH dc confirm thì PH sẽ tạo 1 bản ghi tương ứng transaction_ph.gh_id= transaction_gh.ID \nVà bản ghi này có issuccess = 0 ( chưa hoàn thành hay chưa chueyern tiền). Sau này khi chuyển tiền thành công thi issuccess =1',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='admin send user';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -239,7 +240,7 @@ CREATE TABLE `transaction_ph` (
 
 LOCK TABLES `transaction_ph` WRITE;
 /*!40000 ALTER TABLE `transaction_ph` DISABLE KEYS */;
-INSERT INTO `transaction_ph` VALUES (1,144,0.18,1,'2017-01-04 00:00:00',NULL,1),(2,145,0.4,1,'2017-01-04 00:00:00',NULL,1),(3,144,0.015,2,'2017-01-04 00:00:00',NULL,1),(4,144,0.015,2,'2017-01-04 00:00:00',NULL,1);
+INSERT INTO `transaction_ph` VALUES (1,144,0.18,1,'2017-01-04 00:00:00',NULL,0,NULL),(2,145,0.4,1,'2017-01-04 00:00:00',NULL,1,0),(3,144,0.015,2,'2017-01-04 00:00:00',NULL,1,NULL),(4,144,0.015,2,'2017-01-04 00:00:00',NULL,1,8);
 /*!40000 ALTER TABLE `transaction_ph` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -252,4 +253,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-05 22:03:26
+-- Dump completed on 2017-01-06  1:39:22
