@@ -1,5 +1,8 @@
 <?php
 class Error_ErrorController extends Zend_Controller_Action{
+    public function init(){
+        $this->redirect('/');
+    }
     public function indexAction() {
         $this->_helper->_layout->disableLayout();
         $errors = $this->_getParam('error_handler');

@@ -79,5 +79,16 @@ class Backend_HomeController extends Frontend_AppController {
 			}
 		}
 	}
+	/**
+	 * log out
+	 */
+	public function logoutAction() {
+		$this->_helper->layout->disableLayout();
+		$this->_helper->viewRenderer->setNoRender();
+		if ($this->auth->hasIdentity()) {
+			$this->auth->clearIdentity();
+		}
+		$this->redirect('/backend/home');
+	}
 
 }
