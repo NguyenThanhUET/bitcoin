@@ -13,7 +13,6 @@ class Backend_HomeController extends Frontend_AppController {
 	 */
 	public function init() {
 		parent::init();
-		$this->auth->clearIdentity();
 	}
 	/**
 	 * index home
@@ -21,7 +20,9 @@ class Backend_HomeController extends Frontend_AppController {
 	public function indexAction(){
 		$this->_helper->layout->disablelayout();
 		$this->view->title = 'Administrator Sign In';
-
+		if ($this->auth->hasIdentity()) {
+			$this->auth->clearIdentity();
+		}
 		if($this->getRequest()->isPost()) {
 
 			$this->_helper->layout->disablelayout();
@@ -53,7 +54,7 @@ class Backend_HomeController extends Frontend_AppController {
 				,	$password
 				//,   crypt($password, $txt)
 				);
-				$data = $this->model->executeSql('SPC_LOGIN_ADMIN_LST1', $params,true);
+				$data = $this->model->executeSql('SPC_LOGIN_ADMIN_LST1', $params);
 				if(isset($data[0][0]['islogin']) && 1*$data[0][0]['islogin']==1) {
 					$this->respon['auth']['ID'] 					= $data[0][0]['ID'];
 					$this->respon['auth']['FullName'] 				= $data[0][0]['Name'];

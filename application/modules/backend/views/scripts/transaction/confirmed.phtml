@@ -9,76 +9,180 @@ $uri = $this->serverUrl();
         background: rgba(61, 61, 61, 0.81);
         color: #FFFFFF;
     }
+    .myImg {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
 
+    .myImg:hover {opacity: 0.7;}
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 279px;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (image) */
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+    }
+
+    /* Caption of Modal Image */
+    .caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+    }
+
+    /* Add Animation */
+    .modal-content, .caption {
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+        from {-webkit-transform:scale(0)}
+        to {-webkit-transform:scale(1)}
+    }
+
+    @keyframes zoom {
+        from {transform:scale(0)}
+        to {transform:scale(1)}
+    }
+
+    /* The Close Button */
+    span.close {
+        position: absolute;
+        top: 55px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    span.close:hover,
+    span.close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .w-body-table-fix-1{
+        height: 645px !important;
+    }
 
 </style>
-<div class="page-content-admin" style="    padding-left: 75px;">
-        <div class="col-md-4"><div id="sum_box" class="row mbl">
-                <div class="row">
+<link type="text/css" rel="stylesheet" href="/templates/css/backend_common.css">
+<?php $noimage=$this->noimage; ?>
+<div class="page-content-admin">
 
-                    <div class="col-md-12">
-
-                        <div class="panel panel-blue">
-                            <div class="panel-body">
-                                <p class="icon">
-                                    <img class="icon-header" src="/templates/images/moneybag2.png">
-                                </p>
-                                <p class="description">
-                                        <b>Total Recived Balance : <?php echo isset($this->data['total_recived_blance'])? 1*$this->data['total_recived_blance']:0;?> BTC</b></p>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-12">
-                        <div class="panel panel-pink">
-                            <div class="panel-body"><p class="icon">
-                                    <img class="icon-header" src="/templates/images/moneybag.png" height="60"></p>
-                                <b>Total Send Balance : <?php echo isset($this->data['total_send_balance'])? 1*$this->data['total_send_balance']:0;?> BTC  </b></p>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div></div>
+    <div class="w-data-table">
+        <div class="w-header-table-fix-1">
+            <table class="tbl-header-1 table-bordered main-color">
+                <thead>
+                <tr>
+                    <th width="50px">#</th>
+                    <th width="150px">Date</th>
+                    <th width="150px">User Name</th>
+                    <th width="100px">Phone</th>
+                    <th width="100px">Amount(BTC)</th>
+                    <th width="130px">Total Profit (BTC)</th>
+                    <th width="100px">Status</th>
+                    <th>Details Image</th>
+                    <th width="150px">Send Money</th>
+                    <th width="50px">Delete</th>
+                </tr>
+                </thead>
+            </table>
         </div>
-    <div class="row col-md-12">
-        <div class="col-md-6">
-            <div class="panel panel-blue">
-                <div class="panel-body pan">
-                    <form method="post" action="profile">
-
-                        <div class="table-responsive">
-                            <table class="table table-bordered">
-                                <tbody>
-
-                                <tr>
-                                    <th width="60%">Total Waiting Transaction</th>
-                                    <td width="40%">
-                                        <?php echo isset($this->data['total_waiting'])? 1*$this->data['total_waiting']:0;?>  Transactions
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th width="60%">Total Confirmed Transaction</th>
-                                    <td width="40%">
-                                        <?php echo isset($this->data['total_confrimed'])? 1*$this->data['total_confrimed']:0;?>  Transactions
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th width="60%">Total PH Transaction</th>
-                                    <td width="40%">
-                                        <?php echo isset($this->data['total_PH'])? 1*$this->data['total_PH']:0;?>  Transactions
-                                    </td>
-                                </tr>
-
-                                </tbody>
-                            </table>
-
-                        </div></form>
-                </div>
-            </div>
+        <div class="w-body-table-fix-1 tbl-data-search" >
+            <table id="tbl-seach-1" class="tbl-body-1 table-bordered">
+                <tbody>
+                <?php if(isset($this->data) && !empty($this->data)){ $i= 0;?>
+                    <?php foreach($this->data as $row){ $i++;
+                        $filename = $row['image'];
+                        $filenameTmp    =   $noimage;
+                        if(file_exists($filename)){
+                            $handle = fopen($filename, "rb");
+                            $filenameTmp    =   $filename;
+                        }else{
+                            $handle = fopen($noimage, "rb");
+                        }
+                        $contents = fread($handle, filesize($filenameTmp));
+                        fclose($handle);
+                        ?>
+                        <tr>
+                            <td width="50px"><?php echo $i;?></td>
+                            <td width="150px"><?php echo $row['senddate'];?></td>
+                            <td width="150px"><?php echo $row['UserName'];?></td>
+                            <td width="100px"><?php echo $row['Mobile'];?></td>
+                            <td width="100px"><?php echo $row['amount'];?></td>
+                            <td width="130px"><?php echo $row['bonus'];?></td>
+                            <td width="100px" class="text-center"><span class="label label-sm <?php echo $row['color'];?>"><?php echo $row['status'];?></span></td>
+                            <td class="image-view text-center"><span class="view-image-btn label label-sm label-info" style="cursor: pointer;">Click to view Image verify</span>
+                                <div class="modal myModal">
+                                    <span class="close">&times;</span>
+                                    <img class="modal-content img01">
+                                    <div class="caption"></div>
+                                </div>
+                                <img class="myImg" src="data:image;base64,<?php echo base64_encode($contents);?>" style="display: none;">
+                            </td>
+                            <td width="150px" class="text-center"><span class="confirm-btn label label-sm label-info" style="cursor: pointer;">Send Money</span></td>
+                            <td width="50px" class="text-center"><span class="confirm-btn label label-sm label-info" style="cursor: pointer; width: 40px;">X</span></td>
+                        </tr>
+                    <?php } ?>
+                <?php } ?>
+                </tbody>
+            </table>
         </div>
-
-
     </div>
+
+
 </div>
+<script>
+    $(document).ready(function() {
+        try {
+            $(document).on('click','.view-image-btn',function(){
+                var parent = $(this).parents('td.image-view');
+                var modal = $(parent).find('.myModal');
+                var img = $(parent).find('.myImg');
+                var modalImg = $(parent).find(".img01");
+                var captionText = $(parent).find(".caption");
+                $(modal).css('display' , "block");
+                $(modalImg).attr('src',$(img).attr('src'));
+                //captionText.innerHTML = this.alt;
+                // Get the <span> element that closes the modal
+                var span = $(parent).find("close");
+            });
+            $(document).on('click','span.close',function(){
+                var parent = $(this).parents('td.image-view');
+                var modal = $(parent).find('.myModal');
+                $(modal).css('display' , "none");
+            });
+
+        } catch (e) {
+            alert('ready' + e.message);
+        }
+    });
+
+</script>
