@@ -1,0 +1,37 @@
+<?php if(!empty($this->arrnews)){?>
+<div class="post-list-wrapper">
+	<?php foreach ($this->arrnews as $row){?>
+					<div class="post-list-item">
+		<div class="inner">
+			<div class="post-image">
+				<a
+					href="/frontend/news/detail/news_id/<?php echo $row['news_id'];?>">
+					<img src="<?php echo $row['news_image'];?>">
+				</a>
+			</div>
+			<div class="post-content">
+				<h3 class="entry-title">
+					<a
+						href="/frontend/news/detail/news_id/<?php echo $row['news_id'];?>"><?php echo $row['news_title'];?></a>
+				</h3>
+				<p><?php echo $row['news_desc'];?></p>
+				<a class="details"
+					href="/frontend/news/detail/news_id/<?php echo $row['news_id'];?>">Chi
+					tiết<span><i class="fa fa fa-angle-right"></i><i
+						class="fa fa fa-angle-right"></i></span>
+				</a>
+			</div>
+		</div>
+	</div>
+                  	<?php }?>
+</div>
+<div class="col-md-12 col-xs-12 col-sm-12 text-center">
+	<div id="pg">
+		<div class="paging">
+			<div class="dataTables_paginate paging_bootstrap pagination">
+				<?php echo $this->paging;?>
+			</div>
+		</div>
+	</div>
+</div>
+<?php }?>

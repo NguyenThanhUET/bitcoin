@@ -1,0 +1,170 @@
+<style>
+    .myImg {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .myImg:hover {opacity: 0.7;}
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (image) */
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+    }
+
+    /* Caption of Modal Image */
+    .caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+    }
+
+    /* Add Animation */
+    .modal-content, .caption {
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+        from {-webkit-transform:scale(0)}
+        to {-webkit-transform:scale(1)}
+    }
+
+    @keyframes zoom {
+        from {transform:scale(0)}
+        to {transform:scale(1)}
+    }
+
+    /* The Close Button */
+    span.close {
+        position: absolute;
+        top: 55px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    span.close:hover,
+    span.close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+    <div class="page-content">
+    <div style="background: transparent; border: 0; box-shadow: none !important" class="tab-content pan mtl mbn responsive">
+        <div id="tab-form-actions" class="tab-pane fade active in">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-blue">
+                        <div class="panel-heading">Latest Transactions</div>
+                        <div class="panel-body">
+
+                            <div class="table-responsive">
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Date</th>
+                                        <th>Amount(BTC)</th>
+                                        <th>Total Profit (BTC)</th>
+                                        <th>Status</th>
+                                        <th>Details Image</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php if(isset($this->data) && !empty($this->data)){ $i= 0;?>
+                                        <?php foreach($this->data as $row){ $i++;
+                                                $filename = $row['image'];
+                                                $handle = fopen($filename, "rb");
+                                                $contents = fread($handle, filesize($filename));
+                                                fclose($handle);
+                                                ?>
+                                        <tr>
+                                            <td><?php echo $i;?></td>
+                                            <td><?php echo $row['senddate'];?></td>
+                                            <td><?php echo $row['amount'];?></td>
+                                            <td><?php echo $row['bonus'];?></td>
+                                            <td><span class="label label-sm <?php echo $row['color'];?>"><?php echo $row['status'];?></span></td>
+                                            <td class="image-view" width="60px"><span class="view-image-btn label label-sm label-info" style="cursor: pointer;">Click to view Image verify</span>
+                                                <div class="modal myModal">
+                                                    <span class="close">&times;</span>
+                                                    <img class="modal-content img01">
+                                                    <div class="caption"></div>
+                                                </div>
+                                                <img class="myImg" src="data:image;base64,<?php echo base64_encode($contents);?>" style="display: none;">
+                                            </td>
+                                        </tr>
+                                            <?php } ?>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!--END CONTENT--><!--BEGIN FOOTER-->
+                <div id="footer">
+                    <div class="copyright">2016 © btc-powerup.com - POWER UP YOUR BTC</div>
+                </div>
+                <!--END FOOTER--></div>
+            <!--END PAGE WRAPPER--></div>
+    </div>
+
+</div>
+<script>
+    $(document).ready(function() {
+        try {
+            $(document).on('click','.view-image-btn',function(){
+                var parent = $(this).parents('td.image-view');
+                var modal = $(parent).find('.myModal');
+                var img = $(parent).find('.myImg');
+                var modalImg = $(parent).find(".img01");
+                var captionText = $(parent).find(".caption");
+                $(modal).css('display' , "block");
+                    $(modalImg).attr('src',$(img).attr('src'));
+                    //captionText.innerHTML = this.alt;
+                // Get the <span> element that closes the modal
+                var span = $(parent).find("close");
+            });
+            $(document).on('click','span.close',function(){
+                var parent = $(this).parents('td.image-view');
+                var modal = $(parent).find('.myModal');
+                $(modal).css('display' , "none");
+            });
+
+        } catch (e) {
+            alert('ready' + e.message);
+        }
+    });
+
+</script>
