@@ -30,14 +30,14 @@ class Backend_ManagementController extends Frontend_AppController {
 	 */
 	public function waitingAction(){
 		$this->view->title = 'Transaction- Waiting';
-		$this->_helper->layout->setLayout('layout');
+		$this->_helper->layout->setLayout('backend-layout');
 	}
 	/**
 	 * history
 	 */
 	public function confrimAction(){
 		$this->view->title = 'Transaction- Confirm';
-		$this->_helper->layout->setLayout('layout');
+		$this->_helper->layout->setLayout('backend-layout');
 
 
 	}
@@ -46,7 +46,7 @@ class Backend_ManagementController extends Frontend_AppController {
 	 */
 	public function phAction(){
 		$this->view->title = 'Bussiness PH';
-		$this->_helper->layout->setLayout('layout');
+		$this->_helper->layout->setLayout('backend-layout');
 
 
 	}
@@ -55,25 +55,7 @@ class Backend_ManagementController extends Frontend_AppController {
 	 */
 	public function historyAction(){
 		$this->view->title = 'History';
-		$this->_helper->layout->setLayout('layout');
-
-
-	}
-	/**
-	 * bussiness tab click
-	 */
-	public function bussinessAction(){
-		$this->view->title = 'Bussiness';
-		$this->_helper->layout->setLayout('layout');
-
-
-	}
-	/**
-	 * contact admin click
-	 */
-	public function contactadminAction(){
-		$this->view->title = 'Bussiness';
-		$this->_helper->layout->setLayout('layout');
+		$this->_helper->layout->setLayout('backend-layout');
 
 
 	}
