@@ -25,39 +25,5 @@ class Backend_ManagementController extends Frontend_AppController {
 			$this->view->data	=	$data[0][0];
 		}
 	}
-	/**
-	 * invest
-	 */
-	public function waitingAction(){
-		$this->view->title = 'Transaction- Waiting';
-		$this->_helper->layout->setLayout('backend-layout');
-	}
-	/**
-	 * history
-	 */
-	public function confrimAction(){
-		$this->view->title = 'Transaction- Confirm';
-		$this->_helper->layout->setLayout('backend-layout');
-
-
-	}
-	/**
-	 * history
-	 */
-	public function phAction(){
-		$this->view->title = 'Bussiness PH';
-		$this->_helper->layout->setLayout('backend-layout');
-
-
-	}
-	/**
-	 * history
-	 */
-	public function historyAction(){
-		$this->view->title = 'History';
-		$this->_helper->layout->setLayout('backend-layout');
-
-
-	}
 
 }
