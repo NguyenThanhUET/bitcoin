@@ -78,6 +78,7 @@
         cursor: pointer;
     }
 </style>
+<?php $noimage=$this->noimage; ?>
     <div class="page-content">
     <div style="background: transparent; border: 0; box-shadow: none !important" class="tab-content pan mtl mbn responsive">
         <div id="tab-form-actions" class="tab-pane fade active in">
@@ -103,8 +104,14 @@
                                         <?php if(isset($this->data) && !empty($this->data)){ $i= 0;?>
                                         <?php foreach($this->data as $row){ $i++;
                                                 $filename = $row['image'];
-                                                $handle = fopen($filename, "rb");
-                                                $contents = fread($handle, filesize($filename));
+                                                $filenameTmp    =   $noimage;
+                                                if(file_exists($filename)){
+                                                    $handle = fopen($filename, "rb");
+                                                    $filenameTmp    =   $filename;
+                                                }else{
+                                                    $handle = fopen($noimage, "rb");
+                                                }
+                                                $contents = fread($handle, filesize($filenameTmp));
                                                 fclose($handle);
                                                 ?>
                                         <tr>

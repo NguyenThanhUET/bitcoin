@@ -54,6 +54,7 @@ class Frontend_MemberController extends Frontend_AppController {
 		$params	=	array(
 			$this->user['ID']
 		);
+
 		$data = $this->model->executeSql('SPC_GET_TRANS_PH', $params);
 		if(!empty($data[0])){
 			$this->view->data	=	$data[0];
@@ -101,6 +102,8 @@ class Frontend_MemberController extends Frontend_AppController {
 		if(!empty($data[0])){
 			$this->view->data	=	$data[0];
 		}
+		$pathUpload	=	new Zend_Config_Ini ( APPLICATION_PATH . '/configs/common.ini', 'upload' );
+		$this->view->noimage	=	$pathUpload->upload->noimage;
 	}
 	/**
 	 * bussiness tab click
