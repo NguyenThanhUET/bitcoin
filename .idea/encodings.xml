@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$/README.md" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/modules/backend/controllers/HomeController.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/modules/backend/controllers/ManagementController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/modules/backend/controllers/TicketController.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/modules/frontend/controllers/HomeController.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/modules/frontend/controllers/MemberController.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/modules/frontend/controllers/RegisterController.php" charset="UTF-8" />
