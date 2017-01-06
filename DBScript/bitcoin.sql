@@ -169,12 +169,12 @@ DROP TABLE IF EXISTS `ticket`;
 CREATE TABLE `ticket` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `CustomerID` int(11) DEFAULT NULL,
-  `question` text CHARACTER SET latin1,
+  `question` text CHARACTER SET utf8,
   `senddate` datetime DEFAULT NULL,
-  `answer` text CHARACTER SET latin1,
+  `answer` text CHARACTER SET utf8,
   `status` int(11) DEFAULT NULL COMMENT '0: chưa trả lời\n1: trả lời',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -183,7 +183,7 @@ CREATE TABLE `ticket` (
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
-INSERT INTO `ticket` VALUES (1,144,'test message','2017-01-06 16:24:04','Ok guy ! Please help me, I can not invest money to you !',1),(2,144,'test message','2017-01-06 16:27:28','',0),(3,144,'test message','2017-01-06 16:39:46','',0),(4,144,'Please help me, I can not invest money to you !','2017-01-06 17:21:20','',0);
+INSERT INTO `ticket` VALUES (1,144,'test message','2017-01-06 16:24:04','Ok guy ! Please help me, I can not invest money to you !',1),(2,144,'test message','2017-01-06 16:27:28','sdsad',1),(3,144,'test message','2017-01-06 16:39:46','dfdf',1),(4,144,'Please help me, I can not invest money to you !','2017-01-06 17:21:20','s?dsdf',1),(5,144,'thành test unicode','2017-01-06 20:29:20','trả lời ',1),(6,145,'thành test new','2017-01-06 20:33:20','',0);
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,7 +204,7 @@ CREATE TABLE `transaction_gh` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `del_flg` int(11) DEFAULT '0',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,7 +213,7 @@ CREATE TABLE `transaction_gh` (
 
 LOCK TABLES `transaction_gh` WRITE;
 /*!40000 ALTER TABLE `transaction_gh` DISABLE KEYS */;
-INSERT INTO `transaction_gh` VALUES (144,0.00003,'2017-01-05 14:36:09',2,'D:/images/\\144\\170105020201010808.jpg',NULL,1,0),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,0),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,0),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,0),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1),(144,0.15,'2017-01-05 17:39:50',2,'\\144\\170105050501014949.jpg',1,6,0),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,0),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,0),(144,0.15,'2017-01-06 13:37:21',1,'\\144\\170106010101012121.jpg',1,10,0);
+INSERT INTO `transaction_gh` VALUES (144,0.00003,'2017-01-05 14:36:09',2,'D:/images/\\144\\170105020201010808.jpg',NULL,1,0),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,0),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,0),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,0),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1),(144,0.15,'2017-01-05 17:39:50',2,'\\144\\170105050501014949.jpg',1,6,0),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,0),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,0),(144,0.15,'2017-01-06 13:37:21',1,'\\144\\170106010101012121.jpg',1,10,0),(145,0.15,'2017-01-06 22:13:52',1,'\\145\\170106101001015252.jpg',1,11,0);
 /*!40000 ALTER TABLE `transaction_gh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -478,7 +478,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_DATA_INFO`(IN
 P_customerID INT
@@ -487,6 +487,9 @@ BEGIN
 	DECLARE invest_blance DOUBLE DEFAULT 0;
     DECLARE bonus_balance		DOUBLE DEFAULT 0;
     DECLARE total_teferrals		DOUBLE DEFAULT 0;
+    DECLARE investValidDay		INT	DEFAULT	0;
+    DECLARE investValid			INT	DEFAULT	1;
+    DECLARE countChild			INT	DEFAULT	0;
     SET bonus_balance = 
     (SELECT
 		 SUM(ph.amount)
@@ -511,10 +514,32 @@ BEGIN
     AND ph.level > 1
     GROUP BY ph.CustomerID); -- neu customer hien tại là F1, F2
     
+    
+    SET countChild = 
+    (
+		SELECT COUNT(1)
+        FROM customer
+        WHERE customer.ParentID = P_customerID
+    );
+    
+    SET investValidDay = 
+    (
+		SELECT COUNT(1)
+        FROM transaction_gh
+        WHERE transaction_gh.customerID = P_customerID
+        AND DATE(transaction_gh.senddate) = CURDATE()
+        AND transaction_gh.del_flg <> 1
+    );
+    IF(countChild >= 2) THEN
+		SET investValid = countChild - investValidDay;
+	ELSE
+		SET investValid = investValid - investValidDay;
+	END IF;
     SELECT
 		invest_blance As invest_blance
 	,	bonus_balance	AS bonus_balance
-    ,	total_teferrals	AS total_teferrals;
+    ,	total_teferrals	AS total_teferrals
+    ,	investValid		AS invest_valid; -- so lan invest con lai
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -529,14 +554,42 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_RAND_ADMIN_WALLET`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_RAND_ADMIN_WALLET`(IN
+P_customerID INT
+)
 BEGIN
+	DECLARE investValidDay		INT	DEFAULT	0;
+    DECLARE investValid			INT	DEFAULT	1;
+    DECLARE countChild			INT	DEFAULT	0;
+    
 	DECLARE adminWallet VARCHAR(500) DEFAULT '';
     SET adminWallet =  (SELECT adminwallet.wallet FROM adminwallet ORDER BY RAND() LIMIT 1);
+    
+    SET countChild = 
+    (
+		SELECT COUNT(1)
+        FROM customer
+        WHERE customer.ParentID = P_customerID
+    );
+    
+    SET investValidDay = 
+    (
+		SELECT COUNT(1)
+        FROM transaction_gh
+        WHERE transaction_gh.customerID = P_customerID
+        AND DATE(transaction_gh.senddate) = CURDATE()
+        AND transaction_gh.del_flg <> 1
+    );
+    IF(countChild >= 2) THEN
+		SET investValid = countChild - investValidDay;
+	ELSE 
+		SET investValid = investValid - investValidDay;
+    END IF;
     SELECT
-		adminWallet AS admin_wallet;
+		investValid	AS invest_valid
+	,	adminWallet AS admin_wallet;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1002,6 +1055,32 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SPC_TICKET_ANSWER_ACT1` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_TICKET_ANSWER_ACT1`(IN
+	Id 			INT
+,	P_comment	TEXT
+)
+BEGIN
+	UPDATE ticket
+    SET ticket.answer = P_comment
+    ,	ticket.status = 1
+    WHERE ticket.ID = Id;
+    SELECT 1 AS success;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `SPC_TRANSACTION_APPROVED_ACT1` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1107,4 +1186,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-06 18:20:43
+-- Dump completed on 2017-01-06 22:17:27

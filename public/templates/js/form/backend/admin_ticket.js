@@ -45,27 +45,42 @@ function initEvents() {
             $('#answer-text').attr('messageid',$(parent).attr('record-id'))
         });
         $(document).on('click','#answer-btn',function(){
-            var parent  =   $(this).parents('tr.tr-record');
-            jConfirm('Do you want to approve ?','Confirm',function(r){
-                if(r){
-                    confirmTrans($(parent).attr('record-id'),function(){
-                        $(parent).remove();
-                    });
-                }
-            });
+            var messageid = $('#answer-text').attr('messageid');
+            if(1*messageid!=0){
+                jConfirm('Do you want to send message ?','Confirm',function(r){
+                    if(r){
+                        var messageContent = $('#answer-text').val();
+                        if($.trim(messageContent) !=''){
+                            answerHandler(messageid,function(){
+                                console.log($('.tr-record[record-id="'+messageid+'"]'));
+                                $('.tr-record[record-id="'+messageid+'"]').find('.td-answer').html(
+                                    $('#answer-text').val()
+                                );
+                                $('tr.tr-record[record-id="'+messageid+'"]').find('.status-td').html('Answered');
+                                $('tr.tr-record[record-id="'+messageid+'"]').find('.status-td').removeClass('color-default').addClass('color-success');
+                            });
+                        }else{
+                            jAlert('Please type answer !','Warning');
+                        }
+
+                    }
+                });
+            }else{
+                jAlert('Please choose ticket to answer','Warning');
+            }
         });
 
     } catch (e) {
         alert('initEvents' + e.message);
     }
 }
-function confirmTrans(id, callback) {
+function answerHandler(id, callback) {
     var data = {};
     data['id'] = id;
-    console.log(data);
+    data['comment'] = $('#answer-text').val();
     $.ajax({
         type: 'POST',
-        url: '/backend/transaction/waitingapproved',
+        url: '/backend/ticket/answer',
         dataType: 'json',
         loading: true,
         data: data,

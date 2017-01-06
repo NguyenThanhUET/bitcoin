@@ -51,11 +51,16 @@ class Frontend_MemberController extends Frontend_AppController {
 	public function investAction(){
 		$this->view->title = 'Invest';
 		$this->_helper->layout->setLayout('layout');
-		$params	=	array();
+		$params	=	array(
+			$this->user['ID']
+		);
 		$this->view->adminWallet = $this->user['adminWallet'];
 		$data = $this->model->executeSql('SPC_GET_RAND_ADMIN_WALLET', $params);
 		if(isset($data[0][0]['admin_wallet']) && $data[0][0]['admin_wallet'] !=''){
 			$this->view->adminWallet =	$data[0][0]['admin_wallet'];
+		}
+		if (! isset($data[0][0]['invest_valid']) || 1*$data[0][0]['invest_valid'] < 1){
+			$this->redirect('/frontend/member');
 		}
 	}
 	/**

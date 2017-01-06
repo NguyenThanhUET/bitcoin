@@ -58,7 +58,10 @@ $uri = $this->serverUrl();
                                 <br><!--<br><b>BTC : 110$ <br>
                                     Status : <span class="label label-sm label-danger">Pending</span> </b><br>-->
                                 <br>
-                                <td><a href="/frontend/member/invest" class="btn btn-info btn-xs btn-block ">Invest</a></td>
+                                <td><a href="/frontend/member/invest" class="btn <?php if(1*$this->data['invest_valid']<1) {?>btn-danger<?php }else{ ?>btn-info<?php }?> btn-xs btn-block ">
+                                        <?php if(1*$this->data['invest_valid']<1) {?>Expired Invest<?php }else{ ?>Invest<?php }?>
+                                    </a>
+                                </td>
                             </div></div>
 
                     </div>
