@@ -1117,16 +1117,16 @@ textarea.form-control{
     z-index: 999;
     background: white !important;
 }
-.arrow {
+/*.arrow {
     border-top: 5px solid red;
-    border-right: 11px solid transparent;
+    /!*border-right: 11px solid transparent;*!/
     content: "";
     height: 0;
     left: 15px;
     position: absolute;
     top: 25px;
     width: 0;
-}
+}*/
 
 .tooltip .tooltip-arrow{
     border-top-color: #ADD6F9!important;
