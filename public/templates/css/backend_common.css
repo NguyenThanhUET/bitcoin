@@ -2007,3 +2007,6 @@ input[type="checkbox"]{
     pointer-events: none;
     opacity: 0.5 !important;
 }
+.text-center{
+    text-align: center !important;
+}

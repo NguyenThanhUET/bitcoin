@@ -69,7 +69,7 @@ class Backend_TransactionController extends Frontend_AppController {
 	public function waitingapprovedAction(){
 		$this->_helper->layout->disablelayout();
 		$this->_helper->viewRenderer->setNoRender();
-		//if($this->getRequest()->isPost()){
+		if($this->getRequest()->isPost()){
 			try {
 				$params 					= array_slice($this->getAllParams(), 3);
 				//execute store procedure
@@ -88,7 +88,7 @@ class Backend_TransactionController extends Frontend_AppController {
 			}
 			//
 			$this->getHelper('json')->sendJson($this->respon);
-		//}
+		}
 	}
 	public function ghdeleteAction(){
 		$this->_helper->layout->disablelayout();
