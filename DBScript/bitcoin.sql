@@ -121,7 +121,7 @@ CREATE TABLE `customer` (
   `TotMember` int(11) DEFAULT NULL,
   `TopIndex` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=148 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,7 +130,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'thanh','1','nguyenthanhuet@gmail.com',NULL,NULL,'root','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','01687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(144,'Nguy?n V?n Thành','thanh2','nguyenthanhuet2016@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'DHKEMBNMHJHHHhhdsdsd34344',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(145,'Nguy?n V?n Thành','thanh10021992','pentest317@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'dsdsds?sd dsdsdsdsdsdsdddsdssdsdsdsd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `customer` VALUES (1,'thanh','1','nguyenthanhuet@gmail.com',NULL,NULL,'root','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','01687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(144,'Nguy?n V?n Thành','thanh2','nguyenthanhuet2016@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'DHKEMBNMHJHHHhhdsdsd34344',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(145,'Nguy?n V?n Thành','thanh10021992','pentest317@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'dsdsds?sd dsdsdsdsdsdsdddsdssdsdsdsd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(146,'fucked','uuuu','thanh0102@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','123456','1687522344',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'12Ajksdsdssds56564645dfdfdfdfd21323',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(147,'thanh nguyen','fuckyou','nguyenthanhuet1111@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','12345','23232321',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'sadsdasdsd2323dsdsd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,7 +204,7 @@ CREATE TABLE `transaction_gh` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `del_flg` int(11) DEFAULT '0',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,7 +213,7 @@ CREATE TABLE `transaction_gh` (
 
 LOCK TABLES `transaction_gh` WRITE;
 /*!40000 ALTER TABLE `transaction_gh` DISABLE KEYS */;
-INSERT INTO `transaction_gh` VALUES (144,0.00003,'2017-01-05 14:36:09',2,'D:/images/\\144\\170105020201010808.jpg',NULL,1,0),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,0),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,0),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,0),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1),(144,0.15,'2017-01-05 17:39:50',2,'\\144\\170105050501014949.jpg',1,6,0),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,0),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,0),(144,0.15,'2017-01-06 13:37:21',1,'\\144\\170106010101012121.jpg',1,10,0),(145,0.15,'2017-01-06 22:13:52',1,'\\145\\170106101001015252.jpg',1,11,0);
+INSERT INTO `transaction_gh` VALUES (144,0.00003,'2017-01-05 14:36:09',2,'D:/images/\\144\\170105020201010808.jpg',NULL,1,0),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,0),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,0),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,0),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1),(144,0.15,'2017-01-05 17:39:50',2,'\\144\\170105050501014949.jpg',1,6,0),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,0),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,0),(144,0.15,'2017-01-06 13:37:21',1,'\\144\\170106010101012121.jpg',1,10,0),(145,0.15,'2017-01-06 22:13:52',1,'\\145\\170106101001015252.jpg',1,11,0),(147,0.15,'2017-01-06 23:09:37',1,'\\147\\170106111101013737.jpg',1,12,0);
 /*!40000 ALTER TABLE `transaction_gh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -330,7 +330,6 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 ALTER DATABASE `bitcoin` CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
 /*!50003 DROP PROCEDURE IF EXISTS `SPC_DUPLICATE_CUSTOMER` */;
-ALTER DATABASE `bitcoin` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -347,7 +346,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_DUPLICATE_CUSTOMER`(IN
 )
 BEGIN
 	IF (SELECT COUNT(customer.ID) FROM customer WHERE customer.UserName = userName OR customer.Email = email) =  0 THEN 
-		IF(SELECT COUNT(customer.ID) FROM customer WHERE customer.UserName = sponsor) =  0  THEN
+		IF(SELECT COUNT(customer.ID) FROM customer WHERE customer.UserName = sponsor || sponsor = '' ) =  0  THEN
 			SELECT -2 As success;
 		ELSE
 			SELECT 1 As success;
@@ -359,7 +358,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-ALTER DATABASE `bitcoin` CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
 /*!50003 DROP PROCEDURE IF EXISTS `SPC_GET_ADMIN_TICKET_LIST` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -934,7 +932,6 @@ DELIMITER ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `SPC_REGIS_CUSTOMER` */;
-ALTER DATABASE `bitcoin` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -985,7 +982,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-ALTER DATABASE `bitcoin` CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
 /*!50003 DROP PROCEDURE IF EXISTS `SPC_RESETPASS_CUSTOMER` */;
 ALTER DATABASE `bitcoin` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -1186,4 +1182,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-06 22:17:27
+-- Dump completed on 2017-01-06 23:15:36

@@ -28,9 +28,9 @@ class Frontend_RegisterController extends Frontend_AppController {
 			$result	=	$this->save($params);
 			if($result	==	1){
 				$this->view->successMessage	=	'You have created account successful';
-				$siteurl='http://localhost.bitcoin:8080/';
-				$siteDomain = 'http://localhost.bitcoin:8080/';
-				$sitelogin	= 'http://localhost.bitcoin:8080/';
+				$siteurl=$_SERVER['SERVER_NAME'];//'http://localhost.bitcoin:8080/';
+				$siteDomain = $_SERVER['SERVER_NAME'];//'http://localhost.bitcoin:8080/';
+				$sitelogin	= $_SERVER['SERVER_NAME'];//'http://localhost.bitcoin:8080/';
 				$this->sendMailRegisSuccess($params['email'],$params['fullname'],$siteurl,$siteDomain,$sitelogin);
 			}else if($result == -999){
 				$this->view->errorMessage	=	'Create account failed';
