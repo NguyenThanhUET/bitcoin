@@ -53,8 +53,8 @@ function initEvents() {
             $(modal).css('display' , "none");
         });
         $(document).on('click','.confirm-btn',function(){
-            var parent  =   $(this).parent('tr.tr-record');
-            jConfirm('Do you want to approved?','Confirm',function(r){
+            var parent  =   $(this).parents('tr.tr-record');
+            jConfirm('Do you want to approve ?','Confirm',function(r){
                 if(r){
                     confirmTrans($(parent).attr('record-id'),function(){
                         $(parent).remove();
@@ -66,6 +66,44 @@ function initEvents() {
         alert('initEvents' + e.message);
     }
 }
+function confirmTrans(id, callback){
+    var data    =   {};
+    data['id'] = id;
+    console.log(data);
+    $.ajax({
+        type        :   'POST',
+        url         :   '/backend/transaction/waitingapproved',
+        dataType    :   'json',
+        loading     :   true,
+        data        :   data,
+        success: function(res) {
+            switch (res['status']){
+                //not perssion
+                case PE:
+                    jMessage(23);
+                    break;
+                // success
+                case 1:
+                    if(callback){
 
+                        callback();
+                    }
+                    break;
+                // error
+                case 0:
+                    if(typeof res['error'] != 'undefined'){
+                        processError2(res['error']);
+                    }
+                    break;
+                // Exception
+                case EX:
+                    jError(res['Exception']);
+                    break;
+                default:
+                    break;
+            }
+        }
+    });
+}
 
 

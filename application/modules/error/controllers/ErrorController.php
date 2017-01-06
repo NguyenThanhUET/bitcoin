@@ -1,12 +1,11 @@
 <?php
 class Error_ErrorController extends Zend_Controller_Action{
-    public function init(){
-        $this->redirect('/');
-    }
+    /*public function init(){
+    }*/
     public function indexAction() {
         $this->_helper->_layout->disableLayout();
         $errors = $this->_getParam('error_handler');
-          
+        $this->redirect('/');
         if (!$errors || !$errors instanceof ArrayObject) {
             $this->view->message = 'You have reached the error page';
             return;
@@ -50,5 +49,6 @@ class Error_ErrorController extends Zend_Controller_Action{
     }
     public function page404Action() {
         $this->_helper->_layout->disableLayout();
+        $this->redirect('/');
     }
 }
