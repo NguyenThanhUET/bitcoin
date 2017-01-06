@@ -51,13 +51,11 @@ class Frontend_MemberController extends Frontend_AppController {
 	public function investAction(){
 		$this->view->title = 'Invest';
 		$this->_helper->layout->setLayout('layout');
-		$params	=	array(
-			$this->user['ID']
-		);
-
-		$data = $this->model->executeSql('SPC_GET_TRANS_PH', $params);
-		if(!empty($data[0])){
-			$this->view->data	=	$data[0];
+		$params	=	array();
+		$this->view->adminWallet = $this->user['adminWallet'];
+		$data = $this->model->executeSql('SPC_GET_RAND_ADMIN_WALLET', $params);
+		if(isset($data[0][0]['admin_wallet']) && $data[0][0]['admin_wallet'] !=''){
+			$this->view->adminWallet =	$data[0][0]['admin_wallet'];
 		}
 	}
 	/**
@@ -75,7 +73,7 @@ class Frontend_MemberController extends Frontend_AppController {
 		}
 	}
 	/**
-	 * history
+	 * report
 	 */
 	public function tradingreportAction(){
 		$this->view->title = 'Bussiness Report';
@@ -118,10 +116,35 @@ class Frontend_MemberController extends Frontend_AppController {
 	 * contact admin click
 	 */
 	public function contactadminAction(){
-		$this->view->title = 'Bussiness';
+		$this->view->title = 'Send contact';
 		$this->_helper->layout->setLayout('layout');
-
-
+		if($this->getRequest()->isPost()){
+			$params	=	array();
+			$params['comment']	 		=	$this->_request->getParam('comments','');
+			$params['customerID']		=	$this->user['ID'];
+			$data = $this->model->executeSql('SPC_SEND_ADMIN_TICKET', $params);
+			if (isset($data[0][0]['success']) && 1*$data[0][0]['success'] ==1){
+				$this->view->successMessage	=	'Send message successful';
+			}else{
+				$this->view->errorMessage	=	'Can not send message';
+			}
+			$this->view->comment = $params['comment'];
+		}
 	}
+	/**
+	 * contact admin click
+	 */
+	public function ticketlistAction(){
+		$this->view->title = 'Ticket List';
+		$this->_helper->layout->setLayout('layout');
+		$params	=	array(
+			$this->user['ID']
+		);
+		$data = $this->model->executeSql('SPC_GET_TICKET_LIST', $params);
+		if(!empty($data[0])){
+			$this->view->data	=	$data[0];
+		}
+	}
+
 
 }

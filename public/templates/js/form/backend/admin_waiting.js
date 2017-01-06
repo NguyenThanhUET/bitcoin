@@ -62,6 +62,16 @@ function initEvents() {
                 }
             });
         });
+        $(document).on('click','.delete-btn',function(){
+            var parent  =   $(this).parents('tr.tr-record');
+            jConfirm('Do you want to delete ?','Confirm',function(r){
+                if(r){
+                    deleteTrans($(parent).attr('record-id'),function(){
+                        $(parent).remove();
+                    });
+                }
+            });
+        });
     } catch (e) {
         alert('initEvents' + e.message);
     }
@@ -84,16 +94,55 @@ function confirmTrans(id, callback){
                     break;
                 // success
                 case 1:
+                    var message =   "<div class='form-group isa_success'><i class='fa fa-times-circle'></i>Update Successfull</div>";
+                    $('.message').html(message);
                     if(callback){
-
                         callback();
                     }
                     break;
                 // error
                 case 0:
-                    if(typeof res['error'] != 'undefined'){
-                        processError2(res['error']);
+                    var message =   "<div class='form-group isa_error'><i class='fa fa-times-circle'></i>Update Error</div>";
+                    $('.message').html(message);
+                    break;
+                // Exception
+                case EX:
+                    jError(res['Exception']);
+                    break;
+                default:
+                    break;
+            }
+        }
+    });
+}
+function deleteTrans(id, callback){
+    var data    =   {};
+    data['id'] = id;
+    console.log(data);
+    $.ajax({
+        type        :   'POST',
+        url         :   '/backend/transaction/ghdelete',
+        dataType    :   'json',
+        loading     :   true,
+        data        :   data,
+        success: function(res) {
+            switch (res['status']){
+                //not perssion
+                case PE:
+                    jMessage(23);
+                    break;
+                // success
+                case 1:
+                    var message =   "<div class='form-group isa_success'><i class='fa fa-times-circle'></i>Delete Successfull</div>";
+                    $('.message').html(message);
+                    if(callback){
+                        callback();
                     }
+                    break;
+                // error
+                case 0:
+                    var message =   "<div class='form-group isa_error'><i class='fa fa-times-circle'></i>Delete Error</div>";
+                    $('.message').html(message);
                     break;
                 // Exception
                 case EX:
