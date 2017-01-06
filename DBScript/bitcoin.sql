@@ -62,7 +62,7 @@ CREATE TABLE `adminwallet` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `wallet` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,6 +71,7 @@ CREATE TABLE `adminwallet` (
 
 LOCK TABLES `adminwallet` WRITE;
 /*!40000 ALTER TABLE `adminwallet` DISABLE KEYS */;
+INSERT INTO `adminwallet` VALUES (1,'13BNJyo1YBJG35Aa1ga7rrBTYaw1yyN7DX'),(2,'13BNJyo1YBJG36Aa1ga7rrBTYaw1yyN7DX'),(3,'14BNJyo1YBJG36Aa1ga7rrBTYaw1yyN7DX'),(4,'19BNJyo1YBJG36Aa1ga7rrBTYad31yyN7DX'),(5,'14ANJyo1YBJG36Aa1ga7rrBTYad31yyN7DX');
 /*!40000 ALTER TABLE `adminwallet` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,7 +130,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'thanh','1','nguyenthanhuet@gmail.com',NULL,NULL,'root','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','01687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(144,'Nguy?n V?n Thành','thanh2','nguyenthanhuet2016@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'DHKEMBNMHJHHHhhdsdsd34344',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(145,'Nguy?n V?n Thành','thanh10021992','pentest317@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'dsdsds?sd dsdsdsdsdsdsdddsdssdsdsdsd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `customer` VALUES (1,'thanh','1','nguyenthanhuet@gmail.com',NULL,NULL,'root','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','01687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(144,'Nguy?n V?n Thành','thanh2','nguyenthanhuet2016@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'DHKEMBNMHJHHHhhdsdsd34344',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(145,'Nguy?n V?n Thành','thanh10021992','pentest317@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'dsdsds?sd dsdsdsdsdsdsdddsdssdsdsdsd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,14 +167,14 @@ DROP TABLE IF EXISTS `ticket`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ticket` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `CustomerID` int(11) DEFAULT NULL,
   `question` text CHARACTER SET latin1,
   `senddate` datetime DEFAULT NULL,
   `answer` text CHARACTER SET latin1,
-  `status` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL COMMENT '0: chưa trả lời\n1: trả lời',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -182,6 +183,7 @@ CREATE TABLE `ticket` (
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
+INSERT INTO `ticket` VALUES (1,144,'test message','2017-01-06 16:24:04','Ok guy ! Please help me, I can not invest money to you !',1),(2,144,'test message','2017-01-06 16:27:28','',0),(3,144,'test message','2017-01-06 16:39:46','',0),(4,144,'Please help me, I can not invest money to you !','2017-01-06 17:21:20','',0);
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -193,15 +195,16 @@ DROP TABLE IF EXISTS `transaction_gh`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `transaction_gh` (
-  `CustomerID` int(11) DEFAULT NULL,
-  `amount` double DEFAULT NULL,
+  `CustomerID` int(11) DEFAULT '0',
+  `amount` double DEFAULT '0',
   `senddate` datetime DEFAULT NULL,
-  `status` varchar(45) CHARACTER SET latin1 DEFAULT NULL COMMENT '1: waiting\n2:confirmed\n3:sendmoney',
+  `status` int(11) DEFAULT '0' COMMENT '1: waiting\n2:confirmed\n3:sendmoney',
   `image` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `transaction_typ` int(11) DEFAULT NULL COMMENT '1: 1days\n3: 3days\n5: 5days',
+  `transaction_typ` int(11) DEFAULT '0' COMMENT '1: 1days\n3: 3days\n5: 5days',
   `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `del_flg` int(11) DEFAULT '0',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,7 +213,7 @@ CREATE TABLE `transaction_gh` (
 
 LOCK TABLES `transaction_gh` WRITE;
 /*!40000 ALTER TABLE `transaction_gh` DISABLE KEYS */;
-INSERT INTO `transaction_gh` VALUES (144,0.00003,'2017-01-05 14:36:09','1','D:/images/\\144\\170105020201010808.jpg',NULL,1),(144,0.15,'2017-01-05 14:50:09','1','D:/images/\\144\\170105020201010909.jpg',1,2),(144,0.15,'2017-01-05 14:50:11','1','D:/images/\\144\\170105020201011111.jpg',1,3),(144,0.15,'2017-01-05 14:51:15','1','D:/images/\\144\\170105020201011515.jpg',1,4),(144,0.15,'2017-01-05 16:29:46','1','D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5),(144,0.15,'2017-01-05 17:39:50','2','\\144\\170105050501014949.jpg',1,6),(144,0.15,'2017-01-05 17:43:34','1','\\144\\170105050501013434.jpg',1,7),(144,0.15,'2017-01-05 17:44:23','3','\\144\\170105050501012323.jpg',1,8),(145,0.15,'2017-01-05 18:32:35','2','\\145\\170105060601013535.jpg',1,9);
+INSERT INTO `transaction_gh` VALUES (144,0.00003,'2017-01-05 14:36:09',2,'D:/images/\\144\\170105020201010808.jpg',NULL,1,0),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,0),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,0),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,0),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1),(144,0.15,'2017-01-05 17:39:50',2,'\\144\\170105050501014949.jpg',1,6,0),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,0),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,0),(144,0.15,'2017-01-06 13:37:21',1,'\\144\\170106010101012121.jpg',1,10,0);
 /*!40000 ALTER TABLE `transaction_gh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -222,16 +225,17 @@ DROP TABLE IF EXISTS `transaction_ph`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `transaction_ph` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `customerID` int(11) DEFAULT NULL,
-  `amount` double DEFAULT NULL,
-  `level` int(11) DEFAULT NULL COMMENT '1: F0, 2:F1, 3:F2',
+  `ID` int(11) NOT NULL,
+  `customerID` int(11) DEFAULT '0',
+  `amount` double DEFAULT '0',
+  `level` int(11) DEFAULT '0' COMMENT '1: F0, 2:F1, 3:F2',
   `senddate` datetime DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
-  `issuccess` int(11) DEFAULT NULL,
-  `gh_id` int(11) DEFAULT NULL COMMENT 'Khi GH dc confirm thì PH sẽ tạo 1 bản ghi tương ứng transaction_ph.gh_id= transaction_gh.ID \nVà bản ghi này có issuccess = 0 ( chưa hoàn thành hay chưa chueyern tiền). Sau này khi chuyển tiền thành công thi issuccess =1',
+  `status` int(11) DEFAULT '0',
+  `issuccess` int(11) DEFAULT '0',
+  `gh_id` int(11) DEFAULT '0' COMMENT 'Khi GH dc confirm thì PH sẽ tạo 1 bản ghi tương ứng transaction_ph.gh_id= transaction_gh.ID \nVà bản ghi này có issuccess = 0 ( chưa hoàn thành hay chưa chueyern tiền). Sau này khi chuyển tiền thành công thi issuccess =1',
+  `del_flg` int(11) DEFAULT '0',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='admin send user';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='admin send user';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -240,7 +244,7 @@ CREATE TABLE `transaction_ph` (
 
 LOCK TABLES `transaction_ph` WRITE;
 /*!40000 ALTER TABLE `transaction_ph` DISABLE KEYS */;
-INSERT INTO `transaction_ph` VALUES (1,144,0.18,1,'2017-01-04 00:00:00',NULL,0,NULL),(2,145,0.4,1,'2017-01-04 00:00:00',NULL,1,0),(3,144,0.015,2,'2017-01-04 00:00:00',NULL,1,NULL),(4,144,0.015,2,'2017-01-04 00:00:00',NULL,1,8);
+INSERT INTO `transaction_ph` VALUES (0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(1,144,0.18,1,'2017-01-04 00:00:00',NULL,0,NULL,0),(2,145,0.4,1,'2017-01-04 00:00:00',NULL,1,0,0),(3,144,0.015,2,'2017-01-04 00:00:00',NULL,1,NULL,0),(4,144,0.015,2,'2017-01-04 00:00:00',NULL,1,8,0);
 /*!40000 ALTER TABLE `transaction_ph` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -356,6 +360,47 @@ DELIMITER ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 ALTER DATABASE `bitcoin` CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
+/*!50003 DROP PROCEDURE IF EXISTS `SPC_GET_ADMIN_TICKET_LIST` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_ADMIN_TICKET_LIST`()
+BEGIN
+	SELECT
+		ticket.ID
+	,	ticket.CustomerID
+    ,	ticket.question
+    ,	ticket.senddate
+    ,	ticket.answer
+    ,	customer.UserName
+    ,	customer.Email
+    ,	ticket.status AS status_val
+    ,	CASE
+			WHEN ticket.status = 1 THEN 'Answered'
+            ELSE 'Waiting answer'
+		END 	AS status
+	,	CASE
+			WHEN ticket.status = 1 THEN 'color-success'
+            ELSE 'color-default'
+		END 	AS color
+    FROM ticket
+    LEFT JOIN customer ON
+		ticket.CustomerID = customer.ID
+	ORDER BY
+		ticket.ID DESC
+	,	ticket.CustomerID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `SPC_GET_DASHBOARD_DATA_INFO` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -364,7 +409,7 @@ ALTER DATABASE `bitcoin` CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_DASHBOARD_DATA_INFO`()
 BEGIN
@@ -380,18 +425,22 @@ BEGIN
     FROM transaction_gh AS bh
     WHERE 
     bh.status = 2
+    AND bh.del_flg <> 1
     );
     SET total_send_balance =
 	(SELECT
 		SUM(ph.amount)
     FROM transaction_ph AS ph
-    WHERE issuccess = 1); 
+    WHERE issuccess = 1
+     AND ph.del_flg <> 1
+    ); 
     SET total_waiting = (
     SELECT
 		COUNT(1)
     FROM transaction_gh AS bh
     WHERE 
     bh.status = 1
+    AND bh.del_flg <> 1
     );
     SET total_confrimed = (
     SELECT
@@ -399,6 +448,7 @@ BEGIN
     FROM transaction_gh AS bh
     WHERE 
     bh.status = 2
+    AND bh.del_flg <> 1
     );
     SET total_PH = (
     SELECT
@@ -406,6 +456,7 @@ BEGIN
     FROM transaction_gh AS bh
     WHERE 
     bh.status = 3
+    AND bh.del_flg <> 1
     );
     SELECT
 		total_recived_blance As total_recived_blance
@@ -427,7 +478,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_DATA_INFO`(IN
 P_customerID INT
@@ -441,12 +492,14 @@ BEGIN
 		 SUM(ph.amount)
     FROM transaction_ph AS ph
     WHERE ph.CustomerID = P_customerID
+    AND ph.del_flg <> 1
     GROUP BY ph.CustomerID);
     SET invest_blance = (
     SELECT
 		SUM(bh.amount)
     FROM transaction_gh AS bh
     WHERE bh.CustomerID = P_customerID
+    AND bh.del_flg <> 1
     GROUP BY bh.CustomerID
     );
     SET total_teferrals =
@@ -454,6 +507,7 @@ BEGIN
 		SUM(ph.amount)
     FROM transaction_ph AS ph
     WHERE ph.CustomerID = P_customerID
+    AND ph.del_flg <> 1
     AND ph.level > 1
     GROUP BY ph.CustomerID); -- neu customer hien tại là F1, F2
     
@@ -461,6 +515,64 @@ BEGIN
 		invest_blance As invest_blance
 	,	bonus_balance	AS bonus_balance
     ,	total_teferrals	AS total_teferrals;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SPC_GET_RAND_ADMIN_WALLET` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_RAND_ADMIN_WALLET`()
+BEGIN
+	DECLARE adminWallet VARCHAR(500) DEFAULT '';
+    SET adminWallet =  (SELECT adminwallet.wallet FROM adminwallet ORDER BY RAND() LIMIT 1);
+    SELECT
+		adminWallet AS admin_wallet;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SPC_GET_TICKET_LIST` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_TICKET_LIST`(IN
+P_CustomerID	INT
+)
+BEGIN
+	SELECT
+		ticket.ID
+	,	ticket.CustomerID
+    ,	ticket.question
+    ,	ticket.senddate
+    ,	ticket.answer
+    ,	CASE
+			WHEN ticket.status = 1 THEN 'Answered'
+            ELSE 'Have sent'
+		END 	AS status
+	,	CASE
+			WHEN ticket.status = 1 THEN 'color-success'
+            ELSE 'color-default'
+		END 	AS color
+    FROM ticket
+    WHERE ticket.CustomerID = P_CustomerID;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -475,7 +587,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_TRANS_CONFIRMED`()
 BEGIN
@@ -506,7 +618,8 @@ BEGIN
     FROM transaction_gh
     INNER JOIN customer ON
 		transaction_gh.CustomerID = customer.ID
-	WHERE transaction_gh.status = 2 ;
+	WHERE transaction_gh.status = 2 
+    AND transaction_gh.del_flg <> 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -521,7 +634,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_TRANS_GH`(
 IN customerId	INT
@@ -548,7 +661,9 @@ BEGIN
             WHEN transaction_gh.transaction_typ = 3 THEN 0.7
 		ELSE 0
 		END AS bonus
-    FROM transaction_gh WHERE transaction_gh.CustomerID =  customerId;
+    FROM transaction_gh 
+    WHERE transaction_gh.CustomerID =  customerId
+    AND transaction_gh.del_flg <> 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -563,7 +678,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_TRANS_PH`(
 IN customerId	INT
@@ -585,7 +700,9 @@ BEGIN
             WHEN transaction_ph.issuccess = 2 THEN ''
 		END  AS color
     
-    FROM transaction_ph WHERE transaction_ph.CustomerID =  customerId;
+    FROM transaction_ph 
+    WHERE transaction_ph.CustomerID =  customerId
+    AND transaction_ph.del_flg <> 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -600,7 +717,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_TRANS_SUCCESS`()
 BEGIN
@@ -632,7 +749,9 @@ BEGIN
 		transaction_ph.CustomerID = customer.ID
 	LEFT JOIN transaction_gh ON
 		transaction_gh.ID = transaction_ph.gh_id
-	AND transaction_gh.status = 3;
+	AND transaction_gh.del_flg <> 1
+	AND transaction_gh.status = 3
+    WHERE transaction_ph.del_flg <> 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -647,11 +766,13 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_TRANS_WAITING`()
 BEGIN
-	SELECT transaction_gh.CustomerID
+	SELECT
+		transaction_gh.ID
+    ,	transaction_gh.CustomerID
     ,	transaction_gh.amount
     ,	transaction_gh.senddate
     ,	transaction_gh.image
@@ -678,7 +799,8 @@ BEGIN
     FROM transaction_gh
     INNER JOIN customer ON
 		transaction_gh.CustomerID = customer.ID
-	WHERE transaction_gh.status = 1 ;
+	WHERE transaction_gh.status = 1 
+    AND transaction_gh.del_flg <> 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -727,7 +849,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_LOGIN_CUSTOMER_LST1`(IN
 	userName varchar(100)
@@ -735,7 +857,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_LOGIN_CUSTOMER_LST1`(IN
 )
 BEGIN
 	DECLARE adminWallet VARCHAR(500) DEFAULT '';
-    SET adminWallet =  (SELECT admin.BillingAddress FROM admin WHERE ID=1 LIMIT 1);
+    SET adminWallet =  (SELECT adminwallet.wallet FROM adminwallet ORDER BY RAND() LIMIT 1);
 	SELECT
 		c1.ID
 	,	c1.FullName
@@ -845,6 +967,95 @@ DELIMITER ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 ALTER DATABASE `bitcoin` CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
+/*!50003 DROP PROCEDURE IF EXISTS `SPC_SEND_ADMIN_TICKET` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_SEND_ADMIN_TICKET`(IN
+	P_comment		TEXT
+,	P_customerID 	INT
+)
+BEGIN
+	INSERT INTO ticket(
+		CustomerID
+    ,	question
+    ,	senddate
+    ,	answer
+    ,	status
+    )
+    SELECT
+		P_customerID
+	,	P_comment
+    ,	NOW()
+    ,	''
+	,	0;
+    SELECT 1 AS success;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SPC_TRANSACTION_APPROVED_ACT1` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_TRANSACTION_APPROVED_ACT1`(IN
+	P_ID	INT
+)
+BEGIN
+	UPDATE transaction_gh
+    SET transaction_gh.status = 2
+    WHERE transaction_gh.ID = P_ID
+    AND transaction_gh.del_flg <> 1;
+    SELECT 1 As success; 
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SPC_TRANSACTION_DELETE_GH_ACT1` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_TRANSACTION_DELETE_GH_ACT1`(IN
+	P_ID	INT
+)
+BEGIN
+	UPDATE  transaction_gh
+    SET transaction_gh.del_flg = 1
+    WHERE transaction_gh.ID = P_ID;
+    --
+    UPDATE transaction_ph
+    SET transaction_ph.del_flg = 1
+    WHERE transaction_ph.gh_id = P_ID;
+    SELECT 1 As success;
+    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `SPC_UPDATE_TRANSACTION_GH` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -853,7 +1064,7 @@ ALTER DATABASE `bitcoin` CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_UPDATE_TRANSACTION_GH`(IN
 	userID	INT
@@ -870,6 +1081,7 @@ BEGIN
     ,	status
     ,	image
     ,	transaction_typ
+    ,	del_flg
     )
     SELECT
 		userID
@@ -877,8 +1089,8 @@ BEGIN
     ,	NOW()
     ,	1 -- waiting
     ,	filePath
-    ,	transaction_typ;
-
+    ,	transaction_typ
+	,	0;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -895,4 +1107,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-06 10:14:36
+-- Dump completed on 2017-01-06 18:20:43

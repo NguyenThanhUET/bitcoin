@@ -14,7 +14,7 @@
     font-weight: bold;
 }
 .w-body-table-fix-1{
-    height: 468px !important;
+    height: 380px !important;
 }
 .btn-info {
     color: #ffffff;
@@ -56,4 +56,11 @@
 .answer-text{
     width: 560px;
     height: 114px;
+}
+.question-text{
+    width: 558px;
+    height: 55px;
+}
+.selected {
+    background: #FCFCCD;
 }

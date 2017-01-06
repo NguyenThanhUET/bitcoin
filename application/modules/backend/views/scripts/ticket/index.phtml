@@ -30,8 +30,8 @@ $uri = $this->serverUrl();
                         <tr class="tr-record" record-id="<?php echo $row['ID'];?>">
                             <td width="50px"><?php echo $i;?></td>
                             <td width="150px"><?php echo $row['senddate'];?></td>
-                            <td width="100px text-center"><?php echo $row['CustomerID'];?></td>
-                            <td width=""><?php echo $row['question'];?></td>
+                            <td width="100px" class="td-customer-id text-center"><?php echo $row['CustomerID'];?></td>
+                            <td width="" class="td-question"><?php echo $row['question'];?></td>
                             <td width="200px" class="text-center">
                                 <?php if (1*$row['status_val']==1){?>
                                 <?php echo $row['answer'];?>
@@ -48,11 +48,17 @@ $uri = $this->serverUrl();
         </div>
     </div>
     <div class="title-area">
+        <b>Question From Customer ID : <span id="customer_id_refer"></span></b>
+    </div>
+    <div class="question-area">
+        <textarea id="question-text"disabled="disabled" class="question-text"></textarea>
+    </div>
+    <div class="title-area">
         <b>Answer:</b>
     </div>
     <div class="answer-area">
-        <textarea id="answer-text" class="answer-text"></textarea>
+        <textarea id="answer-text" messageid="0" class="answer-text"></textarea>
     </div>
     <button id="answer-btn">Send Message</button>
 </div>
-<script type="text/javascript" src="/templates/js/form/backend/admin_waiting.js"></script>
+<script type="text/javascript" src="/templates/js/form/backend/admin_ticket.js"></script>
