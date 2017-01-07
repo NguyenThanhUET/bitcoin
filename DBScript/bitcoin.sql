@@ -143,8 +143,10 @@ DROP TABLE IF EXISTS `feeamount`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `feeamount` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `transaction_typ` int(11) DEFAULT NULL,
-  `amount` double DEFAULT NULL,
+  `transaction_typ` int(11) DEFAULT '0',
+  `amount` double DEFAULT '0',
+  `recived` double DEFAULT '0',
+  `duration` int(11) DEFAULT '0',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='bảng phí cho các loại giao dịch : 1 ngày, 3 ngày, 5 ngày';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -155,7 +157,7 @@ CREATE TABLE `feeamount` (
 
 LOCK TABLES `feeamount` WRITE;
 /*!40000 ALTER TABLE `feeamount` DISABLE KEYS */;
-INSERT INTO `feeamount` VALUES (1,1,0.15),(2,3,0.3),(3,5,0.5);
+INSERT INTO `feeamount` VALUES (1,1,0.15,0.18,3),(2,2,0.3,0.4,5),(3,3,0.5,0.7,7);
 /*!40000 ALTER TABLE `feeamount` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -200,7 +202,7 @@ CREATE TABLE `transaction_gh` (
   `senddate` datetime DEFAULT NULL,
   `status` int(11) DEFAULT '0' COMMENT '1: waiting\n2:confirmed\n3:sendmoney',
   `image` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `transaction_typ` int(11) DEFAULT '0' COMMENT '1: 1days\n3: 3days\n5: 5days',
+  `transaction_typ` int(11) DEFAULT '0' COMMENT '1: 3days\n2: 5days\n3: 7days',
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `del_flg` int(11) DEFAULT '0',
   PRIMARY KEY (`ID`)
@@ -213,7 +215,7 @@ CREATE TABLE `transaction_gh` (
 
 LOCK TABLES `transaction_gh` WRITE;
 /*!40000 ALTER TABLE `transaction_gh` DISABLE KEYS */;
-INSERT INTO `transaction_gh` VALUES (144,0.00003,'2017-01-05 14:36:09',2,'D:/images/\\144\\170105020201010808.jpg',NULL,1,0),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,0),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,0),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,0),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1),(144,0.15,'2017-01-05 17:39:50',2,'\\144\\170105050501014949.jpg',1,6,0),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,0),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,0),(144,0.15,'2017-01-06 13:37:21',1,'\\144\\170106010101012121.jpg',1,10,0),(145,0.15,'2017-01-06 22:13:52',1,'\\145\\170106101001015252.jpg',1,11,0),(147,0.15,'2017-01-06 23:09:37',1,'\\147\\170106111101013737.jpg',1,12,0);
+INSERT INTO `transaction_gh` VALUES (144,0.18,'2017-01-05 14:36:09',2,'D:/images/\\144\\170105020201010808.jpg',2,1,0),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,0),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,0),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,0),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1),(144,0.15,'2017-01-05 17:39:50',2,'\\144\\170105050501014949.jpg',1,6,0),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,0),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,0),(144,0.15,'2017-01-06 13:37:21',1,'\\144\\170106010101012121.jpg',1,10,0),(145,0.15,'2017-01-06 22:13:52',1,'\\145\\170106101001015252.jpg',1,11,0),(147,0.15,'2017-01-06 23:09:37',1,'\\147\\170106111101013737.jpg',1,12,0);
 /*!40000 ALTER TABLE `transaction_gh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -301,6 +303,27 @@ DELIMITER ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 ALTER DATABASE `bitcoin` CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
+/*!50003 DROP PROCEDURE IF EXISTS `GET_FEE_AMOUNT_LIST` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GET_FEE_AMOUNT_LIST`()
+BEGIN
+SELECT 
+    *
+    FROM feeamount;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `SPC_CHANGE_PASSWORD_CUS` */;
 ALTER DATABASE `bitcoin` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -407,7 +430,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_DASHBOARD_DATA_INFO`()
 BEGIN
@@ -462,6 +485,7 @@ BEGIN
     ,	total_waiting		AS total_waiting
     ,	total_confrimed		AS total_confrimed
     ,	total_PH			AS total_PH;
+    
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -525,13 +549,16 @@ BEGIN
 		SELECT COUNT(1)
         FROM transaction_gh
         WHERE transaction_gh.customerID = P_customerID
-        AND DATE(transaction_gh.senddate) = CURDATE()
+        /*AND DATE(transaction_gh.senddate) = CURDATE()*/
+        AND transaction_gh.status = 1
         AND transaction_gh.del_flg <> 1
     );
-    IF(countChild >= 2) THEN
-		SET investValid = countChild - investValidDay;
-	ELSE
-		SET investValid = investValid - investValidDay;
+    IF(countChild >= 2 AND countChild<4) THEN
+		SET investValid = 2 - investValidDay;
+	ELSEIF (countChild >=4  AND countChild< 8) THEN
+		SET investValid = 3 - investValidDay;
+	ELSEIF (countChild >=8) THEN
+		SET investValid = 4 - investValidDay;
 	END IF;
     SELECT
 		invest_blance As invest_blance
@@ -577,14 +604,17 @@ BEGIN
 		SELECT COUNT(1)
         FROM transaction_gh
         WHERE transaction_gh.customerID = P_customerID
-        AND DATE(transaction_gh.senddate) = CURDATE()
+        /*AND DATE(transaction_gh.senddate) = CURDATE()*/
+        AND transaction_gh.status = 1
         AND transaction_gh.del_flg <> 1
     );
-    IF(countChild >= 2) THEN
-		SET investValid = countChild - investValidDay;
-	ELSE 
-		SET investValid = investValid - investValidDay;
-    END IF;
+    IF(countChild >= 2 AND countChild<4) THEN
+		SET investValid = 2 - investValidDay;
+	ELSEIF (countChild >=4  AND countChild< 8) THEN
+		SET investValid = 3 - investValidDay;
+	ELSEIF (countChild >=8) THEN
+		SET investValid = 4 - investValidDay;
+	END IF;
     SELECT
 		investValid	AS invest_valid
 	,	adminWallet AS admin_wallet;
@@ -638,11 +668,13 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_TRANS_CONFIRMED`()
 BEGIN
-	SELECT transaction_gh.CustomerID
+	SELECT
+		transaction_gh.ID
+    ,	transaction_gh.CustomerID
     ,	transaction_gh.amount
     ,	transaction_gh.senddate
     ,	transaction_gh.image
@@ -660,15 +692,12 @@ BEGIN
             WHEN transaction_gh.status = 2 THEN 'label-success'
             WHEN transaction_gh.status = 3 THEN 'label-violet'
 		END  AS color
-    ,	CASE
-			WHEN transaction_gh.transaction_typ = 1 THEN 0.18
-            WHEN transaction_gh.transaction_typ = 3 THEN 0.4
-            WHEN transaction_gh.transaction_typ = 3 THEN 0.7
-		ELSE 0
-		END AS bonus
+    ,	feeamount.recived AS bonus
     FROM transaction_gh
     INNER JOIN customer ON
 		transaction_gh.CustomerID = customer.ID
+	LEFT JOIN feeamount ON
+		transaction_gh.transaction_typ = feeamount.transaction_typ
 	WHERE transaction_gh.status = 2 
     AND transaction_gh.del_flg <> 1;
 END ;;
@@ -685,7 +714,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_TRANS_GH`(
 IN customerId	INT
@@ -706,13 +735,10 @@ BEGIN
             WHEN transaction_gh.status = 2 THEN 'label-success'
             WHEN transaction_gh.status = 3 THEN 'label-violet'
 		END  AS color
-    ,	CASE
-			WHEN transaction_gh.transaction_typ = 1 THEN 0.18
-            WHEN transaction_gh.transaction_typ = 3 THEN 0.4
-            WHEN transaction_gh.transaction_typ = 3 THEN 0.7
-		ELSE 0
-		END AS bonus
+    ,	feeamount.recived AS bonus
     FROM transaction_gh 
+     LEFT JOIN feeamount ON
+		transaction_gh.transaction_typ = feeamount.transaction_typ
     WHERE transaction_gh.CustomerID =  customerId
     AND transaction_gh.del_flg <> 1;
 END ;;
@@ -768,11 +794,13 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_TRANS_SUCCESS`()
 BEGIN
-	SELECT transaction_ph.CustomerID
+	SELECT
+		transaction_ph.ID
+    ,	transaction_ph.CustomerID
     ,	transaction_ph.amount
     ,	transaction_ph.senddate AS admin_senddate
     ,	transaction_gh.senddate
@@ -789,12 +817,7 @@ BEGIN
 			WHEN transaction_ph.issuccess = 1 THEN 'label-success'
             ELSE 'label-warning'
 		END  AS color
-    ,	CASE
-			WHEN transaction_gh.transaction_typ = 1 THEN 0.18
-            WHEN transaction_gh.transaction_typ = 3 THEN 0.4
-            WHEN transaction_gh.transaction_typ = 3 THEN 0.7
-		ELSE 0
-		END AS bonus
+    ,	feeamount.recived AS bonus
     FROM transaction_ph
     INNER JOIN customer ON
 		transaction_ph.CustomerID = customer.ID
@@ -802,6 +825,8 @@ BEGIN
 		transaction_gh.ID = transaction_ph.gh_id
 	AND transaction_gh.del_flg <> 1
 	AND transaction_gh.status = 3
+    LEFT JOIN feeamount ON
+		transaction_gh.transaction_typ = feeamount.transaction_typ
     WHERE transaction_ph.del_flg <> 1;
 END ;;
 DELIMITER ;
@@ -817,7 +842,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_TRANS_WAITING`()
 BEGIN
@@ -841,15 +866,12 @@ BEGIN
             WHEN transaction_gh.status = 2 THEN 'label-success'
             WHEN transaction_gh.status = 3 THEN 'label-violet'
 		END  AS color
-    ,	CASE
-			WHEN transaction_gh.transaction_typ = 1 THEN 0.18
-            WHEN transaction_gh.transaction_typ = 3 THEN 0.4
-            WHEN transaction_gh.transaction_typ = 3 THEN 0.7
-		ELSE 0
-		END AS bonus
+    ,	feeamount.recived AS bonus
     FROM transaction_gh
     INNER JOIN customer ON
 		transaction_gh.CustomerID = customer.ID
+	LEFT JOIN feeamount ON
+		transaction_gh.transaction_typ = feeamount.transaction_typ
 	WHERE transaction_gh.status = 1 
     AND transaction_gh.del_flg <> 1;
 END ;;
@@ -1182,4 +1204,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-06 23:15:36
+-- Dump completed on 2017-01-07 17:24:44

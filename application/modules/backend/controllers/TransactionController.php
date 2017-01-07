@@ -20,7 +20,7 @@ class Backend_TransactionController extends Frontend_AppController {
 		$this->view->title = 'Transaction- Waiting';
 		$this->_helper->layout->setLayout('backend-layout');
 		$params	=	array();
-		$data = $this->model->executeSql('SPC_GET_TRANS_WAITING', $params);
+		$data = $this->model->executeSql('SPC_GET_TRANS_WAITING', $params,true);
 		if(!empty($data[0])){
 			$this->view->data	=	$data[0];
 		}
@@ -60,10 +60,13 @@ class Backend_TransactionController extends Frontend_AppController {
 	/**
 	 * history
 	 */
-	public function historyAction(){
-		$this->view->title = 'History';
+	public function policyAction(){
+		$this->view->title = 'Policy';
 		$this->_helper->layout->setLayout('backend-layout');
-
+		$listfee	=	$this->model->executeSql('GET_FEE_AMOUNT_LIST',array());
+		if(!empty($listfee[0])){
+			$this->view->listfee	=	$listfee[0];
+		}
 
 	}
 	public function waitingapprovedAction(){
