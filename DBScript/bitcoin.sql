@@ -24,19 +24,13 @@ DROP TABLE IF EXISTS `admin`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `admin` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Username` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
-  `Password` varchar(32) CHARACTER SET latin1 DEFAULT NULL,
+  `Username` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `Password` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
   `Name` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
   `IsDelete` tinyint(4) DEFAULT NULL,
-  `IsActive` tinyint(4) DEFAULT NULL,
-  `CreatedOnUtc` datetime(3) DEFAULT NULL,
-  `Mobile` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
-  `Email` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `Mobile` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `Email` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `Address` varchar(500) CHARACTER SET utf8 DEFAULT NULL,
-  `BillingAddress` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
-  `TaxCode` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
-  `Gender` tinyint(4) DEFAULT NULL,
-  `RoleAdmID` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -47,7 +41,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (1,'admin','12345','admin',NULL,NULL,NULL,NULL,NULL,NULL,'ADMINXXDSWE2332SSGGDSWE33334FGG',NULL,NULL,NULL);
+INSERT INTO `admin` VALUES (1,'admin','12345','Administrator',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +87,7 @@ CREATE TABLE `customer` (
   `Password` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `PasswordSalt` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Mobile` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `CreatedDate` datetime(3) DEFAULT NULL,
+  `CreatedDate` datetime DEFAULT NULL,
   `CustomerAvatarID` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
   `CountryID` int(11) DEFAULT NULL,
   `IsActive` tinyint(4) DEFAULT NULL,
@@ -176,7 +170,7 @@ CREATE TABLE `ticket` (
   `answer` text CHARACTER SET utf8,
   `status` int(11) DEFAULT NULL COMMENT '0: chưa trả lời\n1: trả lời',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -185,7 +179,7 @@ CREATE TABLE `ticket` (
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
-INSERT INTO `ticket` VALUES (1,144,'test message','2017-01-06 16:24:04','Ok guy ! Please help me, I can not invest money to you !',1),(2,144,'test message','2017-01-06 16:27:28','sdsad',1),(3,144,'test message','2017-01-06 16:39:46','dfdf',1),(4,144,'Please help me, I can not invest money to you !','2017-01-06 17:21:20','s?dsdf',1),(5,144,'thành test unicode','2017-01-06 20:29:20','trả lời ',1),(6,145,'thành test new','2017-01-06 20:33:20','',0);
+INSERT INTO `ticket` VALUES (1,144,'test message','2017-01-06 16:24:04','Ok guy ! Please help me, I can not invest money to you !',1),(2,144,'test message','2017-01-06 16:27:28','sdsad',1),(3,144,'test message','2017-01-06 16:39:46','dfdf',1),(4,144,'Please help me, I can not invest money to you !','2017-01-06 17:21:20','s?dsdf',1),(5,144,'thành test unicode','2017-01-06 20:29:20','trả lời ',1),(6,145,'thành test new','2017-01-06 20:33:20','',0),(7,144,'fgfgfdf fdf dfdf','2017-01-07 20:42:00','',0);
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +200,7 @@ CREATE TABLE `transaction_gh` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `del_flg` int(11) DEFAULT '0',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,7 +209,7 @@ CREATE TABLE `transaction_gh` (
 
 LOCK TABLES `transaction_gh` WRITE;
 /*!40000 ALTER TABLE `transaction_gh` DISABLE KEYS */;
-INSERT INTO `transaction_gh` VALUES (144,0.18,'2017-01-05 14:36:09',2,'D:/images/\\144\\170105020201010808.jpg',2,1,0),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,0),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,0),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,0),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1),(144,0.15,'2017-01-05 17:39:50',2,'\\144\\170105050501014949.jpg',1,6,0),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,0),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,0),(144,0.15,'2017-01-06 13:37:21',1,'\\144\\170106010101012121.jpg',1,10,0),(145,0.15,'2017-01-06 22:13:52',1,'\\145\\170106101001015252.jpg',1,11,0),(147,0.15,'2017-01-06 23:09:37',1,'\\147\\170106111101013737.jpg',1,12,0);
+INSERT INTO `transaction_gh` VALUES (144,0.18,'2017-01-05 14:36:09',2,'D:/images/\\144\\170105020201010808.jpg',2,1,0),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,0),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,0),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,0),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1),(144,0.15,'2017-01-05 17:39:50',2,'\\144\\170105050501014949.jpg',1,6,0),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,0),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,0),(144,0.15,'2017-01-06 13:37:21',1,'\\144\\170106010101012121.jpg',1,10,0),(145,0.15,'2017-01-06 22:13:52',1,'\\145\\170106101001015252.jpg',1,11,0),(147,0.15,'2017-01-06 23:09:37',1,'\\147\\170106111101013737.jpg',1,12,0),(144,0.15,'2017-01-08 20:18:18',1,'\\144\\170108080801011717.jpg',1,13,0),(144,0.15,'2017-01-08 21:27:12',1,'\\144\\170108090901011212.jpg',1,14,0);
 /*!40000 ALTER TABLE `transaction_gh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -740,7 +734,8 @@ BEGIN
      LEFT JOIN feeamount ON
 		transaction_gh.transaction_typ = feeamount.transaction_typ
     WHERE transaction_gh.CustomerID =  customerId
-    AND transaction_gh.del_flg <> 1;
+    AND transaction_gh.del_flg <> 1
+    ORDER BY transaction_gh.senddate DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -904,8 +899,8 @@ BEGIN
     ,	c1.Password
 	,	1 AS islogin
 	FROM admin AS c1
-	WHERE	UserName = userName
-		AND Password = password_in
+	WHERE	c1.UserName = userName COLLATE utf8_unicode_ci
+		AND c1.Password = password_in COLLATE utf8_unicode_ci
 	LIMIT 1;
  
 END ;;
@@ -1204,4 +1199,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-07 17:24:44
+-- Dump completed on 2017-01-08 21:27:45
