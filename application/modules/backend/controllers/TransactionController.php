@@ -20,7 +20,7 @@ class Backend_TransactionController extends Frontend_AppController {
 		$this->view->title = 'Transaction- Waiting';
 		$this->_helper->layout->setLayout('backend-layout');
 		$params	=	array();
-		$data = $this->model->executeSql('SPC_GET_TRANS_WAITING', $params,true);
+		$data = $this->model->executeSql('SPC_GET_TRANS_WAITING', $params);
 		if(!empty($data[0])){
 			$this->view->data	=	$data[0];
 		}
