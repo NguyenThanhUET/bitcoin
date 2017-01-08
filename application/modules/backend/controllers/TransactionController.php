@@ -93,6 +93,30 @@ class Backend_TransactionController extends Frontend_AppController {
 			$this->getHelper('json')->sendJson($this->respon);
 		}
 	}
+	public function savepolicyAction(){
+		$this->_helper->layout->disablelayout();
+		$this->_helper->viewRenderer->setNoRender();
+		if($this->getRequest()->isPost()){
+			try {
+				$params 					= array_slice($this->getAllParams(), 3);
+				//execute store procedure
+				$data = $this->model->executeSql('SPC_SAVE_POLICY_ACT1',$params);
+				//result
+				if(isset($data[0][0]['success']) && 1*$data[0][0]['success']==1) {
+					$this->respon['status'] = 1;
+					$this->respon['error']  = 'Update Successfull';
+				}else{
+					$this->respon['status'] = 0;
+					$this->respon['error']  = 'Update Error';
+				}
+			} catch (Exception $e){
+				$this->respon['status'] 	= 0;
+				$this->respon['error']  = 'Exception Error';
+			}
+			//
+			$this->getHelper('json')->sendJson($this->respon);
+		}
+	}
 	public function ghdeleteAction(){
 		$this->_helper->layout->disablelayout();
 		$this->_helper->viewRenderer->setNoRender();
@@ -101,6 +125,30 @@ class Backend_TransactionController extends Frontend_AppController {
 			$params 					= array_slice($this->getAllParams(), 3);
 			//execute store procedure
 			$data = $this->model->executeSql('SPC_TRANSACTION_DELETE_GH_ACT1',$params);
+			//result
+			if(isset($data[0][0]['success']) && 1*$data[0][0]['success']==1) {
+				$this->respon['status'] = 1;
+				$this->respon['error']  = 'Update Successfull';
+			}else{
+				$this->respon['status'] = 0;
+				$this->respon['error']  = 'Update Error';
+			}
+		} catch (Exception $e){
+			$this->respon['status'] 	= 0;
+			$this->respon['error']  = 'Exception Error';
+		}
+		//
+		$this->getHelper('json')->sendJson($this->respon);
+		//}
+	}
+	public function phdeleteAction(){
+		$this->_helper->layout->disablelayout();
+		$this->_helper->viewRenderer->setNoRender();
+		//if($this->getRequest()->isPost()){
+		try {
+			$params 					= array_slice($this->getAllParams(), 3);
+			//execute store procedure
+			$data = $this->model->executeSql('SPC_TRANSACTION_DELETE_PH_ACT1',$params);
 			//result
 			if(isset($data[0][0]['success']) && 1*$data[0][0]['success']==1) {
 				$this->respon['status'] = 1;

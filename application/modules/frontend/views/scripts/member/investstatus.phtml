@@ -16,7 +16,8 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Date</th>
-                                        <th>Amount(BTC)</th>
+                                        <th>Spin (days)</th>
+                                        <th>Amount (BTC)</th>
                                         <th>Total Profit (BTC)</th>
                                         <th>Status</th>
                                         <th>Details Image</th>
@@ -39,6 +40,7 @@
                                         <tr>
                                             <td><?php echo $i;?></td>
                                             <td><?php echo $row['senddate'];?></td>
+                                            <td><?php echo $row['duration'];?> days</td>
                                             <td><?php echo $row['amount'];?></td>
                                             <td><?php echo $row['bonus'];?></td>
                                             <td><span class="label label-sm <?php echo $row['color'];?>"><?php echo $row['status'];?></span></td>

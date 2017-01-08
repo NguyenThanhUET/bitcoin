@@ -1004,9 +1004,9 @@ label input[type=radio], label input[type=checkbox] {
 .tbl-body>tbody>tr:hover{
     background-color: #FCFCCD;
 }
-.tbl-body-1>tbody>tr:hover{
+/*.tbl-body-1>tbody>tr:hover{
     background-color: #FCFCCD;
-}
+}*/
 .w-tbl-body{
     width: calc(1366px + 17px);
     overflow: auto;
@@ -2009,4 +2009,14 @@ input[type="checkbox"]{
 }
 .text-center{
     text-align: center !important;
+}
+.boder-top-white{
+    border-top: 1px solid white !important;
+}
+.boder-top-gray{
+    border-top: 1px solid #ddd !important;
+}
+.admin-user-name{
+    color: #0044cc;
+    font-weight: bolder;
 }

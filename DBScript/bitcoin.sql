@@ -209,7 +209,7 @@ CREATE TABLE `transaction_gh` (
 
 LOCK TABLES `transaction_gh` WRITE;
 /*!40000 ALTER TABLE `transaction_gh` DISABLE KEYS */;
-INSERT INTO `transaction_gh` VALUES (144,0.18,'2017-01-05 14:36:09',2,'D:/images/\\144\\170105020201010808.jpg',2,1,0),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,0),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,0),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,0),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1),(144,0.15,'2017-01-05 17:39:50',2,'\\144\\170105050501014949.jpg',1,6,0),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,0),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,0),(144,0.15,'2017-01-06 13:37:21',1,'\\144\\170106010101012121.jpg',1,10,0),(145,0.15,'2017-01-06 22:13:52',1,'\\145\\170106101001015252.jpg',1,11,0),(147,0.15,'2017-01-06 23:09:37',1,'\\147\\170106111101013737.jpg',1,12,0),(144,0.15,'2017-01-08 20:18:18',1,'\\144\\170108080801011717.jpg',1,13,0),(144,0.15,'2017-01-08 21:27:12',1,'\\144\\170108090901011212.jpg',1,14,0);
+INSERT INTO `transaction_gh` VALUES (144,0.18,'2017-01-05 14:36:09',2,'D:/images/\\144\\170105020201010808.jpg',2,1,0),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,0),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,0),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,0),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1),(144,0.15,'2017-01-05 17:39:50',3,'\\144\\170105050501014949.jpg',1,6,0),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,0),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,1),(144,0.15,'2017-01-06 13:37:21',1,'\\144\\170106010101012121.jpg',1,10,0),(145,0.15,'2017-01-06 22:13:52',1,'\\145\\170106101001015252.jpg',1,11,0),(147,0.15,'2017-01-06 23:09:37',1,'\\147\\170106111101013737.jpg',1,12,0),(144,0.15,'2017-01-08 20:18:18',1,'\\144\\170108080801011717.jpg',1,13,0),(144,0.15,'2017-01-08 21:27:12',1,'\\144\\170108090901011212.jpg',1,14,0);
 /*!40000 ALTER TABLE `transaction_gh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,7 +221,7 @@ DROP TABLE IF EXISTS `transaction_ph`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `transaction_ph` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `customerID` int(11) DEFAULT '0',
   `amount` double DEFAULT '0',
   `level` int(11) DEFAULT '0' COMMENT '1: F0, 2:F1, 3:F2',
@@ -231,7 +231,7 @@ CREATE TABLE `transaction_ph` (
   `gh_id` int(11) DEFAULT '0' COMMENT 'Khi GH dc confirm thì PH sẽ tạo 1 bản ghi tương ứng transaction_ph.gh_id= transaction_gh.ID \nVà bản ghi này có issuccess = 0 ( chưa hoàn thành hay chưa chueyern tiền). Sau này khi chuyển tiền thành công thi issuccess =1',
   `del_flg` int(11) DEFAULT '0',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='admin send user';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='admin send user';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -240,7 +240,7 @@ CREATE TABLE `transaction_ph` (
 
 LOCK TABLES `transaction_ph` WRITE;
 /*!40000 ALTER TABLE `transaction_ph` DISABLE KEYS */;
-INSERT INTO `transaction_ph` VALUES (0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(1,144,0.18,1,'2017-01-04 00:00:00',NULL,0,NULL,0),(2,145,0.4,1,'2017-01-04 00:00:00',NULL,1,0,0),(3,144,0.015,2,'2017-01-04 00:00:00',NULL,1,NULL,0),(4,144,0.015,2,'2017-01-04 00:00:00',NULL,1,8,0);
+INSERT INTO `transaction_ph` VALUES (1,144,0.18,1,'2017-01-04 00:00:00',NULL,0,NULL,1),(2,145,0.4,1,'2017-01-04 00:00:00',NULL,1,0,0),(3,144,0.015,2,'2017-01-04 00:00:00',NULL,1,NULL,0),(4,144,0.015,2,'2017-01-04 00:00:00',NULL,1,8,0),(5,144,0.15,0,'2017-01-08 23:26:47',0,0,6,0);
 /*!40000 ALTER TABLE `transaction_ph` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -626,7 +626,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_TICKET_LIST`(IN
 P_CustomerID	INT
@@ -647,7 +647,8 @@ BEGIN
             ELSE 'color-default'
 		END 	AS color
     FROM ticket
-    WHERE ticket.CustomerID = P_CustomerID;
+    WHERE ticket.CustomerID = P_CustomerID
+    ORDER BY	ticket.senddate;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -687,13 +688,15 @@ BEGIN
             WHEN transaction_gh.status = 3 THEN 'label-violet'
 		END  AS color
     ,	feeamount.recived AS bonus
+    ,	feeamount.duration
     FROM transaction_gh
     INNER JOIN customer ON
 		transaction_gh.CustomerID = customer.ID
 	LEFT JOIN feeamount ON
 		transaction_gh.transaction_typ = feeamount.transaction_typ
 	WHERE transaction_gh.status = 2 
-    AND transaction_gh.del_flg <> 1;
+    AND transaction_gh.del_flg <> 1
+    ORDER BY transaction_gh.senddate DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -719,6 +722,7 @@ BEGIN
     ,	transaction_gh.senddate
     ,	transaction_gh.image
     ,	transaction_gh.transaction_typ
+    ,	feeamount.duration
     ,	CASE
 			WHEN transaction_gh.status = 1 THEN 'Waiting Approve'
             WHEN transaction_gh.status = 2 THEN 'Confirmed'
@@ -750,7 +754,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_TRANS_PH`(
 IN customerId	INT
@@ -774,7 +778,8 @@ BEGIN
     
     FROM transaction_ph 
     WHERE transaction_ph.CustomerID =  customerId
-    AND transaction_ph.del_flg <> 1;
+    AND transaction_ph.del_flg <> 1
+    ORDER BY transaction_ph.senddate DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -822,7 +827,8 @@ BEGIN
 	AND transaction_gh.status = 3
     LEFT JOIN feeamount ON
 		transaction_gh.transaction_typ = feeamount.transaction_typ
-    WHERE transaction_ph.del_flg <> 1;
+    WHERE transaction_ph.del_flg <> 1
+    ORDER BY	transaction_ph.senddate DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -862,13 +868,15 @@ BEGIN
             WHEN transaction_gh.status = 3 THEN 'label-violet'
 		END  AS color
     ,	feeamount.recived AS bonus
+    ,	feeamount.duration
     FROM transaction_gh
     INNER JOIN customer ON
 		transaction_gh.CustomerID = customer.ID
 	LEFT JOIN feeamount ON
 		transaction_gh.transaction_typ = feeamount.transaction_typ
 	WHERE transaction_gh.status = 1 
-    AND transaction_gh.del_flg <> 1;
+    AND transaction_gh.del_flg <> 1
+    ORDER BY transaction_gh.senddate DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1033,6 +1041,36 @@ DELIMITER ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 ALTER DATABASE `bitcoin` CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
+/*!50003 DROP PROCEDURE IF EXISTS `SPC_SAVE_POLICY_ACT1` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_SAVE_POLICY_ACT1`(IN
+	P_ID		INT
+,	P_duration 	INT
+,	P_amount 	DOUBLE
+,	P_recived 	DOUBLE
+)
+BEGIN
+	DECLARE amount DOUBLE DEFAULT 0;
+    UPDATE feeamount
+    SET feeamount.amount = P_amount
+    ,	feeamount.recived = P_recived
+    ,	feeamount.duration	=	P_duration
+    WHERE feeamount.ID = P_ID;
+    SELECT 1 AS success;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `SPC_SEND_ADMIN_TICKET` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1148,6 +1186,99 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SPC_TRANSACTION_DELETE_PH_ACT1` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_TRANSACTION_DELETE_PH_ACT1`(IN
+	P_ID	INT
+)
+BEGIN
+	UPDATE  transaction_gh
+    SET transaction_gh.del_flg = 1
+    WHERE transaction_gh.ID = P_ID;
+    --
+    UPDATE transaction_ph
+    SET transaction_ph.del_flg = 1
+    WHERE transaction_ph.gh_id = P_ID;
+    SELECT 1 As success;
+    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SPC_TRANSACTION_SENDMONEY_ACT1` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_TRANSACTION_SENDMONEY_ACT1`(IN
+	P_ID	INT
+,	issuccess	INT	
+)
+BEGIN
+	DECLARE P_customerID INT DEFAULT 0;
+    DECLARE amount DOUBLE DEFAULT 0;
+    
+    SET P_customerID = (
+    SELECT transaction_gh.CustomerID 
+    FROM transaction_gh 
+    WHERE  transaction_gh.ID = P_ID 
+    AND transaction_gh.del_flg <> 1
+    LIMIT 1
+    );
+	
+    SET amount = (
+    SELECT feeamount.amount FROM transaction_gh 
+    INNER JOIN feeamount ON
+			transaction_gh.transaction_typ = feeamount.transaction_typ
+    WHERE transaction_gh.ID = P_ID
+    AND transaction_gh.del_flg <> 1
+    LIMIT 1);
+    
+    UPDATE transaction_gh
+    SET transaction_gh.status = 3
+    WHERE transaction_gh.ID = P_ID
+    AND transaction_gh.del_flg <> 1;
+    
+    INSERT INTO  transaction_ph(
+		customerID
+	,	amount
+    ,	senddate
+    ,	status
+    ,	issuccess
+    ,	gh_id
+    ,	del_flg
+    )
+    SELECT
+		P_customerID
+	,	amount
+    ,	NOW()
+    ,	0
+    ,	issuccess
+    ,	P_ID
+    ,	0;
+
+    SELECT 1 As success; 
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `SPC_UPDATE_TRANSACTION_GH` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1199,4 +1330,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-08 21:27:45
+-- Dump completed on 2017-01-09  0:59:09
