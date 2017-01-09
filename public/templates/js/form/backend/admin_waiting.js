@@ -53,21 +53,27 @@ function initEvents() {
             $(modal).css('display' , "none");
         });
         $(document).on('click','.confirm-btn',function(){
-            var parent  =   $(this).parents('tr.tr-record');
+            var parent      =   $(this).parents('tr.tr-record');
+            var recordID    =   $(parent).attr('record-id');
+            var subparent   =   $('tr.sub-record[record-id="'+recordID+'"]');
             jConfirm('Do you want to approve ?','Confirm',function(r){
                 if(r){
-                    confirmTrans($(parent).attr('record-id'),function(){
+                    confirmTrans(recordID,function(){
                         $(parent).remove();
+                        $(subparent).remove();
                     });
                 }
             });
         });
         $(document).on('click','.delete-btn',function(){
             var parent  =   $(this).parents('tr.tr-record');
+            var recordID    =   $(parent).attr('record-id');
+            var subparent   =   $('tr.sub-record[record-id="'+recordID+'"]');
             jConfirm('Do you want to delete ?','Confirm',function(r){
                 if(r){
-                    deleteTrans($(parent).attr('record-id'),function(){
+                    deleteTrans(recordID,function(){
                         $(parent).remove();
+                        $(subparent).remove();
                     });
                 }
             });
@@ -79,7 +85,6 @@ function initEvents() {
 function confirmTrans(id, callback){
     var data    =   {};
     data['id'] = id;
-    console.log(data);
     $.ajax({
         type        :   'POST',
         url         :   '/backend/transaction/waitingapproved',

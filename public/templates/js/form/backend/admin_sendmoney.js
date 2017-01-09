@@ -54,20 +54,26 @@ function initEvents() {
         });
         $(document).on('click','.confirm-btn',function(){
             var parent  =   $(this).parents('tr.tr-record');
+            var recordID    =   $(parent).attr('record-id');
+            var subparent   =   $('tr.sub-record[record-id="'+recordID+'"]');
             jConfirm('Do you want to approve ?','Confirm',function(r){
                 if(r){
-                    sendmoneyTrans($(parent).attr('record-id'),function(){
+                    sendmoneyTrans(recordID,function(){
                         $(parent).remove();
+                        $(subparent).remove();
                     });
                 }
             });
         });
         $(document).on('click','.delete-btn',function(){
             var parent  =   $(this).parents('tr.tr-record');
+            var recordID    =   $(parent).attr('record-id');
+            var subparent   =   $('tr.sub-record[record-id="'+recordID+'"]');
             jConfirm('Do you want to delete ?','Confirm',function(r){
                 if(r){
-                    deleteTrans($(parent).attr('record-id'),function(){
+                    deleteTrans(recordID,function(){
                         $(parent).remove();
+                        $(subparent).remove();
                     });
                 }
             });
@@ -79,7 +85,6 @@ function initEvents() {
 function sendmoneyTrans(id, callback){
     var data    =   {};
     data['id'] = id;
-    console.log(data);
     $.ajax({
         type        :   'POST',
         url         :   '/backend/transaction/sendmoney',

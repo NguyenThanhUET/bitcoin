@@ -5,7 +5,7 @@ $uri = $this->serverUrl();
 <link type="text/css" rel="stylesheet" href="/templates/css/backend_common.css">
 <?php $noimage=$this->noimage; ?>
 <div class="page-content-admin">
-
+    <div class="message"></div>
     <div class="w-data-table">
         <!--<div class="w-header-table-fix-1">
             <table class="tbl-header-1 table-bordered main-color">
@@ -87,7 +87,7 @@ $uri = $this->serverUrl();
                             <td rowspan="2" width="150px" class="text-center"><span class="confirm-btn label label-sm label-info" style="cursor: pointer;">Send Money</span></td>
                             <td rowspan="2" width="50px" class="text-center"><span class="delete-btn label label-sm label-info" style="cursor: pointer; width: 40px;">X</span></td>
                         </tr>
-                        <tr class="tr-record" record-id="<?php echo $row['ID'];?>">
+                        <tr class="sub-record" record-id="<?php echo $row['ID'];?>">
                             <td width="150px" style="color: red; text-align: right;"><?php echo $row['duration'];?> days</td>
                             <td width="130px"  style=" <?php if($row['bonus_from_transgh'] !='' && $row['bonus_from_transgh'] !=0){ ?>color: red; <?php } ?> text-align: center;">
                                 <?php
