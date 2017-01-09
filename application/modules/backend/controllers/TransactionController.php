@@ -257,17 +257,17 @@ class Backend_TransactionController extends Frontend_AppController {
 			//result:
 			if(curl_error($ch)){
 				//echo 'error:' . curl_error($ch);
-				return false;
+				return 0;
 			}
 			//close connection
 			curl_close($ch);
 
 			//print $result;
-			return true;
+			return 1;
 
 		}catch(Exception $e){
-			print "send_money_to_wallet(): " . $e ;
-			return false;
+			//print "send_money_to_wallet(): " . $e ;
+			return 0;
 		}
 	}
 
