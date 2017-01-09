@@ -203,7 +203,7 @@ CREATE TABLE `transaction_gh` (
   `bonus_from` int(11) DEFAULT NULL COMMENT 'f1 ID',
   `bonus_from_transgh` int(11) DEFAULT NULL COMMENT 'bonus from transaction gh nào?',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +212,7 @@ CREATE TABLE `transaction_gh` (
 
 LOCK TABLES `transaction_gh` WRITE;
 /*!40000 ALTER TABLE `transaction_gh` DISABLE KEYS */;
-INSERT INTO `transaction_gh` VALUES (144,0.18,'2017-01-05 14:36:09',2,'D:/images/\\144\\170105020201010808.jpg',2,1,0,NULL,NULL),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,0,NULL,NULL),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,0,NULL,NULL),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,0,NULL,NULL),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1,NULL,NULL),(144,0.15,'2017-01-05 17:39:50',3,'\\144\\170105050501014949.jpg',1,6,0,NULL,NULL),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,0,NULL,NULL),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0,NULL,NULL),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,1,NULL,NULL),(144,0.15,'2017-01-06 13:37:21',1,'\\144\\170106010101012121.jpg',1,10,0,NULL,NULL),(145,0.15,'2017-01-06 22:13:52',2,'\\145\\170106101001015252.jpg',1,11,0,NULL,NULL),(147,0.15,'2017-01-06 23:09:37',1,'\\147\\170106111101013737.jpg',1,12,0,NULL,NULL),(144,0.15,'2017-01-08 20:18:18',1,'\\144\\170108080801011717.jpg',1,13,0,NULL,NULL),(144,0.15,'2017-01-08 21:27:12',1,'\\144\\170108090901011212.jpg',1,14,0,NULL,NULL),(144,0.15,'2017-01-09 13:31:07',2,'\\144\\170109010101010707.jpg',1,15,0,NULL,NULL),(1,0,'2017-01-09 13:58:09',2,'',4,18,0,144,15),(1,0,'2017-01-09 14:17:59',2,'',4,19,0,145,11),(144,0.15,'2017-01-09 14:21:26',1,'\\144\\170109020201012626.xlsx',1,20,0,NULL,NULL);
+INSERT INTO `transaction_gh` VALUES (144,0.18,'2017-01-05 14:36:09',3,'D:/images/\\144\\170105020201010808.jpg',2,1,0,NULL,NULL),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,0,NULL,NULL),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,0,NULL,NULL),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,0,NULL,NULL),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1,NULL,NULL),(144,0.15,'2017-01-05 17:39:50',3,'\\144\\170105050501014949.jpg',1,6,0,NULL,NULL),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,1,NULL,NULL),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0,NULL,NULL),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,1,NULL,NULL),(144,0.15,'2017-01-06 13:37:21',1,'\\144\\170106010101012121.jpg',1,10,0,NULL,NULL),(145,0.15,'2017-01-06 22:13:52',2,'\\145\\170106101001015252.jpg',1,11,0,NULL,NULL),(147,0.15,'2017-01-06 23:09:37',1,'\\147\\170106111101013737.jpg',1,12,0,NULL,NULL),(144,0.15,'2017-01-08 20:18:18',2,'\\144\\170108080801011717.jpg',1,13,0,NULL,NULL),(144,0.15,'2017-01-08 21:27:12',2,'\\144\\170108090901011212.jpg',1,14,0,NULL,NULL),(144,0.15,'2017-01-09 13:31:07',2,'\\144\\170109010101010707.jpg',1,15,0,NULL,NULL),(1,0,'2017-01-09 13:58:09',2,'',4,18,0,144,15),(1,0,'2017-01-09 14:17:59',2,'',4,19,0,145,11),(144,0.15,'2017-01-09 14:21:26',3,'\\144\\170109020201012626.xlsx',1,20,0,NULL,NULL),(1,0,'2017-01-10 00:27:39',3,'',4,25,0,144,20),(1,0,'2017-01-10 00:30:09',3,'',4,26,0,144,14),(1,0,'2017-01-10 00:31:18',3,'',4,27,0,144,13);
 /*!40000 ALTER TABLE `transaction_gh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,7 +234,7 @@ CREATE TABLE `transaction_ph` (
   `gh_id` int(11) DEFAULT '0' COMMENT 'Khi GH dc confirm thì PH sẽ tạo 1 bản ghi tương ứng transaction_ph.gh_id= transaction_gh.ID \nVà bản ghi này có issuccess = 0 ( chưa hoàn thành hay chưa chueyern tiền). Sau này khi chuyển tiền thành công thi issuccess =1',
   `del_flg` int(11) DEFAULT '0',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='admin send user';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='admin send user';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,63 +243,13 @@ CREATE TABLE `transaction_ph` (
 
 LOCK TABLES `transaction_ph` WRITE;
 /*!40000 ALTER TABLE `transaction_ph` DISABLE KEYS */;
-INSERT INTO `transaction_ph` VALUES (1,144,0.18,1,'2017-01-04 00:00:00',NULL,0,NULL,1),(2,145,0.4,1,'2017-01-04 00:00:00',NULL,1,0,0),(3,144,0.015,2,'2017-01-04 00:00:00',NULL,1,NULL,0),(4,144,0.015,2,'2017-01-04 00:00:00',NULL,1,8,0),(5,144,0.15,0,'2017-01-08 23:26:47',0,0,6,0);
+INSERT INTO `transaction_ph` VALUES (1,144,0.18,1,'2017-01-04 00:00:00',NULL,0,NULL,1),(2,145,0.4,1,'2017-01-04 00:00:00',NULL,1,0,0),(3,144,0.015,2,'2017-01-04 00:00:00',NULL,1,NULL,0),(4,144,0.015,2,'2017-01-04 00:00:00',NULL,1,8,0),(5,144,0.15,0,'2017-01-08 23:26:47',0,0,6,0),(6,144,0.3,0,'2017-01-10 00:21:47',0,0,1,0),(7,1,0,1,'2017-01-10 00:34:07',0,0,27,0),(8,1,0,1,'2017-01-10 00:35:03',0,0,26,0),(9,1,0,1,'2017-01-10 00:35:36',0,0,25,0),(10,144,0.15,0,'2017-01-10 00:55:13',0,0,20,0);
 /*!40000 ALTER TABLE `transaction_ph` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
 -- Dumping routines for database 'bitcoin'
 --
-/*!50003 DROP PROCEDURE IF EXISTS `getInforWebsite` */;
-ALTER DATABASE `bitcoin` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getInforWebsite`(IN menu varchar(100))
-BEGIN
-	SELECT 
-		tbl_about.*
-	FROM
-		tbl_about
-	WHERE
-		tbl_about.del_flg = 1
-	ORDER BY tbl_about.about_id
-	LIMIT 1
-	;
-    
-    
-	SELECT 
-		tbl_news.*
-	FROM
-		tbl_news
-			LEFT JOIN
-		tbl_menu ON tbl_news.cate_id = tbl_menu.menu_id
-			LEFT JOIN
-		tbl_status ON tbl_news.news_action_id = tbl_status.status_id
-	WHERE
-		tbl_news.del_flg = 1
-			AND tbl_menu.del_flag = 0
-			AND tbl_status.status_id = 5
-			AND tbl_menu.url LIKE concat('%', menu, '%')
-	ORDER BY CASE
-		WHEN tbl_news.upd_date IS NULL THEN tbl_news.inp_date
-		ELSE tbl_news.upd_date
-	END DESC
-	LIMIT 5
-		;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-ALTER DATABASE `bitcoin` CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
 /*!50003 DROP PROCEDURE IF EXISTS `GET_FEE_AMOUNT_LIST` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -436,16 +386,16 @@ BEGIN
 	DECLARE totalInvest INT DEFAULT 0;
     DECLARE waitingInvest INT DEFAULT 0;
     DECLARE confirmedInvest INT DEFAULT 0;
-    DECLARE amountInvest DOUBLE DEFAULT 0;
-    DECLARE amountWaitingInvest DOUBLE DEFAULT 0;
-    DECLARE amountConfirmedInvest DOUBLE DEFAULT 0;
+    DECLARE amountInvest DECIMAL(18,2) DEFAULT 0;
+    DECLARE amountWaitingInvest DECIMAL(18,2) DEFAULT 0;
+    DECLARE amountConfirmedInvest DECIMAL(18,2) DEFAULT 0;
     
     DECLARE totalRecived INT DEFAULT 0;
     DECLARE errorRecived INT DEFAULT 0;
     DECLARE successRecived INT DEFAULT 0;
-    DECLARE amountRecived DOUBLE DEFAULT 0;
-    DECLARE amountErrorRecived DOUBLE DEFAULT 0;
-    DECLARE amountSuccessRecived DOUBLE DEFAULT 0;
+    DECLARE amountRecived DECIMAL(18,2) DEFAULT 0;
+    DECLARE amountErrorRecived DECIMAL(18,2) DEFAULT 0;
+    DECLARE amountSuccessRecived DECIMAL(18,2) DEFAULT 0;
     SET totalInvest = 
     (SELECT
 		 COUNT(1)
@@ -1055,6 +1005,41 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SPC_GET_WALLET_BY_TRAN_ID` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_WALLET_BY_TRAN_ID`(IN
+TranGHID	INT
+)
+BEGIN
+	SELECT transaction_gh.CustomerID
+    ,	transaction_gh.amount
+    ,	transaction_gh.senddate
+    ,	transaction_gh.transaction_typ
+    ,	feeamount.duration
+    ,	transaction_gh.status = 1
+    ,	feeamount.recived
+    ,	customer.WalletAddress AS wallet_address
+    FROM transaction_gh 
+	LEFT JOIN feeamount ON
+		transaction_gh.transaction_typ = feeamount.transaction_typ
+	LEFT JOIN customer ON
+		transaction_gh.CustomerID = customer.ID
+    WHERE transaction_gh.ID =  TranGHID
+    AND transaction_gh.del_flg <> 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `SPC_LOGIN_ADMIN_LST1` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1446,6 +1431,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_TRANSACTION_SENDMONEY_ACT1`(IN
 BEGIN
 	DECLARE P_customerID INT DEFAULT 0;
     DECLARE amount DOUBLE DEFAULT 0;
+    DECLARE P_bonus INT DEFAULT 0;
+    DECLARE P_level INT DEFAULT 0;
     
     SET P_customerID = (
     SELECT transaction_gh.CustomerID 
@@ -1454,9 +1441,21 @@ BEGIN
     AND transaction_gh.del_flg <> 1
     LIMIT 1
     );
-	
+    SET P_bonus = (
+    SELECT transaction_gh.bonus_from 
+    FROM transaction_gh 
+    WHERE  transaction_gh.ID = P_ID 
+    AND transaction_gh.del_flg <> 1
+    LIMIT 1
+    );
+	IF P_bonus IS NOT NULL AND P_bonus <> 0 THEN
+		SET P_level = 1;
+    ELSE
+		SET P_level= 0;
+    END IF;
+    
     SET amount = (
-    SELECT feeamount.recived FROM transaction_gh 
+    SELECT feeamount.amount FROM transaction_gh 
     INNER JOIN feeamount ON
 			transaction_gh.transaction_typ = feeamount.transaction_typ
     WHERE transaction_gh.ID = P_ID
@@ -1471,6 +1470,7 @@ BEGIN
     INSERT INTO  transaction_ph(
 		customerID
 	,	amount
+    ,	level
     ,	senddate
     ,	status
     ,	issuccess
@@ -1480,6 +1480,7 @@ BEGIN
     SELECT
 		P_customerID
 	,	amount
+    ,	P_level
     ,	NOW()
     ,	0
     ,	issuccess
@@ -1544,4 +1545,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-09 17:28:48
+-- Dump completed on 2017-01-10  0:59:32
