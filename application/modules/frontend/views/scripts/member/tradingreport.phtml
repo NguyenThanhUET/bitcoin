@@ -17,57 +17,45 @@
                                 <tr>
                                     <td width="60%">Total INVEST</td>
                                     <td width="40%">
-                                        1  Transaction/s
+                                       <?php echo isset($this->data['totalInvest'])?$this->data['totalInvest']:'0';?> Transactions
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td width="60%">Waiting Approve From Administrator</td>
+                                    <td width="40%">
+                                        <?php echo isset($this->data['waitingInvest'])?$this->data['waitingInvest']:'0';?> Transactions
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="60%">Approved INVEST Transaction</td>
+                                    <td width="40%">
+                                        <?php echo isset($this->data['confirmedInvest'])?$this->data['confirmedInvest']:'0';?> Transactions
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td colspan="2"></td>
                                 </tr>
-
-                                <tr>
-                                    <td width="60%">Pending INVEST Transaction/s</td>
-                                    <td width="40%">
-                                        1  Transaction/s
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="60%">Success INVEST Transaction/s</td>
-                                    <td width="40%">
-                                        0  Transaction/s
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="60%">Problem INVEST Transaction/s</td>
-                                    <td width="40%">
-                                        1  Transaction/s
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td colspan="2"></td>
-                                </tr>
-
 
                                 <tr>
                                     <td width="60%">Total INVEST Amount</td>
                                     <td width="40%">
-                                        USD 110 </td>
+                                        <?php echo isset($this->data['amountInvest'])?$this->data['amountInvest']:'0';?> BTC
+                                    </td>
                                 </tr>
 
                                 <tr>
-                                    <td colspan="2"></td>
-                                </tr>
-
-                                <tr>
-                                    <td width="60%">Pending INVEST Amount</td>
+                                    <td width="60%">Waiting Approve Amount</td>
                                     <td width="40%">
-                                        USD 110 </td>
+                                        <?php echo isset($this->data['amountWaitingInvest'])?$this->data['amountWaitingInvest']:'0';?> BTC
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td width="60%">Success INVEST Amount</td>
+                                    <td width="60%">Approved INVEST Amount</td>
                                     <td width="40%">
-                                        USD 0 </td>
+                                        <?php echo isset($this->data['amountConfirmedInvest'])?$this->data['amountConfirmedInvest']:'0';?> BTC
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td width="60%">Problem INVEST Amount</td>
