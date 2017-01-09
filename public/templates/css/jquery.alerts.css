@@ -21,7 +21,7 @@
 	font-size: 13px;
 	min-width: 350px; /* Dialog will be no smaller than this */
 	max-width: 580px; /* Dialog will wrap after this width */
-	background: rgba(217, 224, 201, 0.53);
+	background: rgb(217, 224, 201);
 	/*border: solid 5px #999;*/
 	color: #4F8A10;
 	-moz-border-radius: 5px;
