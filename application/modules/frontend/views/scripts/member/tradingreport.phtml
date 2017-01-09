@@ -1,19 +1,13 @@
 <div class="page-content">
-
     <div class="row">
         <div class="col-lg-6">
             <div class="panel panel-blue">
                 <div class="panel-heading">MY INVEST REPORT</div>
                 <div class="panel-body pan">
-
-
-
                     <form method="post" action="profile">
-
                         <div class="table-responsive">
                             <table class="table table-hover table-bordered">
                                 <tbody>
-
                                 <tr>
                                     <td width="60%">Total INVEST</td>
                                     <td width="40%">
@@ -80,34 +74,24 @@
                                 <tbody>
 
                                 <tr>
-                                    <td width="60%">Total GET PROFIT</td>
+                                    <td width="60%">Total Recived Transaction</td>
                                     <td width="40%">
                                         <?php echo isset($this->data['totalRecived'])?$this->data['totalRecived']:'0';?> Transactions
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td colspan="2"></td>
-                                </tr>
 
                                 <tr>
-                                    <td width="60%">Pending GET PROFIT Transaction/s</td>
+                                    <td width="60%">Pending Recived Transaction</td>
                                     <td width="40%">
-                                        0  Transaction/s
+                                        <?php echo isset($this->data['errorRecived'])?$this->data['errorRecived']:'0';?> Transactions
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td width="60%">Success GET PROFIT Transaction/s</td>
+                                    <td width="60%">Success Recived Transaction</td>
                                     <td width="40%">
-                                        0  Transaction/s
+                                        <?php echo isset($this->data['successRecived'])?$this->data['successRecived']:'0';?> Transactions
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td width="60%">Problem GET PROFIT Transaction/s</td>
-                                    <td width="40%">
-                                        0  Transaction/s
-                                    </td>
-                                </tr>
-
 
                                 <tr>
                                     <td colspan="2"></td>
@@ -117,28 +101,22 @@
                                 <tr>
                                     <td width="60%">Total GET PROFIT Amount</td>
                                     <td width="40%">
-                                        USD 0 </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"></td>
+                                        <?php echo isset($this->data['amountRecived'])?$this->data['amountRecived']:'0';?> BTC
+                                    </td>
                                 </tr>
 
                                 <tr>
                                     <td width="60%">Pending GET PROFIT Amount</td>
                                     <td width="40%">
-                                        USD 0 </td>
+                                        <?php echo isset($this->data['amountErrorRecived'])?$this->data['amountErrorRecived']:'0';?> BTC
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td width="60%">Success GET PROFIT Amount</td>
                                     <td width="40%">
-                                        USD 0 </td>
+                                        <?php echo isset($this->data['amountSuccessRecived'])?$this->data['amountSuccessRecived']:'0';?> BTC
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td width="60%">Problem GET PROFIT Amount</td>
-                                    <td width="40%">
-                                        USD 0 </td>
-                                </tr>
-
                                 </tbody>
                             </table>
 
