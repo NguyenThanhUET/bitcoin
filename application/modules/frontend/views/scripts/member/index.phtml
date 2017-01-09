@@ -1,6 +1,37 @@
 <?php
 $uri = $this->serverUrl();
 ?>
+<style>
+    #go-to-invest {
+        border: 1px solid #0c799e;
+        width: 100px;
+        padding: 4px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #fff;
+        border-radius: 3px;
+        background: linear-gradient(to bottom,#59d0f8 5%,#49c0e8 100%);
+        cursor: pointer;
+        margin-top: 18px;
+        margin-left: 75px;
+    }
+    .ui-widget-content {
+        background: rgb(243, 242, 242) !important;
+        border: 1px solid #e5e5e5;
+    }
+    .ui-widget-header {
+        background: #17a0bf !important;
+    }
+    input[type="radio"]{
+        outline: none;
+    }
+    .ui-widget-content .ui-state-default:hover, .ui-widget-content .ui-state-default:focus {
+        background: #52c9f1 !important;
+    }
+    .ui-widget-content .ui-state-default {
+        background: #4cc3eb;
+    }
+</style>
 <div class="page-content">
 
     <div class="row">
@@ -58,7 +89,7 @@ $uri = $this->serverUrl();
                                 <br><!--<br><b>BTC : 110$ <br>
                                     Status : <span class="label label-sm label-danger">Pending</span> </b><br>-->
                                 <br>
-                                <td><a href="/frontend/member/invest" class="btn <?php if(1*$this->data['invest_valid']<1) {?>btn-danger<?php }else{ ?>btn-info<?php }?> btn-xs btn-block ">
+                                <td><a id="<?php if(1*$this->data['invest_valid']<1) {?>btn-expired-invest<?php }else{ ?>btn-invest<?php }?>" class="btn <?php if(1*$this->data['invest_valid']<1) {?>btn-danger<?php }else{ ?>btn-info<?php }?> btn-xs btn-block ">
                                         <?php if(1*$this->data['invest_valid']<1) {?>Expired Invest<?php }else{ ?>Invest<?php }?>
                                     </a>
                                 </td>
@@ -159,3 +190,37 @@ $uri = $this->serverUrl();
         </div>
     </div>
 </div>
+
+<div class="container">
+    <div class="main">
+        <div id="dialog" title="Choose invest package">
+            <form action="/frontend/member/invest" method="get">
+                <?php if(isset($this->listfee) && !empty($this->listfee)){ ?>
+                <?php foreach ($this->listfee as $row){ ?>
+                        <?php if($row['ID'] !=4 ){?>
+                <input type="radio" name="pack1" value="<?php echo $row['ID'] ?>"> <?php echo $row['duration'] ?> days
+                        <?php } ?>
+                    <?php } ?>
+                <?php } ?>
+                <br>
+                <input id="go-to-invest" type="submit" value="Invest">
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/templates/js/jquery-ui.js"></script>
+<script>
+
+    $(document).ready(function() {
+        $(function() {
+            $("#dialog").dialog({
+                autoOpen: false
+            });
+            $("#btn-invest").on("click", function() {
+                $("#dialog").dialog("open");
+                $('input[name="pack1"][value="1"]').prop('checked',true);
+            });
+        });
+    });
+
+</script>

@@ -53,7 +53,7 @@ class Frontend_UploadController extends Frontend_AppController {
 
             if ($this->_request->isPost ()) {
                 $memberID	=	$this->user['ID'];
-                $transaction_typ    =   $this->getParam('transaction_typ',1);
+                $transaction_typ    =   $this->getParam('_packageMode',1);
                 $reNameFile	=	date('ymdhhmmss.');
 
 

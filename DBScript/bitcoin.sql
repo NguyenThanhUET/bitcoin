@@ -124,7 +124,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'thanh','1','nguyenthanhuet@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','01687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(144,'Nguy?n V?n Thành','thanh2','nguyenthanhuet2016@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'DHKEMBNMHJHHHhhdsdsd34344',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(145,'Nguy?n V?n Thành','thanh10021992','pentest317@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'dsdsds?sd dsdsdsdsdsdsdddsdssdsdsdsd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(146,'fucked','uuuu','thanh0102@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','123456','1687522344',NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,'12Ajksdsdssds56564645dfdfdfdfd21323',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(147,'thanh nguyen','fuckyou','nguyenthanhuet1111@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','12345','23232321',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'sadsdasdsd2323dsdsd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `customer` VALUES (1,'thanh','1','nguyenthanhuet@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','01687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(144,'Thành 2','thanh2','nguyenthanhuet2016@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'DHKEMBNMHJHHHhhdsdsd34344',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(145,'Thành 3 ','thanh10021992','pentest317@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'dsdsds?sd dsdsdsdsdsdsdddsdssdsdsdsd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(146,'fucked','uuuu','thanh0102@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','123456','1687522344',NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,'12Ajksdsdssds56564645dfdfdfdfd21323',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(147,'thanh nguyen','fuckyou','nguyenthanhuet1111@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','12345','23232321',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'sadsdasdsd2323dsdsd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +171,7 @@ CREATE TABLE `ticket` (
   `answer` text CHARACTER SET utf8,
   `status` int(11) DEFAULT NULL COMMENT '0: chưa trả lời\n1: trả lời',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,7 +180,7 @@ CREATE TABLE `ticket` (
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
-INSERT INTO `ticket` VALUES (1,144,'test message','2017-01-06 16:24:04','Ok guy ! Please help me, I can not invest money to you !',1),(2,144,'test message','2017-01-06 16:27:28','sdsad',1),(3,144,'test message','2017-01-06 16:39:46','dfdf',1),(4,144,'Please help me, I can not invest money to you !','2017-01-06 17:21:20','s?dsdf',1),(5,144,'thành test unicode','2017-01-06 20:29:20','trả lời ',1),(6,145,'thành test new','2017-01-06 20:33:20','',0),(7,144,'fgfgfdf fdf dfdf','2017-01-07 20:42:00','',0);
+INSERT INTO `ticket` VALUES (1,144,'test message','2017-01-06 16:24:04','Ok guy ! Please help me, I can not invest money to you !',1),(2,144,'test message','2017-01-06 16:27:28','sdsad',1),(3,144,'test message','2017-01-06 16:39:46','dfdf',1),(4,144,'Please help me, I can not invest money to you !','2017-01-06 17:21:20','s?dsdf',1),(5,144,'thành test unicode','2017-01-06 20:29:20','trả lời ',1),(6,145,'thành test new','2017-01-06 20:33:20','',0),(7,144,'fgfgfdf fdf dfdf','2017-01-07 20:42:00','',0),(8,144,'4343','2017-01-09 14:28:58','',0);
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +203,7 @@ CREATE TABLE `transaction_gh` (
   `bonus_from` int(11) DEFAULT NULL COMMENT 'f1 ID',
   `bonus_from_transgh` int(11) DEFAULT NULL COMMENT 'bonus from transaction gh nào?',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +212,7 @@ CREATE TABLE `transaction_gh` (
 
 LOCK TABLES `transaction_gh` WRITE;
 /*!40000 ALTER TABLE `transaction_gh` DISABLE KEYS */;
-INSERT INTO `transaction_gh` VALUES (144,0.18,'2017-01-05 14:36:09',2,'D:/images/\\144\\170105020201010808.jpg',2,1,0,NULL,NULL),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,0,NULL,NULL),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,0,NULL,NULL),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,0,NULL,NULL),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1,NULL,NULL),(144,0.15,'2017-01-05 17:39:50',3,'\\144\\170105050501014949.jpg',1,6,0,NULL,NULL),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,0,NULL,NULL),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0,NULL,NULL),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,1,NULL,NULL),(144,0.15,'2017-01-06 13:37:21',1,'\\144\\170106010101012121.jpg',1,10,0,NULL,NULL),(145,0.15,'2017-01-06 22:13:52',2,'\\145\\170106101001015252.jpg',1,11,0,NULL,NULL),(147,0.15,'2017-01-06 23:09:37',1,'\\147\\170106111101013737.jpg',1,12,0,NULL,NULL),(144,0.15,'2017-01-08 20:18:18',1,'\\144\\170108080801011717.jpg',1,13,0,NULL,NULL),(144,0.15,'2017-01-08 21:27:12',1,'\\144\\170108090901011212.jpg',1,14,0,NULL,NULL),(144,0.15,'2017-01-09 13:31:07',2,'\\144\\170109010101010707.jpg',1,15,0,NULL,NULL),(1,0,'2017-01-09 13:58:09',2,'',4,18,0,144,15),(1,0,'2017-01-09 14:17:59',2,'',4,19,0,145,11),(144,0.15,'2017-01-09 14:21:26',1,'\\144\\170109020201012626.xlsx',1,20,0,NULL,NULL),(144,0.15,'2017-01-09 14:21:42',1,'\\144\\170109020201014242.jpg',1,21,0,NULL,NULL);
+INSERT INTO `transaction_gh` VALUES (144,0.18,'2017-01-05 14:36:09',2,'D:/images/\\144\\170105020201010808.jpg',2,1,0,NULL,NULL),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,0,NULL,NULL),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,0,NULL,NULL),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,0,NULL,NULL),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1,NULL,NULL),(144,0.15,'2017-01-05 17:39:50',3,'\\144\\170105050501014949.jpg',1,6,0,NULL,NULL),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,0,NULL,NULL),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0,NULL,NULL),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,1,NULL,NULL),(144,0.15,'2017-01-06 13:37:21',1,'\\144\\170106010101012121.jpg',1,10,0,NULL,NULL),(145,0.15,'2017-01-06 22:13:52',2,'\\145\\170106101001015252.jpg',1,11,0,NULL,NULL),(147,0.15,'2017-01-06 23:09:37',1,'\\147\\170106111101013737.jpg',1,12,0,NULL,NULL),(144,0.15,'2017-01-08 20:18:18',1,'\\144\\170108080801011717.jpg',1,13,0,NULL,NULL),(144,0.15,'2017-01-08 21:27:12',1,'\\144\\170108090901011212.jpg',1,14,0,NULL,NULL),(144,0.15,'2017-01-09 13:31:07',2,'\\144\\170109010101010707.jpg',1,15,0,NULL,NULL),(1,0,'2017-01-09 13:58:09',2,'',4,18,0,144,15),(1,0,'2017-01-09 14:17:59',2,'',4,19,0,145,11),(144,0.15,'2017-01-09 14:21:26',1,'\\144\\170109020201012626.xlsx',1,20,0,NULL,NULL);
 /*!40000 ALTER TABLE `transaction_gh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -419,6 +419,147 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SPC_GET_BUSSINESS_REPORT` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_BUSSINESS_REPORT`(IN
+P_CustomerID	INT
+)
+BEGIN
+	DECLARE totalInvest INT DEFAULT 0;
+    DECLARE waitingInvest INT DEFAULT 0;
+    DECLARE confirmedInvest INT DEFAULT 0;
+    DECLARE amountInvest DOUBLE DEFAULT 0;
+    DECLARE amountWaitingInvest DOUBLE DEFAULT 0;
+    DECLARE amountConfirmedInvest DOUBLE DEFAULT 0;
+    
+    DECLARE totalRecived INT DEFAULT 0;
+    DECLARE errorRecived INT DEFAULT 0;
+    DECLARE successRecived INT DEFAULT 0;
+    DECLARE amountRecived DOUBLE DEFAULT 0;
+    DECLARE amountErrorRecived DOUBLE DEFAULT 0;
+    DECLARE amountSuccessRecived DOUBLE DEFAULT 0;
+    SET totalInvest = 
+    (SELECT
+		 COUNT(1)
+    FROM transaction_gh
+    WHERE transaction_gh.CustomerID = P_customerID
+    AND transaction_gh.del_flg <> 1);
+	
+    
+    SET waitingInvest = 
+    (SELECT
+		 COUNT(1)
+    FROM transaction_gh
+    WHERE transaction_gh.CustomerID = P_customerID
+    AND transaction_gh.status = 1
+    AND transaction_gh.del_flg <> 1);
+	
+    SET confirmedInvest = 
+    (SELECT
+		 COUNT(1)
+    FROM transaction_gh
+    WHERE transaction_gh.CustomerID = P_customerID
+    AND transaction_gh.status = 2
+    AND transaction_gh.del_flg <> 1);
+    
+    
+    SET amountInvest = 
+    (SELECT
+		 SUM(transaction_gh.amount)
+    FROM transaction_gh
+    WHERE transaction_gh.CustomerID = P_customerID
+    AND transaction_gh.del_flg <> 1);
+	
+    SET amountWaitingInvest = 
+    (SELECT
+		 SUM(transaction_gh.amount)
+    FROM transaction_gh
+    WHERE transaction_gh.CustomerID = P_customerID
+     AND transaction_gh.status = 1
+    AND transaction_gh.del_flg <> 1);
+    
+    SET amountConfirmedInvest = 
+    (SELECT
+		 SUM(transaction_gh.amount)
+    FROM transaction_gh
+    WHERE transaction_gh.CustomerID = P_customerID
+     AND transaction_gh.status = 2
+    AND transaction_gh.del_flg <> 1);
+    
+    SET totalRecived = 
+    (SELECT
+		 COUNT(1)
+    FROM transaction_ph
+    WHERE transaction_ph.CustomerID = P_customerID
+    AND transaction_ph.del_flg <> 1);
+    
+    SET errorRecived = 
+    (SELECT
+		 COUNT(1)
+    FROM transaction_ph
+    WHERE transaction_ph.CustomerID = P_customerID
+    AND transaction_ph.issuccess = 0
+    AND transaction_ph.del_flg <> 1);
+    
+    SET successRecived = 
+    (SELECT
+		 COUNT(1)
+    FROM transaction_ph
+    WHERE transaction_ph.CustomerID = P_customerID
+    AND transaction_ph.issuccess = 1
+    AND transaction_ph.del_flg <> 1);
+    
+    SET amountRecived = 
+    (SELECT
+		 SUM(transaction_ph.amount)
+    FROM transaction_ph
+    WHERE transaction_ph.CustomerID = P_customerID
+    AND transaction_ph.del_flg <> 1);
+    
+    SET amountErrorRecived = 
+    (SELECT
+		 SUM(transaction_ph.amount)
+    FROM transaction_ph
+    WHERE transaction_ph.CustomerID = P_customerID
+    AND transaction_ph.issuccess = 0
+    AND transaction_ph.del_flg <> 1);
+    
+    SET amountSuccessRecived = 
+    (SELECT
+		 SUM(transaction_ph.amount)
+    FROM transaction_ph
+    WHERE transaction_ph.CustomerID = P_customerID
+    AND transaction_ph.issuccess = 1
+    AND transaction_ph.del_flg <> 1);
+    
+    SELECT 
+		totalInvest,
+		waitingInvest,
+		confirmedInvest, 
+		amountInvest,
+		amountWaitingInvest,
+		amountConfirmedInvest, 
+		totalRecived,
+		errorRecived, 
+		successRecived,
+		amountRecived,
+		amountErrorRecived,
+		amountSuccessRecived;
+    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `SPC_GET_DASHBOARD_DATA_INFO` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -563,6 +704,27 @@ BEGIN
 	,	bonus_balance	AS bonus_balance
     ,	total_teferrals	AS total_teferrals
     ,	investValid		AS invest_valid; -- so lan invest con lai
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SPC_GET_FEE_BY_ID` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_FEE_BY_ID`(IN
+P_ID	INT
+)
+BEGIN
+	SELECT * FROM feeamount WHERE feeamount.ID = P_ID;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -811,7 +973,7 @@ BEGIN
 	SELECT
 		transaction_ph.ID
     ,	transaction_ph.CustomerID
-    ,	transaction_ph.amount
+    ,	feeamount.amount
     ,	transaction_ph.senddate AS admin_senddate
     ,	transaction_gh.senddate
     ,	transaction_gh.image
@@ -1294,7 +1456,7 @@ BEGIN
     );
 	
     SET amount = (
-    SELECT feeamount.amount FROM transaction_gh 
+    SELECT feeamount.recived FROM transaction_gh 
     INNER JOIN feeamount ON
 			transaction_gh.transaction_typ = feeamount.transaction_typ
     WHERE transaction_gh.ID = P_ID
@@ -1382,4 +1544,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-09 14:25:45
+-- Dump completed on 2017-01-09 17:28:48

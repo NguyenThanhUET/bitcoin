@@ -1,5 +1,6 @@
 <?php
-$amount  = '0.003';
+$amountInit =   0.15;
+$amount  = isset($this->investData['amount'])?$this->investData['amount']:$amountInit;
 $blockchain="https://wallet.btc.com/?gclid=Cj0KEQiAy53DBRCo4en29Zvcla0BEiQAVIDccwlfeEAUAvoUsm-YJDfhcSxYlTRmdvQ9TsQaUyfrdhUaAk0f8P8HAQ#/setup/login";
 ?>
 <link type="text/css" rel="stylesheet" href="/templates/css/form/invest.css">
@@ -102,6 +103,7 @@ $blockchain="https://wallet.btc.com/?gclid=Cj0KEQiAy53DBRCo4en29Zvcla0BEiQAVIDcc
 <script src="/templates/js/jquery-1.11.0.min.js"></script>
 <script>
     //new Clipboard('.btn-copy');
+    var _packageMode = "<?php echo $this->investPackage;?>";
     $(document).ready(function() {
         try {
             $(document).on('click','#upload-image-img',function(){
@@ -146,6 +148,7 @@ $blockchain="https://wallet.btc.com/?gclid=Cj0KEQiAy53DBRCo4en29Zvcla0BEiQAVIDcc
     function uploadFile(input,callback) {
             var data = new FormData();
             data.append('fileUpload', $(input).get(0).files[0]);
+            data.append('_packageMode',  _packageMode);
             $.ajax({
                 url : '/frontend/upload/upload',
                 type : 'POST',

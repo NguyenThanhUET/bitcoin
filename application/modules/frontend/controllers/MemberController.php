@@ -26,6 +26,10 @@ class Frontend_MemberController extends Frontend_AppController {
 		if(!empty($data[0][0])){
 			$this->view->data	=	$data[0][0];
 		}
+		$listfee	=	$this->model->executeSql('GET_FEE_AMOUNT_LIST', array());
+		if(!empty($listfee[0])){
+			$this->view->listfee	=	$listfee[0];
+		}
 		if($this->getRequest()->isPost()){
 			$txt	=	'$2a$10$1qAz2wSx3eDc4rFv5tGb5t';
 			$params	=	array();
@@ -55,12 +59,17 @@ class Frontend_MemberController extends Frontend_AppController {
 			$this->user['ID']
 		);
 		$this->view->adminWallet = $this->user['adminWallet'];
+		$this->view->investPackage = $this->getParam('pack1',1);
+		$investData = $this->model->executeSql('SPC_GET_FEE_BY_ID', array($this->view->investPackage));
 		$data = $this->model->executeSql('SPC_GET_RAND_ADMIN_WALLET', $params);
 		if(isset($data[0][0]['admin_wallet']) && $data[0][0]['admin_wallet'] !=''){
 			$this->view->adminWallet =	$data[0][0]['admin_wallet'];
 		}
 		if (! isset($data[0][0]['invest_valid']) || 1*$data[0][0]['invest_valid'] < 1){
 			$this->redirect('/frontend/member');
+		}
+		if (isset($investData[0][0]) && !empty($investData[0][0]) ){
+			$this->view->investData	=	$investData[0][0];
 		}
 	}
 	/**
@@ -87,10 +96,10 @@ class Frontend_MemberController extends Frontend_AppController {
 		$params	=	array(
 			$this->user['ID']
 		);
-		/*$data = $this->model->executeSql('SPC_GET_DATA_INVEST', $params);
+		$data = $this->model->executeSql('SPC_GET_BUSSINESS_REPORT', $params);
 		if(!empty($data[0][0])){
 			$this->view->data	=	$data[0][0];
-		}*/
+		}
 	}
 	/**
 	 * history
