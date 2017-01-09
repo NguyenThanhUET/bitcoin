@@ -124,7 +124,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'thanh','1','nguyenthanhuet@gmail.com',NULL,NULL,'root','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','01687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(144,'Nguy?n V?n Thành','thanh2','nguyenthanhuet2016@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'DHKEMBNMHJHHHhhdsdsd34344',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(145,'Nguy?n V?n Thành','thanh10021992','pentest317@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'dsdsds?sd dsdsdsdsdsdsdddsdssdsdsdsd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(146,'fucked','uuuu','thanh0102@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','123456','1687522344',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'12Ajksdsdssds56564645dfdfdfdfd21323',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(147,'thanh nguyen','fuckyou','nguyenthanhuet1111@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','12345','23232321',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'sadsdasdsd2323dsdsd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `customer` VALUES (1,'thanh','1','nguyenthanhuet@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','01687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(144,'Nguy?n V?n Thành','thanh2','nguyenthanhuet2016@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'DHKEMBNMHJHHHhhdsdsd34344',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(145,'Nguy?n V?n Thành','thanh10021992','pentest317@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'dsdsds?sd dsdsdsdsdsdsdddsdssdsdsdsd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(146,'fucked','uuuu','thanh0102@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','123456','1687522344',NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,'12Ajksdsdssds56564645dfdfdfdfd21323',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(147,'thanh nguyen','fuckyou','nguyenthanhuet1111@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','12345','23232321',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'sadsdasdsd2323dsdsd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -141,8 +141,9 @@ CREATE TABLE `feeamount` (
   `amount` double DEFAULT '0',
   `recived` double DEFAULT '0',
   `duration` int(11) DEFAULT '0',
+  `name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='bảng phí cho các loại giao dịch : 1 ngày, 3 ngày, 5 ngày';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='bảng phí cho các loại giao dịch : 1 ngày, 3 ngày, 5 ngày';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +152,7 @@ CREATE TABLE `feeamount` (
 
 LOCK TABLES `feeamount` WRITE;
 /*!40000 ALTER TABLE `feeamount` DISABLE KEYS */;
-INSERT INTO `feeamount` VALUES (1,1,0.15,0.18,3),(2,2,0.3,0.4,5),(3,3,0.5,0.7,7);
+INSERT INTO `feeamount` VALUES (1,1,0.15,0.18,3,'spin 1 day'),(2,2,0.3,0.4,5,'spin 2 day'),(3,3,0.5,0.7,7,'spin 3 day'),(4,4,0,0.02,3,'bonus from f1');
 /*!40000 ALTER TABLE `feeamount` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,11 +197,13 @@ CREATE TABLE `transaction_gh` (
   `senddate` datetime DEFAULT NULL,
   `status` int(11) DEFAULT '0' COMMENT '1: waiting\n2:confirmed\n3:sendmoney',
   `image` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `transaction_typ` int(11) DEFAULT '0' COMMENT '1: 3days\n2: 5days\n3: 7days',
+  `transaction_typ` int(11) DEFAULT '0' COMMENT '1: 3days\n2: 5days\n3: 7days\n4: bonus from f1',
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `del_flg` int(11) DEFAULT '0',
+  `bonus_from` int(11) DEFAULT NULL COMMENT 'f1 ID',
+  `bonus_from_transgh` int(11) DEFAULT NULL COMMENT 'bonus from transaction gh nào?',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -209,7 +212,7 @@ CREATE TABLE `transaction_gh` (
 
 LOCK TABLES `transaction_gh` WRITE;
 /*!40000 ALTER TABLE `transaction_gh` DISABLE KEYS */;
-INSERT INTO `transaction_gh` VALUES (144,0.18,'2017-01-05 14:36:09',2,'D:/images/\\144\\170105020201010808.jpg',2,1,0),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,0),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,0),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,0),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1),(144,0.15,'2017-01-05 17:39:50',3,'\\144\\170105050501014949.jpg',1,6,0),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,0),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,1),(144,0.15,'2017-01-06 13:37:21',1,'\\144\\170106010101012121.jpg',1,10,0),(145,0.15,'2017-01-06 22:13:52',1,'\\145\\170106101001015252.jpg',1,11,0),(147,0.15,'2017-01-06 23:09:37',1,'\\147\\170106111101013737.jpg',1,12,0),(144,0.15,'2017-01-08 20:18:18',1,'\\144\\170108080801011717.jpg',1,13,0),(144,0.15,'2017-01-08 21:27:12',1,'\\144\\170108090901011212.jpg',1,14,0);
+INSERT INTO `transaction_gh` VALUES (144,0.18,'2017-01-05 14:36:09',2,'D:/images/\\144\\170105020201010808.jpg',2,1,0,NULL,NULL),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,0,NULL,NULL),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,0,NULL,NULL),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,0,NULL,NULL),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1,NULL,NULL),(144,0.15,'2017-01-05 17:39:50',3,'\\144\\170105050501014949.jpg',1,6,0,NULL,NULL),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,0,NULL,NULL),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0,NULL,NULL),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,1,NULL,NULL),(144,0.15,'2017-01-06 13:37:21',1,'\\144\\170106010101012121.jpg',1,10,0,NULL,NULL),(145,0.15,'2017-01-06 22:13:52',2,'\\145\\170106101001015252.jpg',1,11,0,NULL,NULL),(147,0.15,'2017-01-06 23:09:37',1,'\\147\\170106111101013737.jpg',1,12,0,NULL,NULL),(144,0.15,'2017-01-08 20:18:18',1,'\\144\\170108080801011717.jpg',1,13,0,NULL,NULL),(144,0.15,'2017-01-08 21:27:12',1,'\\144\\170108090901011212.jpg',1,14,0,NULL,NULL),(144,0.15,'2017-01-09 13:31:07',2,'\\144\\170109010101010707.jpg',1,15,0,NULL,NULL),(1,0,'2017-01-09 13:58:09',2,'',4,18,0,144,15),(1,0,'2017-01-09 14:17:59',2,'',4,19,0,145,11);
 /*!40000 ALTER TABLE `transaction_gh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -689,11 +692,15 @@ BEGIN
 		END  AS color
     ,	feeamount.recived AS bonus
     ,	feeamount.duration
+    ,	cus2.UserName AS bonus_from
+    ,	transaction_gh.bonus_from_transgh
     FROM transaction_gh
     INNER JOIN customer ON
 		transaction_gh.CustomerID = customer.ID
 	LEFT JOIN feeamount ON
 		transaction_gh.transaction_typ = feeamount.transaction_typ
+	LEFT JOIN customer AS cus2 ON
+			cus2.ID = transaction_gh.bonus_from
 	WHERE transaction_gh.status = 2 
     AND transaction_gh.del_flg <> 1
     ORDER BY transaction_gh.senddate DESC;
@@ -1140,17 +1147,59 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_TRANSACTION_APPROVED_ACT1`(IN
 	P_ID	INT
 )
 BEGIN
+	DECLARE P_Parent INT  DEFAULT 0;
+    DECLARE amount DOUBLE  DEFAULT 0;
+    DECLARE customerID INT  DEFAULT 0;
+	
+    SET customerID = (
+		SELECT transaction_gh.CustomerID
+	FROM transaction_gh
+	WHERE transaction_gh.ID =  P_ID
+	AND transaction_gh.del_flg <> 1
+    );
+	SET P_Parent = (
+    SELECT customer.ParentID
+	FROM customer
+	WHERE customer.ID = customerID);
+    
 	UPDATE transaction_gh
     SET transaction_gh.status = 2
     WHERE transaction_gh.ID = P_ID
     AND transaction_gh.del_flg <> 1;
-    SELECT 1 As success; 
+
+    /* INSERT BONUS TO Parent*/
+    IF P_Parent IS NOT NULL AND P_Parent <> 0 THEN
+		SET amount = (SELECT feeamount.amount FROM feeamount WHERE feeamount.transaction_typ = 4 LIMIT 1);
+		INSERT INTO transaction_gh(
+			CustomerID
+		,	amount
+		,	senddate
+		,	status
+		,	image
+		,	transaction_typ
+		,	del_flg
+        ,	bonus_from
+        ,	bonus_from_transgh
+		)
+		SELECT
+			P_Parent
+		,	amount
+		,	NOW()
+		,	2 -- confirmed
+		,	''
+		,	4 -- bonus from f1
+		,	0
+        ,	customerID
+        ,	P_ID;
+
+	END IF;
+    SELECT 1 As success;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1330,4 +1379,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-09  0:59:09
+-- Dump completed on 2017-01-09 14:19:37

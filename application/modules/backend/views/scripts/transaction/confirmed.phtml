@@ -37,14 +37,15 @@ $uri = $this->serverUrl();
                     <th width="150px"rowspan="2">User Name</th>
                     <th width="100px"rowspan="2">Phone</th>
                     <th width="100px"rowspan="2">Amount(BTC)</th>
-                    <th width="130px"rowspan="2">Total Profit (BTC)</th>
+                    <th width="130px">Total Profit (BTC)</th>
                     <th width="100px"rowspan="2">Status</th>
                     <th rowspan="2">Details Image</th>
                     <th width="150px"rowspan="2">Send Money</th>
                     <th width="50px"rowspan="2">Delete</th>
                 </tr>
                 <tr>
-                    <th width="150px">Durations (days)</th>
+                    <th width="150px" class="boder-top-white">Durations (days)</th>
+                    <th width="130px" class="boder-top-white">Parent Trans ID</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -67,7 +68,13 @@ $uri = $this->serverUrl();
                             <td width="150px" rowspan="2"><?php echo $row['UserName'];?></td>
                             <td width="100px" rowspan="2"><?php echo $row['Mobile'];?></td>
                             <td width="100px" rowspan="2"><?php echo $row['amount'];?></td>
-                            <td width="130px" rowspan="2"><?php echo $row['bonus'];?></td>
+                            <td width="130px" style="text-align: right;"><?php echo $row['bonus'];?>
+                               <!-- --><?php
+/*                                    if($row['bonus_from'] !=''){
+                                        echo '( from f1: '.$row['bonus_from'].')';
+                                    }
+                                */?>
+                            </td>
                             <td width="100px" rowspan="2" class="text-center"><span class="label label-sm <?php echo $row['color'];?>"><?php echo $row['status'];?></span></td>
                             <td rowspan="2" class="image-view text-center"><span class="view-image-btn label label-sm label-info" style="cursor: pointer;">Click to view Image verify</span>
                                 <div class="modal myModal">
@@ -82,6 +89,15 @@ $uri = $this->serverUrl();
                         </tr>
                         <tr class="tr-record" record-id="<?php echo $row['ID'];?>">
                             <td width="150px" style="color: red; text-align: right;"><?php echo $row['duration'];?> days</td>
+                            <td width="130px"  style=" <?php if($row['bonus_from_transgh'] !='' && $row['bonus_from_transgh'] !=0){ ?>color: red; <?php } ?> text-align: center;">
+                                <?php
+                                if($row['bonus_from_transgh'] !='' && $row['bonus_from_transgh'] !=0){
+                                    echo 'Bonus from #'.$row['bonus_from_transgh'];
+                                }else{
+                                    echo 'Normal';
+                                }
+                                ?>
+                            </td>
                         </tr>
                     <?php } ?>
                 <?php } ?>
