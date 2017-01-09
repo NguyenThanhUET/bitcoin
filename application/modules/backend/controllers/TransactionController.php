@@ -108,7 +108,7 @@ class Backend_TransactionController extends Frontend_AppController {
 					$sendAmount	=	1*(isset($dataWallet[0][0]['recived'])?$dataWallet[0][0]['recived']:0);
 					//$this->get_total_balance();
 					//send_money_to_wallet("135x8NpvX8V4xVMS2Ky6mpyiXLZSmUVbpZ", 293556, 0);
-					send_money_to_wallet($walletAddress, $sendAmount, 0);
+					$params['issuccess'] = $this->send_money_to_wallet($walletAddress, $sendAmount, 0);
 					//execute store procedure
 					$data = $this->model->executeSql('SPC_TRANSACTION_SENDMONEY_ACT1',$params);
 					//result
@@ -256,13 +256,13 @@ class Backend_TransactionController extends Frontend_AppController {
 
 			//result:
 			if(curl_error($ch)){
-				echo 'error:' . curl_error($ch);
+				//echo 'error:' . curl_error($ch);
 				return false;
 			}
 			//close connection
 			curl_close($ch);
 
-			print $result;
+			//print $result;
 			return true;
 
 		}catch(Exception $e){
