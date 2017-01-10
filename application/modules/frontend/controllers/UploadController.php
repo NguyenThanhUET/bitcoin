@@ -58,7 +58,7 @@ class Frontend_UploadController extends Frontend_AppController {
 
 
                 if($memberID !=''){
-                    $numberDetail = "\\".$memberID;
+                    $numberDetail = "".$memberID;
                 }
 
                 $pathUpload	=	new Zend_Config_Ini ( APPLICATION_PATH . '/configs/common.ini', 'upload' );
@@ -68,6 +68,7 @@ class Frontend_UploadController extends Frontend_AppController {
                 $arrExt		=	$pathUpload->upload->ext->toArray();
                 if (! is_dir ( $dirTemp )) {
                     mkdir ( $dirTemp ,'0777',true);
+                    chmod($dirTemp, 0777);
                 }
                 $upload = new Zend_File_Transfer ();
                 $upload->setDestination ( $dirTemp );
@@ -98,7 +99,7 @@ class Frontend_UploadController extends Frontend_AppController {
                                     'newName'	=>	$filePath/* $name */,
                                     'reName'	=>	$reNameFile,
                                     'fullPath'	=>	$dirTemp.'\\'.$reNameFile.pathinfo($filePath, PATHINFO_EXTENSION),
-                                    'message'	=>	'sucess'
+                                    'message'	=>	'success'
                             );
                             $upload->receive ();
                             $this->updateHistory($this->user['ID'],$result['fullPath'],$transaction_typ);

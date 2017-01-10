@@ -107,6 +107,7 @@ class Backend_TransactionController extends Frontend_AppController {
 					$walletAddress	=	$dataWallet[0][0]['wallet_address'];
 					$sendAmount	=	1*(isset($dataWallet[0][0]['recived'])?$dataWallet[0][0]['recived']:0);
 					//$this->get_total_balance();
+//					/die();
 					//send_money_to_wallet("135x8NpvX8V4xVMS2Ky6mpyiXLZSmUVbpZ", 293556, 0);
 					$params['issuccess'] = $this->send_money_to_wallet($walletAddress, $sendAmount, 0);
 					//execute store procedure
@@ -211,7 +212,7 @@ class Backend_TransactionController extends Frontend_AppController {
 			$ch = curl_init("http://localhost:3000/merchant/0f24de6a-9aa6-4b81-b606-84f0e92e20c1/balance?password=Itbuiductai_317");
 			$result = curl_exec($ch);
 			#$result = '{"balance": 18093556}';
-			$result = json_decode(str($result), true);
+			$result = json_decode(($result), true);
 			if(curl_error($ch)){
 				echo 'error:' . curl_error($ch);
 				return -1;
