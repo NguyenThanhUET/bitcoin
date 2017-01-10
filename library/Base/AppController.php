@@ -25,13 +25,13 @@ class Base_AppController extends Zend_Controller_Action {
 		$this->view->message_no = $this->_getParam('MessageNo',0);
 		$this->view->targetId = $this->_getParam('TargetID','');
 		
-		//2016/11/24 HiepNV unset session parram from menu
+		/*//2016/11/24 HiepNV unset session parram from menu
 		$mode = $this->getParam('modemenu','');
 		if($mode == 'menu'){
 			if((Zend_Registry::isRegistered('screen_infor'))){
 				Zend_Registry::set('screen_infor',array());
 			}
-		}
+		}*/
 		//config unicode
 		mb_internal_encoding('UTF-8');
 		mb_http_output('SJIS');

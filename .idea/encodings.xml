@@ -15,7 +15,9 @@
     <file url="file://$PROJECT_DIR$/application/modules/frontend/controllers/RegisterController.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/modules/frontend/views/scripts/face/aboutus.phtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/modules/frontend/views/scripts/face/terms.phtml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/modules/frontend/views/scripts/home/index.phtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/modules/frontend/views/scripts/member/index.phtml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/modules/frontend/views/scripts/register/resetpassword.phtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/templates/css/form/face_layout.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/templates/css/form/frontend/investstatus.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/templates/css/form/frontend/ticketlist.css" charset="UTF-8" />
