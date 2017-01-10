@@ -106,20 +106,27 @@ class Backend_TransactionController extends Frontend_AppController {
 				if(isset($dataWallet[0][0]['wallet_address']) && $dataWallet[0][0]['wallet_address'] !=''){
 					$walletAddress	=	$dataWallet[0][0]['wallet_address'];
 					$sendAmount	=	1*(isset($dataWallet[0][0]['recived'])?$dataWallet[0][0]['recived']:0);
+					$sendAmount	=	$sendAmount*100000000;
 					//$this->get_total_balance();
 //					/die();
 					//send_money_to_wallet("135x8NpvX8V4xVMS2Ky6mpyiXLZSmUVbpZ", 293556, 0);
 					$params['issuccess'] = $this->send_money_to_wallet($walletAddress, $sendAmount, 0);
-					//execute store procedure
-					$data = $this->model->executeSql('SPC_TRANSACTION_SENDMONEY_ACT1',$params);
-					//result
-					if(isset($data[0][0]['success']) && 1*$data[0][0]['success']==1) {
-						$this->respon['status'] = 1;
-						$this->respon['error']  = 'Update Successfull';
+					if(1*$params['issuccess'] ==1){
+						//execute store procedure
+						$data = $this->model->executeSql('SPC_TRANSACTION_SENDMONEY_ACT1',$params);
+						//result
+						if(isset($data[0][0]['success']) && 1*$data[0][0]['success']==1) {
+							$this->respon['status'] = 1;
+							$this->respon['error']  = 'Update Successfull';
+						}else{
+							$this->respon['status'] = 0;
+							$this->respon['error']  = 'Update Error';
+						}
 					}else{
 						$this->respon['status'] = 0;
-						$this->respon['error']  = 'Update Error';
+						$this->respon['error']  = 'Sendmoney Error';
 					}
+
 				}else{
 					$this->respon['status'] = 0;
 					$this->respon['error']  = 'Can not send money';
@@ -214,11 +221,11 @@ class Backend_TransactionController extends Frontend_AppController {
 			#$result = '{"balance": 18093556}';
 			$result = json_decode(($result), true);
 			if(curl_error($ch)){
-				echo 'error:' . curl_error($ch);
+				//echo 'error:' . curl_error($ch);
 				return -1;
 			}
 			curl_close($ch);
-			print $result["balance"];
+			//print $result["balance"];
 			return $result["balance"];
 		}
 		catch(Exception $e){
@@ -248,10 +255,12 @@ class Backend_TransactionController extends Frontend_AppController {
 			$ch = curl_init();
 
 			//set the url, number of POST vars, POST data
+
 			curl_setopt($ch,CURLOPT_URL, $url);
 			curl_setopt($ch,CURLOPT_POST, count($fields));
 			curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
-
+			curl_setopt($ch, CURLOPT_VERBOSE, 0);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			//execute post
 			$result = curl_exec($ch);
 

@@ -16,7 +16,7 @@
 <!--                                        <th>BTC Wallet</th>-->
                                         <th>Amount</th>
                                         <th>Level</th>
-                                        <th>Status</th>
+                                        <th style="text-align: center">Status</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -28,7 +28,7 @@
                                         <td><?php echo $row['senddate'];?></td>
                                         <td><?php echo $row['amount'];?></td>
                                         <td><?php echo $row['level'];?></td>
-                                        <td><span class="label label-sm <?php echo $row['color'];?>"><?php echo $row['issuccess'];?></span></td>
+                                        <td style="text-align: center"><span class="label label-sm <?php echo $row['color'];?>"><?php echo $row['issuccess'];?></span></td>
 
                                     </tr>
                                         <?php } ?>

@@ -76,7 +76,7 @@ class Frontend_MemberController extends Frontend_AppController {
 	 * history
 	 */
 	public function historyAction(){
-		$this->view->title = 'History';
+		$this->view->title = 'PH History';
 		$this->_helper->layout->setLayout('layout');
 		$params	=	array(
 			$this->user['ID']
@@ -105,7 +105,7 @@ class Frontend_MemberController extends Frontend_AppController {
 	 * history
 	 */
 	public function investstatusAction(){
-		$this->view->title = 'Invest Status';
+		$this->view->title = 'GH History';
 		$this->_helper->layout->setLayout('layout');
 		$params	=	array(
 			$this->user['ID']

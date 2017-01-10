@@ -14,13 +14,13 @@
                                 <table class="table table-hover table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Date</th>
-                                        <th>Spin (days)</th>
-                                        <th>Amount (BTC)</th>
-                                        <th>Total Profit (BTC)</th>
-                                        <th>Status</th>
-                                        <th>Details Image</th>
+                                        <th style="text-align: center">#</th>
+                                        <th style="text-align: center">Date</th>
+                                        <th style="text-align: center">Spin (days)</th>
+                                        <th style="text-align: center">Amount (BTC)</th>
+                                        <th style="text-align: center">Total Profit (BTC)</th>
+                                        <th style="text-align: center">Status</th>
+                                        <th style="text-align: center">Details Image</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -38,13 +38,13 @@
                                                 fclose($handle);
                                                 ?>
                                         <tr>
-                                            <td><?php echo $i;?></td>
-                                            <td><?php echo $row['senddate'];?></td>
-                                            <td><?php echo $row['duration'];?> days</td>
-                                            <td><?php echo $row['amount'];?></td>
-                                            <td><?php echo $row['bonus'];?></td>
-                                            <td><span class="label label-sm <?php echo $row['color'];?>"><?php echo $row['status'];?></span></td>
-                                            <td class="image-view" width="60px"><span class="view-image-btn label label-sm label-info" style="cursor: pointer;">Click to view Image verify</span>
+                                            <td style="text-align: center"><?php echo $i;?></td>
+                                            <td style="text-align: center"><?php echo $row['senddate'];?></td>
+                                            <td style="text-align: center"><?php echo $row['duration'];?> days</td>
+                                            <td style="text-align: center"><?php echo $row['amount'];?></td>
+                                            <td style="text-align: center"><?php echo $row['bonus'];?></td>
+                                            <td style="text-align: center"><span class="label label-sm <?php echo $row['color'];?>"><?php echo $row['status'];?></span></td>
+                                            <td style="text-align: center" class="image-view" width="60px"><span class="view-image-btn label label-sm label-info" style="cursor: pointer;">View Image</span>
                                                 <div class="modal myModal">
                                                     <span class="close">&times;</span>
                                                     <img class="modal-content img01">
