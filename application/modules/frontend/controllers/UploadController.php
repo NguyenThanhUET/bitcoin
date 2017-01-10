@@ -98,7 +98,7 @@ class Frontend_UploadController extends Frontend_AppController {
                                     'fileName'	=>	$filePath,
                                     'newName'	=>	$filePath/* $name */,
                                     'reName'	=>	$reNameFile,
-                                    'fullPath'	=>	$dirTemp.'\\'.$reNameFile.pathinfo($filePath, PATHINFO_EXTENSION),
+                                    'fullPath'	=>	$dirTemp.'/'.$reNameFile.pathinfo($filePath, PATHINFO_EXTENSION),
                                     'message'	=>	'success'
                             );
                             $upload->receive ();
