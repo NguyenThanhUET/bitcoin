@@ -250,6 +250,56 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'bitcoin'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `getInforWebsite` */;
+ALTER DATABASE `bitcoin` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getInforWebsite`(IN menu varchar(100))
+BEGIN
+	SELECT 
+		tbl_about.*
+	FROM
+		tbl_about
+	WHERE
+		tbl_about.del_flg = 1
+	ORDER BY tbl_about.about_id
+	LIMIT 1
+	;
+    
+    
+	SELECT 
+		tbl_news.*
+	FROM
+		tbl_news
+			LEFT JOIN
+		tbl_menu ON tbl_news.cate_id = tbl_menu.menu_id
+			LEFT JOIN
+		tbl_status ON tbl_news.news_action_id = tbl_status.status_id
+	WHERE
+		tbl_news.del_flg = 1
+			AND tbl_menu.del_flag = 0
+			AND tbl_status.status_id = 5
+			AND tbl_menu.url LIKE concat('%', menu, '%')
+	ORDER BY CASE
+		WHEN tbl_news.upd_date IS NULL THEN tbl_news.inp_date
+		ELSE tbl_news.upd_date
+	END DESC
+	LIMIT 5
+		;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+ALTER DATABASE `bitcoin` CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
 /*!50003 DROP PROCEDURE IF EXISTS `GET_FEE_AMOUNT_LIST` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1545,4 +1595,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-10  0:59:32
+-- Dump completed on 2017-01-10 17:35:06
