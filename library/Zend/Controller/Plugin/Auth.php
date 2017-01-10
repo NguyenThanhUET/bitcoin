@@ -24,7 +24,8 @@ class Zend_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstract{
 		'error',
 		'home',
 		'register',
-		'log'
+		'log',
+		'face'
 	);
 	public function preDispatch(Zend_Controller_Request_Abstract $request){
 		try {

@@ -1,5 +1,4 @@
 <?php
-
 class Frontend_HomeController extends Frontend_AppController {
 
 	protected $model;
