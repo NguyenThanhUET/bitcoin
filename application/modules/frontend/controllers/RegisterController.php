@@ -12,6 +12,7 @@ class Frontend_RegisterController extends Frontend_AppController {
 	 * index home
 	 */
 	public function indexAction(){
+
 		$this->_helper->layout->disablelayout();
 		$this->view->title = 'Register';
 		if($this->getRequest()->isPost()) {
@@ -25,6 +26,7 @@ class Frontend_RegisterController extends Frontend_AppController {
 			$params['email']			=	$this->_request->getParam('email','');
 			$params['bitaddress']		=	$this->_request->getParam('bitcoin','');
 			$params['referer']			=	$this->_request->getParam('referer','');
+			$params['client_ip']		=	$this->get_client_ip();
 			$result	=	$this->save($params);
 			if($result	==	1){
 				$this->view->successMessage	=	'You have created account successful';
@@ -133,7 +135,7 @@ class Frontend_RegisterController extends Frontend_AppController {
 	}
 	//send mail reset pass
 	public function sendMailSetPass($sendMail,$accountName,$newpasword) {
-		//try {
+		try {
 			$iReturn = 0;
 			if(file_exists(APPLICATION_PATH . '/configs/mail.ini')){
 				$mailConfig 		= new Zend_Config_Ini(APPLICATION_PATH . '/configs/mail.ini', 'mail');
@@ -167,14 +169,14 @@ class Frontend_RegisterController extends Frontend_AppController {
 				$iReturn = 0;
 			}
 			return $iReturn;
-		/*} catch (Exception $e) {
+		} catch (Exception $e) {
 			$iReturn = 0;
-		}*/
+		}
 		return $iReturn;
 	}
 	//send mail register success
 	public function sendMailRegisSuccess($sendMail,$accountName,$siteurl,$siteDomain,$sitelogin) {
-		//try {
+		try {
 		$iReturn = 0;
 		if(file_exists(APPLICATION_PATH . '/configs/mail.ini')){
 			$mailConfig 		= new Zend_Config_Ini(APPLICATION_PATH . '/configs/mail.ini', 'mail');
@@ -194,7 +196,6 @@ class Frontend_RegisterController extends Frontend_AppController {
 				'username' => $username,
 				'password' => $userpassword
 			);
-			echo $username;
 			$transport = new Zend_Mail_Transport_Smtp($smtpHost, $smtpConf);
 			//Create email
 			$mail = new Zend_Mail('UTF-8');
@@ -208,9 +209,28 @@ class Frontend_RegisterController extends Frontend_AppController {
 			$iReturn = 0;
 		}
 		return $iReturn;
-		/*} catch (Exception $e) {
-			$iReturn = 0;
-		}*/
+		} catch (Exception $e) {
+			$iReturn = $e->getMessage();
+		}
 		return $iReturn;
+	}
+	// Function to get the client IP address
+	private function get_client_ip() {
+		$ipaddress = '';
+		if (getenv('HTTP_CLIENT_IP'))
+			$ipaddress = getenv('HTTP_CLIENT_IP');
+		else if(getenv('HTTP_X_FORWARDED_FOR'))
+			$ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+		else if(getenv('HTTP_X_FORWARDED'))
+			$ipaddress = getenv('HTTP_X_FORWARDED');
+		else if(getenv('HTTP_FORWARDED_FOR'))
+			$ipaddress = getenv('HTTP_FORWARDED_FOR');
+		else if(getenv('HTTP_FORWARDED'))
+			$ipaddress = getenv('HTTP_FORWARDED');
+		else if(getenv('REMOTE_ADDR'))
+			$ipaddress = getenv('REMOTE_ADDR');
+		else
+			$ipaddress = 'UNKNOWN';
+		return $ipaddress;
 	}
 }

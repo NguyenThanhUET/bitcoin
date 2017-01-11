@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
--- Host: 185.86.148.231    Database: bitcoin
+-- Host: 127.0.0.1    Database: bitcoin
 -- ------------------------------------------------------
--- Server version	5.1.73
+-- Server version	5.5.5-10.1.19-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -114,8 +114,9 @@ CREATE TABLE `customer` (
   `TotalF2Inmonth` int(11) DEFAULT NULL,
   `TotMember` int(11) DEFAULT NULL,
   `TopIndex` tinyint(4) DEFAULT NULL,
+  `client_ip` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'client ip',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +125,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'thanh','1','nguyenthanhuet@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','01687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(144,'Thành 2','thanh2','nguyenthanhuet2016@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'DHKEMBNMHJHHHhhdsdsd34344',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(145,'Thành 3 ','thanh10021992','pentest317@gmail.com',NULL,NULL,'1','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','1687522330',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'dsdsds?sd dsdsdsdsdsdsdddsdssdsdsdsd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(146,'fucked','uuuu','thanh0102@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','123456','1687522344',NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,'12Ajksdsdssds56564645dfdfdfdfd21323',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(147,'thanh nguyen','fuckyou','nguyenthanhuet1111@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eprWkuXd.sGMPxStzeRB/KZ92jOLNvZa','12345','23232321',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,'sadsdasdsd2323dsdsd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(148,'aaa','aaa','aaa@gmail.com',NULL,NULL,'thanh2','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123456','19023123312',NULL,NULL,NULL,NULL,NULL,NULL,144,NULL,NULL,'13GoNBG9S3NnzzJhszuDa9tUPKnnUPgKuH',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `customer` VALUES (8,'1autorunbit','autorunbit2','nguyenthanhuet@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5e2hWNWkZAwkLPh2BijKepfZ85zQ4szf6','123','12121212',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'12121s333332',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'127.0.0.1'),(9,'1autorunbit','autorunbit3','nguyenthanhuet2016@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5e2hWNWkZAwkLPh2BijKepfZ85zQ4szf6','123','12121212',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'12121s333332',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'127.0.0.1');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +172,7 @@ CREATE TABLE `ticket` (
   `answer` text CHARACTER SET utf8,
   `status` int(11) DEFAULT NULL COMMENT '0: chưa trả lời\n1: trả lời',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,7 +181,6 @@ CREATE TABLE `ticket` (
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
-INSERT INTO `ticket` VALUES (1,144,'test message','2017-01-06 16:24:04','Ok guy ! Please help me, I can not invest money to you !',1),(2,144,'test message','2017-01-06 16:27:28','sdsad',1),(3,144,'test message','2017-01-06 16:39:46','dfdf',1),(4,144,'Please help me, I can not invest money to you !','2017-01-06 17:21:20','s?dsdf',1),(5,144,'thành test unicode','2017-01-06 20:29:20','trả lời ',1),(6,145,'thành test new','2017-01-06 20:33:20','',0),(7,144,'fgfgfdf fdf dfdf','2017-01-07 20:42:00','',0),(8,144,'4343','2017-01-09 14:28:58','',0);
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +203,7 @@ CREATE TABLE `transaction_gh` (
   `bonus_from` int(11) DEFAULT NULL COMMENT 'f1 ID',
   `bonus_from_transgh` int(11) DEFAULT NULL COMMENT 'bonus from transaction gh nào?',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +212,6 @@ CREATE TABLE `transaction_gh` (
 
 LOCK TABLES `transaction_gh` WRITE;
 /*!40000 ALTER TABLE `transaction_gh` DISABLE KEYS */;
-INSERT INTO `transaction_gh` VALUES (144,0.18,'2017-01-05 14:36:09',3,'D:/images/\\144\\170105020201010808.jpg',2,1,0,NULL,NULL),(144,0.15,'2017-01-05 14:50:09',2,'D:/images/\\144\\170105020201010909.jpg',1,2,1,NULL,NULL),(144,0.15,'2017-01-05 14:50:11',2,'D:/images/\\144\\170105020201011111.jpg',1,3,1,NULL,NULL),(144,0.15,'2017-01-05 14:51:15',2,'D:/images/\\144\\170105020201011515.jpg',1,4,1,NULL,NULL),(144,0.15,'2017-01-05 16:29:46',1,'D:\\work\\xampp2\\htdocs\\bitcoin\\application/../public/upload/image/\\144\\170105040401014646.jpg',1,5,1,NULL,NULL),(144,0.15,'2017-01-05 17:39:50',3,'\\144\\170105050501014949.jpg',1,6,0,NULL,NULL),(144,0.15,'2017-01-05 17:43:34',1,'\\144\\170105050501013434.jpg',1,7,1,NULL,NULL),(144,0.15,'2017-01-05 17:44:23',3,'\\144\\170105050501012323.jpg',1,8,0,NULL,NULL),(145,0.15,'2017-01-05 18:32:35',2,'\\145\\170105060601013535.jpg',1,9,1,NULL,NULL),(144,0.15,'2017-01-06 13:37:21',2,'\\144\\170106010101012121.jpg',1,10,1,NULL,NULL),(145,0.15,'2017-01-06 22:13:52',2,'\\145\\170106101001015252.jpg',1,11,1,NULL,NULL),(147,0.15,'2017-01-06 23:09:37',1,'\\147\\170106111101013737.jpg',1,12,1,NULL,NULL),(144,0.15,'2017-01-08 20:18:18',2,'\\144\\170108080801011717.jpg',1,13,1,NULL,NULL),(144,0.15,'2017-01-08 21:27:12',2,'\\144\\170108090901011212.jpg',1,14,1,NULL,NULL),(144,0.15,'2017-01-09 13:31:07',2,'\\144\\170109010101010707.jpg',1,15,1,NULL,NULL),(1,0,'2017-01-09 13:58:09',2,'',4,18,1,144,15),(1,0,'2017-01-09 14:17:59',2,'',4,19,1,145,11),(144,0.15,'2017-01-09 14:21:26',3,'\\144\\170109020201012626.xlsx',1,20,0,NULL,NULL),(1,0,'2017-01-10 00:27:39',3,'',4,25,0,144,20),(1,0,'2017-01-10 00:30:09',3,'',4,26,0,144,14),(1,0,'2017-01-10 00:31:18',3,'',4,27,0,144,13),(1,0,'2017-01-09 21:29:48',2,'',4,28,1,144,10),(144,0.5,'2017-01-09 22:17:26',1,'/var/www/html/bitcoin/application/../public/upload/customer/144/170110101001012626.png',3,31,1,NULL,NULL),(148,0.15,'2017-01-10 09:47:59',1,'/var/www/html/bitcoin/application/../public/upload/customer/148/170110090901015959.jpg',1,32,1,NULL,NULL),(148,0.3,'2017-01-10 09:51:29',3,'/var/www/html/bitcoin/application/../public/upload/customer/148/170110090901012929.jpg',2,33,0,NULL,NULL),(144,0,'2017-01-10 09:52:03',3,'',4,34,0,148,33),(148,0.5,'2017-01-10 10:01:42',3,'/var/www/html/bitcoin/application/../public/upload/customer/148/170110101001014242.jpg',3,35,0,NULL,NULL),(144,0,'2017-01-10 10:02:13',3,'',4,36,0,148,35),(148,0.15,'2017-01-10 10:13:15',3,'/var/www/html/bitcoin/application/../public/upload/customer/148/170110101001011515.jpg',1,37,0,NULL,NULL),(144,0,'2017-01-10 10:14:19',2,'',4,38,0,148,37),(148,0.01,'2017-01-10 10:27:19',3,'/var/www/html/bitcoin/application/../public/upload/customer/148/170110101001011818.png',1,39,0,NULL,NULL),(144,0,'2017-01-10 10:29:39',2,'',4,40,0,148,39),(148,0.01,'2017-01-10 11:02:45',3,'/var/www/html/bitcoin/application/../public/upload/customer/148/170110111101014545.jpg',1,41,0,NULL,NULL),(144,0,'2017-01-10 11:03:25',2,'',4,42,0,148,41);
 /*!40000 ALTER TABLE `transaction_gh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,7 +233,7 @@ CREATE TABLE `transaction_ph` (
   `gh_id` int(11) DEFAULT '0' COMMENT 'Khi GH dc confirm thì PH sẽ tạo 1 bản ghi tương ứng transaction_ph.gh_id= transaction_gh.ID \nVà bản ghi này có issuccess = 0 ( chưa hoàn thành hay chưa chueyern tiền). Sau này khi chuyển tiền thành công thi issuccess =1',
   `del_flg` int(11) DEFAULT '0',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='admin send user';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='admin send user';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,7 +242,6 @@ CREATE TABLE `transaction_ph` (
 
 LOCK TABLES `transaction_ph` WRITE;
 /*!40000 ALTER TABLE `transaction_ph` DISABLE KEYS */;
-INSERT INTO `transaction_ph` VALUES (1,144,0.18,1,'2017-01-04 00:00:00',NULL,0,NULL,1),(2,145,0.4,1,'2017-01-04 00:00:00',NULL,1,0,0),(3,144,0.015,2,'2017-01-04 00:00:00',NULL,1,NULL,0),(4,144,0.015,2,'2017-01-04 00:00:00',NULL,1,8,0),(5,144,0.15,0,'2017-01-08 23:26:47',0,0,6,0),(6,144,0.3,0,'2017-01-10 00:21:47',0,0,1,0),(7,1,0,1,'2017-01-10 00:34:07',0,0,27,0),(8,1,0,1,'2017-01-10 00:35:03',0,0,26,0),(9,1,0,1,'2017-01-10 00:35:36',0,0,25,0),(10,144,0.15,0,'2017-01-10 00:55:13',0,0,20,0),(11,144,0,1,'2017-01-10 09:53:43',0,0,34,0),(12,148,0.3,0,'2017-01-10 09:54:27',0,0,33,0),(13,148,0.5,0,'2017-01-10 10:02:28',0,0,35,0),(14,144,0,1,'2017-01-10 10:02:37',0,0,36,0),(15,148,0.01,0,'2017-01-10 10:18:33',0,1,37,0),(16,148,0.01,0,'2017-01-10 10:30:39',0,1,39,0),(17,148,0.01,0,'2017-01-10 10:31:41',0,1,39,0),(18,148,0.01,0,'2017-01-10 11:03:46',0,1,41,0);
 /*!40000 ALTER TABLE `transaction_ph` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -366,10 +364,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_DUPLICATE_CUSTOMER`(IN
 )
 BEGIN
 	IF (SELECT COUNT(customer.ID) FROM customer WHERE customer.UserName = userName OR customer.Email = email) =  0 THEN 
-		IF(SELECT COUNT(customer.ID) FROM customer WHERE customer.UserName = sponsor || sponsor = '' ) =  0  THEN
-			SELECT -2 As success;
-		ELSE
+		IF(SELECT COUNT(customer.ID) FROM customer WHERE customer.UserName = sponsor)>0 || sponsor=''  THEN
 			SELECT 1 As success;
+		ELSE
+			SELECT -2 As success;
 		END IF;
     END IF;
 END ;;
@@ -1183,6 +1181,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_REGIS_CUSTOMER`(IN
 ,	email		varchar(100)
 ,	bitaddress	varchar(500)
 ,	referer		varchar(100)
+,	client_ip	varchar(100)
 )
 BEGIN
 	DECLARE ParentID INT(11) DEFAULT  0;
@@ -1197,6 +1196,7 @@ BEGIN
     ,   WalletAddress
 	,	Mobile
     ,	ParentID
+    ,	client_ip
     )
     SELECT
 		fullname
@@ -1207,7 +1207,8 @@ BEGIN
     ,	pin
     ,	bitaddress
     ,	mobile
-    ,	ParentID;
+    ,	ParentID
+    ,	client_ip;
     SELECT 1 As success; 
 END ;;
 DELIMITER ;
@@ -1596,4 +1597,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-11  0:06:44
+-- Dump completed on 2017-01-11 13:05:52
