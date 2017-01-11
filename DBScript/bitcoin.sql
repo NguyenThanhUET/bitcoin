@@ -125,7 +125,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (8,'1autorunbit','autorunbit2','nguyenthanhuet@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5e2hWNWkZAwkLPh2BijKepfZ85zQ4szf6','123','12121212',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'12121s333332',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'127.0.0.1'),(9,'1autorunbit','autorunbit3','nguyenthanhuet2016@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5e2hWNWkZAwkLPh2BijKepfZ85zQ4szf6','123','12121212',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'12121s333332',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'127.0.0.1');
+INSERT INTO `customer` VALUES (8,'1autorunbit','autorunbit2','nguyenthanhuet@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123','12121212',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'12121s333332',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'127.0.0.1'),(9,'1autorunbit','autorunbit3','nguyenthanhuet2016@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5e2hWNWkZAwkLPh2BijKepfZ85zQ4szf6','123','12121212',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'12121s333332',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'127.0.0.1');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -246,6 +246,34 @@ LOCK TABLES `transaction_ph` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `transaction_temp`
+--
+
+DROP TABLE IF EXISTS `transaction_temp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `transaction_temp` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `UserName` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
+  `Date` datetime DEFAULT NULL,
+  `Status` int(11) DEFAULT NULL,
+  `Amount` double DEFAULT NULL,
+  `del_flg` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `transaction_temp`
+--
+
+LOCK TABLES `transaction_temp` WRITE;
+/*!40000 ALTER TABLE `transaction_temp` DISABLE KEYS */;
+INSERT INTO `transaction_temp` VALUES (1,'kendy2310','2017-01-11 10:00:00',3,0.18,0),(2,'minhthanh2017','2017-01-11 10:45:00',2,0.18,0),(3,'jely_autobit','2017-01-11 10:34:00',3,0.3,0),(4,'nguyenhoanglong_2110','2017-01-11 17:34:00',3,0.7,0),(5,'jacktran','2017-01-10 17:34:00',3,0.7,0),(6,'thaonguyen270728','2017-01-11 17:09:00',3,0.18,0),(7,'nguyenhue68','2017-01-11 16:05:00',3,0.18,0),(8,'tranvu1993','2017-01-11 21:05:00',3,0.18,0),(9,'emily_katy','2017-01-11 22:05:00',3,0.5,0),(10,'thanhtrinhhoa','2017-01-11 22:05:00',3,0.5,0);
+/*!40000 ALTER TABLE `transaction_temp` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping routines for database 'bitcoin'
 --
 /*!50003 DROP PROCEDURE IF EXISTS `getInforWebsite` */;
@@ -313,6 +341,36 @@ BEGIN
 SELECT 
     *
     FROM feeamount;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `GET_LAST_TRAN_TMP` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GET_LAST_TRAN_TMP`()
+BEGIN
+	SELECT
+		ID
+	,	UserName
+    ,	TIMEDIFF(NOW(),transaction_temp.Date) AS Date
+    ,	CASE
+            WHEN transaction_temp.Status =  2 THEN 'Confirmed'
+            WHEN transaction_temp.Status =  3 THEN 'Success'
+            ELSE 'Waiting'
+		END Status
+    ,	Amount
+    FROM transaction_temp
+    ORDER BY transaction_temp.Date DESC;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1597,4 +1655,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-11 13:05:52
+-- Dump completed on 2017-01-11 23:03:19

@@ -860,8 +860,8 @@ ul.tab li a:focus, .active {
 	
 .planright{
     height: auto;
-    width: 795px;
-    float: right;
+   /* width: 795px;
+    float: right;*/
     overflow: hidden;
 	}
 	
@@ -884,7 +884,7 @@ ul.tab li a:focus, .active {
 	
 .terms{
 	height:auto;
-	width:360px;
+	width:372px;
 	float:left;
 	margin-top:35px;
 	}
@@ -904,12 +904,13 @@ ul.tab li a:focus, .active {
 	color:#008700;
 	float:right;
 	overflow:hidden;
+	padding-right: 20px;
 	}
 
 .invest-now{
     height: auto;
-    width: 365px;
-    float: right;
+    /*width: 365px;*/
+    /*float: right;*/
     overflow: hidden;
 	}
 	
@@ -1243,7 +1244,7 @@ background-attachment: fixed;
 	
 
 #sub-news{
-	height: auto;
+	height: 359px;
 	width: 497px;
 	margin: 0 auto;
 	/* padding: 30px 0px; */
@@ -2993,7 +2994,8 @@ input[type=radio]:checked + label:before {
 
 .quick-info{
     overflow: hidden;
-    width: 99.5%;
+    width: 30%;
+	margin-right: 10px;
     background-color: rgba(0, 0, 0, 0.05);
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -3017,7 +3019,7 @@ input[type=radio]:checked + label:before {
 
 .right-quick{
     float: right;
-    width: 267px;
+    width: 235px;
     overflow: hidden;
 }
 
@@ -3096,7 +3098,7 @@ input[type=radio]:checked + label:before {
 
 
 .transformation-history{
-    width: 485px;
+    width: 500px;
     /*float: right;*/
     overflow: hidden;
 }
@@ -3133,7 +3135,7 @@ input[type=radio]:checked + label:before {
 
 .Transaction-line p{
     float: left;
-    width: 97px;
+    width: 123px;
     text-align: center;
     padding: 9px 0px 8px 0px;
     font-weight: 300;
@@ -3146,7 +3148,7 @@ input[type=radio]:checked + label:before {
     width: 19px;
 }
 .first-t{
-    width: 173px !important;
+    width: 103px !important;
 }
 
 .second-t{
@@ -3295,8 +3297,6 @@ table.rep td {
   font-size: 15pt;
 }
 
-
-
 .rslides {
   position: relative;
   list-style: none;
@@ -3304,6 +3304,7 @@ table.rep td {
   width: 100%;
   padding: 0;
   margin: 0;
+	height: 488px;
   }
 
 .rslides li {
