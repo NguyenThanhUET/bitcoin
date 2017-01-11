@@ -57,8 +57,7 @@ class Frontend_RegisterController extends Frontend_AppController {
 		if($this->getRequest()->isPost()) {
 			$params	=	array();
 			$txt	=	'$2a$10$1qAz2wSx3eDc4rFv5tGb5t';
-			$str = '1234567890qưertyuiopasdfghjklzxcvbnm';
-			$newpasword = str_shuffle($str);
+			$newpasword = $this->generateRandomString(6);
 			$params['username'] =	$this->_request->getParam('username','');
 			$params['password']	=	crypt($newpasword, $txt);
 
@@ -232,5 +231,14 @@ class Frontend_RegisterController extends Frontend_AppController {
 		else
 			$ipaddress = 'UNKNOWN';
 		return $ipaddress;
+	}
+	private function generateRandomString($length = 10) {
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+		for ($i = 0; $i < $length; $i++) {
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+		return $randomString;
 	}
 }
