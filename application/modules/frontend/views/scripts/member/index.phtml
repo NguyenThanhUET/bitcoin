@@ -129,7 +129,7 @@ $uri = $this->serverUrl();
                                             <tr>
                                                 <td style="padding-left:20px;">Referral Link</td>
                                                 <td bgcolor="#FFFAEA" class="upp" width="600px" align="left">
-                                                    <strong><?php echo $uri;?>/frontend/register/index?r=<?php echo $this->user['UserName']?></strong>
+                                                    <strong id="refer-link" style="cursor: pointer;color: blue"><?php echo $uri;?>/frontend/register/index?r=<?php echo $this->user['UserName']?></strong>
                                                 </td>
                                             </tr><br>
                                             <tr>
@@ -220,6 +220,10 @@ $uri = $this->serverUrl();
                 $("#dialog").dialog("open");
                 $('input[name="pack1"][value="1"]').prop('checked',true);
             });
+            $("#refer-link").on("click", function() {
+                window.open($(this).html(),"","width=1366,height=768");
+            });
+
         });
     });
 

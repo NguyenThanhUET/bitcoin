@@ -1,3 +1,4 @@
+
 <div id="main-sliders"><!--start slider-->
 
     <div id="wrapper">
@@ -53,13 +54,15 @@
             <div id="London" class="tabcontent flash wow  animated" style="display: block; visibility: visible; animation-name: flash;">
                 <div class="plan-one">
                     <div class="planright">
+                        <?php if(isset($this->listPolicy) && !empty($this->listPolicy)){?>
+                        <?php foreach($this->listPolicy as $row){?>
                         <div class="terms">
                             <div class="terms-one">
                                 <div class="terms-left">
                                     <p>Plan Terms :   </p>
                                 </div>
                                 <div class="terms-right">
-                                    <p>0.05 BTC For 5 Days</p>
+                                    <p><?php echo 1*($row['recived']- $row['amount'])?> BTC For <?php echo $row['duration']?> Days</p>
                                 </div>
                             </div>
                             <div class="terms-one">
@@ -67,7 +70,7 @@
                                     <p>GH Invest :       &nbsp;    </p>
                                 </div>
                                 <div class="terms-right">
-                                    <p>                  0.15 BTC </p>
+                                    <p>                  <?php echo $row['amount']?> BTC </p>
                                 </div>
                             </div>
                             <div class="terms-one">
@@ -75,7 +78,7 @@
                                     <p>PH Invest :</p>
                                 </div>
                                 <div class="terms-right">
-                                    <p>  0.2 BTC</p>
+                                    <p>  <?php echo $row['recived']?> BTC</p>
                                 </div>
                             </div>
                             <div class="terms-one">
@@ -87,75 +90,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="terms">
-                            <div class="terms-one">
-                                <div class="terms-left">
-                                    <p>Plan Terms :   </p>
-                                </div>
-                                <div class="terms-right">
-                                    <p>0.15 BTC For 10 Days</p>
-                                </div>
-                            </div>
-                            <div class="terms-one">
-                                <div class="terms-left">
-                                    <p>GH Invest : </p>
-                                </div>
-                                <div class="terms-right">
-                                    <p>0.3 BTC</p>
-                                </div>
-                            </div>
-                            <div class="terms-one">
-                                <div class="terms-left">
-                                    <p>PH Invest :</p>
-                                </div>
-                                <div class="terms-right">
-                                    <p>0.45 BTC</p>
-                                </div>
-                            </div>
-                            <div class="terms-one">
-                                <div class="terms-left">
-                                    <p>Earnings On :         </p>
-                                </div>
-                                <div class="terms-right">
-                                    <p>      Monday - Friday</p>
-                                </div>
-                            </div>
+                            <?php } ?>
+                        <?php } ?>
 
-                        </div>
-                        <div class="terms">
-                            <div class="terms-one">
-                                <div class="terms-left">
-                                    <p>Plan Terms :   </p>
-                                </div>
-                                <div class="terms-right">
-                                    <p>0.3 BTC For 15 Days</p>
-                                </div>
-                            </div>
-                            <div class="terms-one">
-                                <div class="terms-left">
-                                    <p>GH Invest :</p>
-                                </div>
-                                <div class="terms-right">
-                                    <p>0.5 BTC </p>
-                                </div>
-                            </div>
-                            <div class="terms-one">
-                                <div class="terms-left">
-                                    <p>PH Invest :</p>
-                                </div>
-                                <div class="terms-right">
-                                    <p>0.8 BTC</p>
-                                </div>
-                            </div>
-                            <div class="terms-one">
-                                <div class="terms-left">
-                                    <p>Earnings On :         </p>
-                                </div>
-                                <div class="terms-right">
-                                    <p>      Monday - Friday</p>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                     <div class="invest-now" STYLE="margin-top: 10px;">
 
@@ -167,7 +105,7 @@
                                 <div class="sub-info-box">
                                     <p>Total Invested</p>
                                 </div>
-                                <h1 class="q-h1">$ 377302.90</h1>
+                                <h1 class="q-h1"><?php echo isset($this->data['total_recived_blance'])? 1*$this->data['total_recived_blance']+$this->amountGHInt:$this->amountGHInt;?> BTC</h1>
                             </div>
                         </div>
 
@@ -195,7 +133,7 @@
                                 <div class="sub-info-box3">
                                     <p>Revenue Paid</p>
                                 </div>
-                                <h1 class="q-h1">$ 144417.36</h1>
+                                <h1 class="q-h1"><?php echo isset($this->data['total_send_balance'])? 1*$this->data['total_send_balance']+$this->amountPHInt:$this->amountPHInt;?> BTC</h1>
                             </div>
                         </div>
                         <div class="quick-info" style="background: none; border: none;">

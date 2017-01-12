@@ -53,11 +53,20 @@
 
 			var now = moment().format('Y-MM-DD hh:mm:ss');
 			$('#date_time').html( now);
+
 			var t = setTimeout(startTime, 500);
 		}
+		function visitor(){
+			$('#visitor').html(getRandomArbitrary(100,156));
+			var t = setTimeout(visitor, 5000);
+		}
+
 		function checkTime(i) {
 			if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
 			return i;
+		}
+		function getRandomArbitrary(min, max) {
+			return Math.floor(Math.random() * (max - min) + min);
 		}
 	</script>
 
@@ -80,7 +89,11 @@
 	<!--End of Tawk.to Script-->
 	<link href="/templates/css/form/face_layout.css" rel="stylesheet">
 </head>
-<body onload="startTime()">
+<body onload="startTime();visitor();">
+<?php
+$amountGHInt = $this->amountGHInt;
+$amountPHInt = $this->amountPHInt;
+?>
 <div id="main-header">
 	<!--<div id="sub-header">
 		<div class="mail">
@@ -200,9 +213,9 @@
 				<ul>
 
 					<li><i class="fa fa-users" aria-hidden="true"></i> &nbsp; Total Accounts : 3597</li>
-					<li><i class="fa fa-download" aria-hidden="true"></i> &nbsp; Total Invested : $ 377302.90</li>
-					<li><i class="fa fa-upload" aria-hidden="true"></i> &nbsp; Total Paid : $ 144417.36</li>
-					<li><i class="fa fa-plane" aria-hidden="true"></i> &nbsp; Online Visitors : 158</li>
+					<li><i class="fa fa-download" aria-hidden="true"></i> &nbsp; Total Invested : <?php echo isset($this->data['total_recived_blance'])? 1*$this->data['total_recived_blance']+$amountGHInt:$amountGHInt;?> BTC</li>
+					<li><i class="fa fa-upload" aria-hidden="true"></i> &nbsp; Total Paid : <?php echo isset($this->data['total_send_balance'])? 1*$this->data['total_send_balance']+$amountPHInt:$amountPHInt;?> BTC</li>
+					<li><i class="fa fa-plane" aria-hidden="true"></i> &nbsp; Online Visitors : <span id="visitor"><?php echo $this->visitorInit;?></span></li>
 				</ul>
 			</div>
 		</div>
