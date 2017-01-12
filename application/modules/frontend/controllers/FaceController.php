@@ -25,7 +25,6 @@ class Frontend_FaceController extends Frontend_AppController {
 		if(!empty($data[0])){
 			$this->view->data = $data[0];
 		}
-
 	}
 	public function aboutusAction(){
 		$this->view->title = 'About Us';
