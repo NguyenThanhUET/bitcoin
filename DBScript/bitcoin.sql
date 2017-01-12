@@ -360,18 +360,38 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GET_LAST_TRAN_TMP`()
 BEGIN
-	SELECT
-		ID
-	,	UserName
-    ,	TIMEDIFF(NOW(),transaction_temp.Date) AS Date
-    ,	CASE
-            WHEN transaction_temp.Status =  2 THEN 'Confirmed'
-            WHEN transaction_temp.Status =  3 THEN 'Success'
-            ELSE 'Waiting'
-		END Status
-    ,	Amount
-    FROM transaction_temp
-    ORDER BY transaction_temp.Date DESC;
+	CREATE TEMPORARY TABLE IF NOT EXISTS temp_table 
+	As (
+		SELECT
+			transaction_temp.ID
+		,	transaction_temp.UserName
+		,	TIMEDIFF(NOW(),transaction_temp.Date) AS Date
+		,	CASE
+				WHEN transaction_temp.Status =  2 THEN 'Confirmed'
+				WHEN transaction_temp.Status =  3 THEN 'Success'
+				ELSE 'Waiting'
+			END Status
+		,	transaction_temp.Amount
+		FROM transaction_temp
+	);
+        INSERT INTO temp_table
+		SELECT
+			transaction_gh.ID
+		,	customer.UserName
+		,	TIMEDIFF(NOW(),transaction_gh.senddate) AS Date
+		,	CASE
+				WHEN transaction_gh.status =  2 THEN 'Confirmed'
+				WHEN transaction_gh.status =  3 THEN 'Success'
+				ELSE 'Waiting'
+			END Status
+		,	transaction_gh.amount
+		FROM transaction_gh
+		LEFT JOIN customer ON
+			transaction_gh.CustomerID = customer.ID;
+		SELECT * FROM temp_table
+        ORDER BY temp_table.Date;
+        DROP TEMPORARY TABLE IF EXISTS temp_table;
+
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -519,16 +539,16 @@ BEGIN
 	DECLARE totalInvest INT DEFAULT 0;
     DECLARE waitingInvest INT DEFAULT 0;
     DECLARE confirmedInvest INT DEFAULT 0;
-    DECLARE amountInvest DECIMAL(18,2) DEFAULT 0;
-    DECLARE amountWaitingInvest DECIMAL(18,2) DEFAULT 0;
-    DECLARE amountConfirmedInvest DECIMAL(18,2) DEFAULT 0;
+    DECLARE amountInvest DECIMAL(18,5) DEFAULT 0;
+    DECLARE amountWaitingInvest DECIMAL(18,5) DEFAULT 0;
+    DECLARE amountConfirmedInvest DECIMAL(18,5) DEFAULT 0;
     
     DECLARE totalRecived INT DEFAULT 0;
     DECLARE errorRecived INT DEFAULT 0;
     DECLARE successRecived INT DEFAULT 0;
-    DECLARE amountRecived DECIMAL(18,2) DEFAULT 0;
-    DECLARE amountErrorRecived DECIMAL(18,2) DEFAULT 0;
-    DECLARE amountSuccessRecived DECIMAL(18,2) DEFAULT 0;
+    DECLARE amountRecived DECIMAL(18,5) DEFAULT 0;
+    DECLARE amountErrorRecived DECIMAL(18,5) DEFAULT 0;
+    DECLARE amountSuccessRecived DECIMAL(18,5) DEFAULT 0;
     SET totalInvest = 
     (SELECT
 		 COUNT(1)
@@ -556,14 +576,14 @@ BEGIN
     
     SET amountInvest = 
     (SELECT
-		 SUM(transaction_gh.amount)
+		 IFNULL(SUM(transaction_gh.amount),0)
     FROM transaction_gh
     WHERE transaction_gh.CustomerID = P_customerID
     AND transaction_gh.del_flg <> 1);
 	
     SET amountWaitingInvest = 
     (SELECT
-		 SUM(transaction_gh.amount)
+		 IFNULL(SUM(transaction_gh.amount),0)
     FROM transaction_gh
     WHERE transaction_gh.CustomerID = P_customerID
      AND transaction_gh.status = 1
@@ -571,7 +591,7 @@ BEGIN
     
     SET amountConfirmedInvest = 
     (SELECT
-		 SUM(transaction_gh.amount)
+		 IFNULL(SUM(transaction_gh.amount),0)
     FROM transaction_gh
     WHERE transaction_gh.CustomerID = P_customerID
      AND transaction_gh.status = 2
@@ -602,14 +622,14 @@ BEGIN
     
     SET amountRecived = 
     (SELECT
-		 SUM(transaction_ph.amount)
+		 IFNULL(SUM(transaction_ph.amount),0)
     FROM transaction_ph
     WHERE transaction_ph.CustomerID = P_customerID
     AND transaction_ph.del_flg <> 1);
     
     SET amountErrorRecived = 
     (SELECT
-		 SUM(transaction_ph.amount)
+		 IFNULL(SUM(transaction_ph.amount),0)
     FROM transaction_ph
     WHERE transaction_ph.CustomerID = P_customerID
     AND transaction_ph.issuccess = 0
@@ -617,7 +637,7 @@ BEGIN
     
     SET amountSuccessRecived = 
     (SELECT
-		 SUM(transaction_ph.amount)
+		 IFNULL(SUM(transaction_ph.amount),0)
     FROM transaction_ph
     WHERE transaction_ph.CustomerID = P_customerID
     AND transaction_ph.issuccess = 1
@@ -666,7 +686,7 @@ BEGIN
 		SUM(bh.amount)
     FROM transaction_gh AS bh
     WHERE 
-    bh.status = 2
+    (bh.status = 2 OR bh.status = 3)
     AND bh.del_flg <> 1
     );
     SET total_send_balance =
@@ -721,7 +741,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = '' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_DATA_INFO`(IN
 P_customerID INT
@@ -755,7 +775,7 @@ BEGIN
     FROM transaction_ph AS ph
     WHERE ph.CustomerID = P_customerID
     AND ph.del_flg <> 1
-    AND ph.level > 1
+    AND ph.level > 0
     GROUP BY ph.CustomerID); -- neu customer hien tại là F1, F2
     
     
@@ -967,7 +987,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = '' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_TRANS_GH`(
 IN customerId	INT
@@ -991,9 +1011,10 @@ BEGIN
 		END  AS color
     ,	feeamount.recived AS bonus
     FROM transaction_gh 
-     LEFT JOIN feeamount ON
+	LEFT JOIN feeamount ON
 		transaction_gh.transaction_typ = feeamount.transaction_typ
     WHERE transaction_gh.CustomerID =  customerId
+    AND (transaction_gh.bonus_from_transgh = 0 OR transaction_gh.bonus_from_transgh IS NULL)
     AND transaction_gh.del_flg <> 1
     ORDER BY transaction_gh.senddate DESC;
 END ;;
@@ -1010,7 +1031,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = '' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_TRANS_PH`(
 IN customerId	INT
@@ -1024,8 +1045,8 @@ BEGIN
             ELSE   'Waiting'
 		END  AS issuccess
 	,	CASE
-			WHEN transaction_ph.level = 1 THEN 'Me'
-            WHEN transaction_ph.level = 2 THEN 'From F1'
+			WHEN transaction_ph.level = 0 THEN 'Me'
+            WHEN transaction_ph.level = 1 THEN 'From F1'
 		END  AS level
 	,	CASE
 			WHEN transaction_ph.issuccess = 1 THEN 'label-success'
@@ -1035,6 +1056,7 @@ BEGIN
     FROM transaction_ph 
     WHERE transaction_ph.CustomerID =  customerId
     AND transaction_ph.del_flg <> 1
+    AND (transaction_ph.issuccess = 1 OR level = 0)
     ORDER BY transaction_ph.senddate DESC;
 END ;;
 DELIMITER ;
@@ -1592,7 +1614,7 @@ BEGIN
     END IF;
     
     SET amount = (
-    SELECT feeamount.amount FROM transaction_gh 
+    SELECT feeamount.recived FROM transaction_gh 
     INNER JOIN feeamount ON
 			transaction_gh.transaction_typ = feeamount.transaction_typ
     WHERE transaction_gh.ID = P_ID
@@ -1682,4 +1704,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-12 17:59:56
+-- Dump completed on 2017-01-13  0:42:01
