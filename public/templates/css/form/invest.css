@@ -290,3 +290,21 @@ img {
     box-shadow: 0 0 10px rgba(0, 0, 0, .5);
     text-shadow: none;
 }
+#popup_ok{
+    color: #ffffff;
+    background-color: #33bce4;
+    border-color: #53bddc;
+    border-radius: 4px;
+    width: 60px;
+}
+
+#popup_ok:hover{
+    background-color: rgba(91, 192, 222, 0.58);
+}
+#popup_title {
+    color: white !important;
+    background: #0a819c !important;
+}
+#popup_content{
+    background-color: #e5f9ff !important
+}

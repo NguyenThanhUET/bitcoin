@@ -111,7 +111,7 @@ $actionName = Zend_Controller_Front::getInstance()->getRequest()->getActionName(
 				<li class="<?php if ($actionName == 'aboutus'){?>hover<?php } ?>"><a href="/aboutus">About Us</a></li>
 				<li class="<?php if ($actionName == 'terms'){?>hover<?php } ?>"><a href="/terms">Terms &amp; Conditions</a></li>
 				<li class="<?php if ($actionName == 'faq'){?>hover<?php } ?>"><a href="/faq">FAQ</a></li>
-				<li class="<?php if ($actionName == 'supportcentre'){?>hover<?php } ?>"><a href="/support">Support Centre</a></li>
+				<!--<li class="<?php /*if ($actionName == 'supportcentre'){*/?>hover<?php /*} */?>"><a href="/support">Support Centre</a></li>-->
 			</ul>
 		</div>
 	</div>
@@ -153,7 +153,7 @@ $actionName = Zend_Controller_Front::getInstance()->getRequest()->getActionName(
 					<li><a href="/aboutus">About Us</a></li>
 					<li><a href="/terms">Terms &amp; Conditions</a></li>
 					<li><a href="/faq">FAQ</a></li>
-					<li><a href="/support">Support</a></li>
+					<!--<li><a href="/support">Support</a></li>-->
 				</ul>
 			</div>
 			<!--<div class="text-demo">
@@ -174,7 +174,7 @@ $actionName = Zend_Controller_Front::getInstance()->getRequest()->getActionName(
 			<div class="top-menu">
 				<ul>
 
-					<li><i class="fa fa-users" aria-hidden="true"></i> &nbsp; Total Accounts : <?php echo $this->totalPerson;?></li>
+					<li><i class="fa fa-users" aria-hidden="true"></i> &nbsp; Total Accounts : <?php echo (1*$this->totalPerson + 1*$this->dataInvest['total_customer']);?></li>
 					<li><i class="fa fa-download" aria-hidden="true"></i> &nbsp; Total Invested : <?php echo isset($this->data['total_recived_blance'])? 1*$this->data['total_recived_blance']+$amountGHInt:$amountGHInt;?> BTC</li>
 					<li><i class="fa fa-upload" aria-hidden="true"></i> &nbsp; Total Paid : <?php echo isset($this->data['total_send_balance'])? 1*$this->data['total_send_balance']+$amountPHInt:$amountPHInt;?> BTC</li>
 					<li><i class="fa fa-plane" aria-hidden="true"></i> &nbsp; Online Visitors : <span id="visitor"><?php echo $this->visitorInit;?></span></li>
@@ -189,7 +189,7 @@ $actionName = Zend_Controller_Front::getInstance()->getRequest()->getActionName(
 	</div>
 </div>
 <input type="hidden" id="visitMin" value="<?php echo $this->visitMin;?>">
-<input type="hidden" id="visitMax" value="<?php echo $this->visitMax;?>">
-<input type="hidden" id="refreshVistor" value="<?php echo $this->refreshVistor;?>">
+<input type="hidden" id="visitMax" value="<?php echo (1*$this->visitMax + 1*$this->dataInvest['total_customer']);?>">
+<input type="hidden" id="refreshVistor" value="<?php echo (1*$this->refreshVistor);?>">
 </body>
 </html>
