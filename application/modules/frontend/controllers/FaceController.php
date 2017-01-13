@@ -13,9 +13,17 @@ class Frontend_FaceController extends Frontend_AppController {
 	 */
 	public function init() {
 		parent::init();
-		$this->view->amountGHInt = 11.3;
-		$this->view->amountPHInt = 7.55;
-		$this->view->visitorInit	=	rand(100,156);
+		$this->_config = new Zend_Config_Ini(APPLICATION_PATH . '/configs/init_home.ini', 'home');
+		//Amount
+		$this->view->amountGHInt = $this->_config->home->amountGHInt;
+		$this->view->amountPHInt = $this->_config->home->amountPHInt;
+		$this->view->amount_add_tmp = $this->_config->home->amount_add_tmp;
+		//person and visitor
+		$this->view->visitorInit	=	rand($this->_config->home->visitorInitMin,$this->_config->home->visitorInitMax);
+		$this->view->totalPerson	=	$this->_config->home->totalPerson;
+		$this->view->refreshVistor	=	$this->_config->home->refresh_visitor;
+		$this->view->visitMin		=	$this->_config->home->visitorInitMin;
+		$this->view->visitMax		=	$this->_config->home->visitorInitMax;
 		$dataInvest = $this->model->executeSql('SPC_GET_DASHBOARD_DATA_INFO', array());
 		if(!empty($dataInvest[0][0])){
 			$this->view->dataInvest	=	$dataInvest[0][0];
