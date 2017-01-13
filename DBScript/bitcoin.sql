@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: bitcoin
+-- Host: 185.86.148.231    Database: bitcoin
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.19-MariaDB
+-- Server version	5.1.73
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -116,7 +116,7 @@ CREATE TABLE `customer` (
   `TopIndex` tinyint(4) DEFAULT NULL,
   `client_ip` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'client ip',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +125,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (8,'1autorunbit','autorunbit2','nguyenthanhuet@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123','12121212',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'12121s333332',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'127.0.0.1'),(9,'1autorunbit','autorunbit3','nguyenthanhuet2016@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5e2hWNWkZAwkLPh2BijKepfZ85zQ4szf6','123','12121212',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'12121s333332',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'127.0.0.1');
+INSERT INTO `customer` VALUES (8,'1autorunbit','autorunbit2','nguyenthanhuet@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eefTzKCx/LNf./BqxzudS.QZxVA6PX66','123','12121212',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'12121s333332',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'127.0.0.1'),(9,'1autorunbit','autorunbit3','nguyenthanhuet2016@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5e2hWNWkZAwkLPh2BijKepfZ85zQ4szf6','123','12121212',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'12121s333332',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'127.0.0.1'),(10,'aaa','aaa','pentest317@gmail.com',NULL,NULL,'','$2a$10$1qAz2wSx3eDc4rFv5tGb5eNAzKmbvMU5dZZ2hhRQDgZB6tefh.fve','123456a@','01293123',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1MRuNG9wdHeqZL3Vo6fHP3De91GSbkfVS4',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1.55.134.44'),(11,'bbb','bbb','pentest3171@gmail.com',NULL,NULL,'aaa','$2a$10$1qAz2wSx3eDc4rFv5tGb5eNAzKmbvMU5dZZ2hhRQDgZB6tefh.fve','123456a@','0123812312',NULL,NULL,NULL,NULL,NULL,NULL,10,NULL,NULL,'1CkVReNeaHthcEsA6bMrEpgm5f5v4tUa5d',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1.55.134.44');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,7 +153,7 @@ CREATE TABLE `feeamount` (
 
 LOCK TABLES `feeamount` WRITE;
 /*!40000 ALTER TABLE `feeamount` DISABLE KEYS */;
-INSERT INTO `feeamount` VALUES (1,1,0.01,0.015,3,'spin 1 day'),(2,2,0.3,0.4,5,'spin 2 day'),(3,3,0.5,0.7,7,'spin 3 day'),(4,4,0,0.02,3,'bonus from f1');
+INSERT INTO `feeamount` VALUES (1,1,0.01,0.015,3,'spin 1 day'),(2,2,0.3,0.4,5,'spin 2 day'),(3,3,0.5,0.7,7,'spin 3 day'),(4,4,0,0.001,3,'bonus from f1');
 /*!40000 ALTER TABLE `feeamount` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +203,7 @@ CREATE TABLE `transaction_gh` (
   `bonus_from` int(11) DEFAULT NULL COMMENT 'f1 ID',
   `bonus_from_transgh` int(11) DEFAULT NULL COMMENT 'bonus from transaction gh nào?',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user send admin';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +212,7 @@ CREATE TABLE `transaction_gh` (
 
 LOCK TABLES `transaction_gh` WRITE;
 /*!40000 ALTER TABLE `transaction_gh` DISABLE KEYS */;
-INSERT INTO `transaction_gh` VALUES (8,0.01,'2017-01-12 14:15:03',1,'D:\\xampp\\htdocs\\bitcoin\\application/../public/upload/customer/8/170112020201010303.png',1,1,0,NULL,NULL);
+INSERT INTO `transaction_gh` VALUES (8,0.01,'2017-01-12 02:13:15',1,'D:\\xampp\\htdocs\\bitcoin\\application/../public/upload/customer/8/170112020201011515.png',1,1,1,NULL,NULL),(10,0.01,'2017-01-12 10:21:45',3,'/var/www/html/bitcoin/application/../public/upload/customer/10/170112101001014545.jpg',1,2,0,NULL,NULL),(11,0.01,'2017-01-12 10:56:03',3,'/var/www/html/bitcoin/application/../public/upload/customer/11/170112101001010303.jpg',1,3,0,NULL,NULL),(10,0,'2017-01-12 10:57:38',2,'',4,4,1,11,3),(11,0.01,'2017-01-12 11:47:46',2,'/var/www/html/bitcoin/application/../public/upload/customer/11/170112111101014646.jpg',1,5,0,NULL,NULL),(10,0,'2017-01-12 11:48:13',3,'',4,6,0,11,5);
 /*!40000 ALTER TABLE `transaction_gh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,7 +234,7 @@ CREATE TABLE `transaction_ph` (
   `gh_id` int(11) DEFAULT '0' COMMENT 'Khi GH dc confirm thì PH sẽ tạo 1 bản ghi tương ứng transaction_ph.gh_id= transaction_gh.ID \nVà bản ghi này có issuccess = 0 ( chưa hoàn thành hay chưa chueyern tiền). Sau này khi chuyển tiền thành công thi issuccess =1',
   `del_flg` int(11) DEFAULT '0',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='admin send user';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='admin send user';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,6 +243,7 @@ CREATE TABLE `transaction_ph` (
 
 LOCK TABLES `transaction_ph` WRITE;
 /*!40000 ALTER TABLE `transaction_ph` DISABLE KEYS */;
+INSERT INTO `transaction_ph` VALUES (1,10,0.01,0,'2017-01-12 10:26:04',0,1,2,0),(2,11,0.015,0,'2017-01-12 10:58:11',0,1,3,0),(3,10,0.001,1,'2017-01-12 11:48:44',0,1,6,0);
 /*!40000 ALTER TABLE `transaction_ph` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -356,7 +357,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GET_LAST_TRAN_TMP`()
 BEGIN
@@ -406,7 +407,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GET_POLICY_HOME_LST1`()
 BEGIN
@@ -530,7 +531,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_BUSSINESS_REPORT`(IN
 P_CustomerID	INT
@@ -671,7 +672,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_DASHBOARD_DATA_INFO`()
 BEGIN
@@ -741,7 +742,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_DATA_INFO`(IN
 P_customerID INT
@@ -987,7 +988,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_TRANS_GH`(
 IN customerId	INT
@@ -1031,7 +1032,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_GET_TRANS_PH`(
 IN customerId	INT
@@ -1581,7 +1582,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPC_TRANSACTION_SENDMONEY_ACT1`(IN
 	P_ID	INT
@@ -1704,4 +1705,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-13  0:42:01
+-- Dump completed on 2017-01-13  9:31:33
