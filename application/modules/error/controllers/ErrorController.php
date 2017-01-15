@@ -16,6 +16,9 @@ class Error_ErrorController extends Zend_Controller_Action{
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE:
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION:
+                if ($this->auth->hasIdentity()) {
+                    $this->auth->clearIdentity();
+                }
                 // 404 error -- controller or action not found
                 $this->getResponse()->setHttpResponseCode(404);
                 $priority = Zend_Log::NOTICE;
@@ -26,15 +29,22 @@ class Error_ErrorController extends Zend_Controller_Action{
                 $this->getResponse()->setHttpResponseCode(500);
                 $priority = Zend_Log::CRIT;
                 $this->view->message = 'Application error';
+                $this->redirect('/');
                 break;
         }
         // Log exception, if logger available
         if ($log = $this->getLog()) {
+            if ($this->auth->hasIdentity()) {
+                $this->auth->clearIdentity();
+            }
             $log->log($this->view->message, $priority, $errors->exception);
             $log->log('Request Parameters', $priority, $errors->request->getParams());
         }
         // conditionally display exceptions
         if ($this->getInvokeArg('displayExceptions') == true) {
+            if ($this->auth->hasIdentity()) {
+                $this->auth->clearIdentity();
+            }
             $this->view->exception = $errors->exception;
         }
         $this->view->request   = $errors->request;
@@ -49,6 +59,16 @@ class Error_ErrorController extends Zend_Controller_Action{
     }
     public function page404Action() {
         $this->_helper->_layout->disableLayout();
+        if ($this->auth->hasIdentity()) {
+            $this->auth->clearIdentity();
+        }
+        $this->redirect('/');
+    }
+    public function page403Action() {
+        $this->_helper->_layout->disableLayout();
+        if ($this->auth->hasIdentity()) {
+            $this->auth->clearIdentity();
+        }
         $this->redirect('/');
     }
 }

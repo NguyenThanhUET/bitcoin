@@ -31,7 +31,7 @@ class Frontend_HomeController extends Frontend_AppController {
 				$this->redirect('/frontend/member/');
 				die();
 			}else{
-				$this->view->errorMessage	=	'Username or password invalid';
+				$this->view->errorMessage	=	'Username or password invalid  <br> <span style="margin-left: 70px;">Or your account is not active</span>';
 			}
 		}
 	}
